@@ -48,8 +48,8 @@
         "doctrine/doctrine-orm-module": "^3.0.0 || ^4.0.0 || ^5.0.0",
         "doctrine/mongodb-odm": "^2.0.0",
         "laminas-api-tools/api-tools-admin": "^1.5.7 || ^2.0.1",
-        "laminas-api-tools/api-tools-hal": "^1.6.1",
         "laminas-api-tools/api-tools-content-negotiation": "^1.7",
+        "laminas-api-tools/api-tools-hal": "^1.6.1",
         "laminas/laminas-coding-standard": "~2.3.0",
         "laminas/laminas-form": "^2.9.2 || ^3.0.0",
         "laminas/laminas-i18n": "^2.7.3",
@@ -62,7 +62,7 @@
         "phpunit/phpunit": "^9.5.10",
         "psalm/plugin-phpunit": "^0.16.1 || ^0.17.0 || ^0.18.0",
         "symfony/yaml": "^2.3 || ^3.0 || ^4.0 || ^5.0",
-        "vimeo/psalm": "^4.8"
+        "vimeo/psalm": "^5"
     },
     "conflict": {
         "doctrine/dbal": "<2.12.0",
