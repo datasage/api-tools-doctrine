@@ -24,9 +24,8 @@ class DefaultOdm extends AbstractQueryProvider
 
     /**
      * @param Builder $queryBuilder
-     * @return DoctrineOdmAdapter
      */
-    public function getPaginatedQuery($queryBuilder)
+    public function getPaginatedQuery($queryBuilder): DoctrineOdmAdapter
     {
         return new DoctrineOdmAdapter($queryBuilder);
     }

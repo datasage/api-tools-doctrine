@@ -6,6 +6,7 @@ namespace Laminas\ApiTools\Doctrine\Admin\Model;
 
 use Laminas\ApiTools\Admin\Model\DocumentationModel;
 use Laminas\ApiTools\Admin\Model\InputFilterModel;
+use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRpcServiceResource;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -16,11 +17,10 @@ use function sprintf;
 class DoctrineRpcServiceResourceFactory
 {
     /**
-     * @return DoctrineRpcServiceResource
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): DoctrineRpcServiceResource
     {
         if (
             ! $container->has(DoctrineRpcServiceModelFactory::class)

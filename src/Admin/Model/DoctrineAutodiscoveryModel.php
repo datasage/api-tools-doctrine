@@ -19,10 +19,9 @@ class DoctrineAutodiscoveryModel extends AbstractAutodiscoveryModel
      *
      * @param string $module
      * @param int $version
-     * @param string $adapterName
      * @return array
      */
-    public function fetchFields($module, $version, $adapterName)
+    public function fetchFields($module, $version, string $adapterName): array
     {
         $entities = [];
 

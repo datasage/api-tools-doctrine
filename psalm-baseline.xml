@@ -172,6 +172,9 @@
     <InvalidPropertyFetch>
       <code><![CDATA[$service->resourceClass]]></code>
     </InvalidPropertyFetch>
+    <MismatchingDocblockReturnType>
+      <code>DoctrineRestServiceModel</code>
+    </MismatchingDocblockReturnType>
     <MissingClosureParamType>
       <code>$r</code>
     </MissingClosureParamType>
@@ -217,6 +220,9 @@
       <code>DoctrineRestServiceModel</code>
       <code>DoctrineRestServiceModel</code>
     </ImplementedReturnTypeMismatch>
+    <MismatchingDocblockReturnType>
+      <code>DoctrineRestServiceModelFactory</code>
+    </MismatchingDocblockReturnType>
     <PossiblyNullArgument>
       <code>$moduleEntity</code>
     </PossiblyNullArgument>
@@ -247,6 +253,9 @@
       <code>$service</code>
       <code>parent::fetch($id)</code>
     </LessSpecificReturnStatement>
+    <MismatchingDocblockReturnType>
+      <code>DoctrineRestServiceResource</code>
+    </MismatchingDocblockReturnType>
     <MoreSpecificImplementedParamType>
       <code>$data</code>
       <code>$id</code>
@@ -304,6 +313,9 @@
       <code>$service</code>
       <code>parent::fetch($id)</code>
     </LessSpecificReturnStatement>
+    <MismatchingDocblockReturnType>
+      <code>DoctrineRpcServiceResource</code>
+    </MismatchingDocblockReturnType>
     <MoreSpecificImplementedParamType>
       <code>$data</code>
       <code>$id</code>
@@ -371,6 +383,9 @@
       <code>$hydratorMap[$entityClass]</code>
       <code><![CDATA[$this->entityHydratorMap[$entityClass]]]></code>
     </LessSpecificReturnStatement>
+    <MismatchingDocblockParamType>
+      <code>array|null</code>
+    </MismatchingDocblockParamType>
     <MoreSpecificReturnType>
       <code>AbstractHydrator|DoctrineObject</code>
     </MoreSpecificReturnType>
@@ -561,7 +576,6 @@
     </MoreSpecificImplementedParamType>
     <ParamNameMismatch>
       <code>$data</code>
-      <code>$events</code>
     </ParamNameMismatch>
     <PossiblyInvalidMethodCall>
       <code>getRequest</code>
@@ -581,6 +595,7 @@
     <PropertyNotSetInConstructor>
       <code>$entityIdentifierName</code>
       <code>$events</code>
+      <code>$hydrator</code>
       <code>$queryCreateFilter</code>
       <code>$queryProviders</code>
       <code>$routeIdentifierName</code>
@@ -641,10 +656,11 @@
     <ArgumentTypeCoercion>
       <code>$objectManager</code>
     </ArgumentTypeCoercion>
+    <MismatchingDocblockReturnType>
+      <code>HydratorInterface</code>
+    </MismatchingDocblockReturnType>
     <MissingReturnType>
-      <code>configureHydrator</code>
       <code>configureHydratorFilters</code>
-      <code>configureHydratorNamingStrategy</code>
       <code>configureHydratorStrategies</code>
     </MissingReturnType>
     <UndefinedInterfaceMethod>
@@ -668,21 +684,6 @@
       <code>RevType</code>
     </UndefinedClass>
   </file>
-  <file src="test/src/Admin/Controller/DoctrineAutodiscoveryControllerFactoryTest.php">
-    <PossiblyUndefinedMethod>
-      <code>reveal</code>
-    </PossiblyUndefinedMethod>
-  </file>
-  <file src="test/src/Admin/Model/DoctrineAutodiscoveryModelFactoryTest.php">
-    <PossiblyUndefinedMethod>
-      <code>get</code>
-      <code>has</code>
-      <code>has</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-    </PossiblyUndefinedMethod>
-  </file>
   <file src="test/src/Admin/Model/DoctrineAutodiscoveryModelTest.php">
     <NullArgument>
       <code>null</code>
@@ -690,10 +691,10 @@
       <code>null</code>
       <code>null</code>
     </NullArgument>
-    <RedundantConditionGivenDocblockType>
+    <RedundantCondition>
       <code>assertIsArray</code>
       <code>assertIsArray</code>
-    </RedundantConditionGivenDocblockType>
+    </RedundantCondition>
     <UndefinedClass>
       <code>Album</code>
       <code>Artist</code>
@@ -719,25 +720,15 @@
     </UndefinedThisPropertyAssignment>
   </file>
   <file src="test/src/Admin/Model/DoctrineMetadataServiceResourceFactoryTest.php">
+    <MismatchingDocblockPropertyType>
+      <code>ObjectProphecy</code>
+    </MismatchingDocblockPropertyType>
     <PossiblyUndefinedMethod>
       <code>reveal</code>
       <code>reveal</code>
     </PossiblyUndefinedMethod>
   </file>
   <file src="test/src/Admin/Model/DoctrineRestServiceModelFactoryFactoryTest.php">
-    <PossiblyUndefinedMethod>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>reveal</code>
-      <code>reveal</code>
-    </PossiblyUndefinedMethod>
     <UndefinedClass>
       <code>ConfigResourceFactory</code>
       <code>ConfigResourceFactory</code>
@@ -786,17 +777,6 @@
      *     0: array<class-string, bool>
      * }>]]></code>
     </MoreSpecificReturnType>
-    <PossiblyUndefinedMethod>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>reveal</code>
-      <code>reveal</code>
-    </PossiblyUndefinedMethod>
   </file>
   <file src="test/src/Admin/Model/DoctrineRestServiceResourceTest.php">
     <ArgumentTypeCoercion>
@@ -817,6 +797,9 @@
     </UndefinedThisPropertyAssignment>
   </file>
   <file src="test/src/Admin/Model/DoctrineRpcServiceModelFactoryFactoryTest.php">
+    <MismatchingDocblockPropertyType>
+      <code>ObjectProphecy</code>
+    </MismatchingDocblockPropertyType>
     <PossiblyUndefinedMethod>
       <code>get</code>
       <code>get</code>
@@ -841,7 +824,7 @@
     </UndefinedClass>
   </file>
   <file src="test/src/Admin/Model/DoctrineRpcServiceResourceFactoryTest.php">
-    <PossiblyUndefinedMethod>
+    <UndefinedInterfaceMethod>
       <code>get</code>
       <code>get</code>
       <code>get</code>
@@ -851,9 +834,7 @@
       <code>has</code>
       <code>has</code>
       <code>has</code>
-      <code>reveal</code>
-      <code>reveal</code>
-    </PossiblyUndefinedMethod>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="test/src/Server/Event/Listener/CollectionListenerTest.php">
     <PossiblyInvalidArgument>
@@ -896,18 +877,6 @@
       <code>expects</code>
     </PossiblyUndefinedMethod>
     <UndefinedClass>
-      <code>EventCatcher</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass>
       <code>$meta</code>
       <code>$meta</code>
       <code>$meta</code>
@@ -925,8 +894,18 @@
       <code>$meta</code>
       <code>$meta1</code>
       <code>$meta2</code>
+      <code>EventCatcher</code>
       <code>Meta</code>
-    </UndefinedDocblockClass>
+      <code>Meta</code>
+      <code>Meta</code>
+      <code>Meta</code>
+      <code>Meta</code>
+      <code>Meta</code>
+      <code>Meta</code>
+      <code>Meta</code>
+      <code>Meta</code>
+      <code>Meta</code>
+    </UndefinedClass>
     <UndefinedInterfaceMethod>
       <code>getConfig</code>
       <code>getHeaders</code>
@@ -974,34 +953,6 @@
       <code>getName</code>
     </PossiblyNullReference>
     <UndefinedClass>
-      <code>?Artist</code>
-      <code>Album</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>ArtistResource</code>
-      <code>DoctrineResource</code>
-      <code>DoctrineResource</code>
-      <code>EventCatcher</code>
-      <code>EventCatcher</code>
-      <code>Product</code>
-      <code>Product</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass>
       <code>$album</code>
       <code>$artist</code>
       <code>$artist</code>
@@ -1043,20 +994,43 @@
       <code>$artist3</code>
       <code>$artist3</code>
       <code>$artist3</code>
-      <code>$entityFactoryMock</code>
-      <code>$entityFactoryMock</code>
       <code>$product</code>
       <code>$product</code>
       <code>$product</code>
       <code>$product</code>
       <code>$product</code>
       <code>$product</code>
+      <code>?Artist</code>
+      <code>Album</code>
       <code>Album</code>
       <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>Artist</code>
+      <code>ArtistResource</code>
+      <code>DoctrineResource</code>
+      <code>DoctrineResource</code>
+      <code>EventCatcher</code>
+      <code>EventCatcher</code>
       <code>Product</code>
-    </UndefinedDocblockClass>
+      <code>Product</code>
+      <code>Product</code>
+    </UndefinedClass>
     <UndefinedInterfaceMethod>
-      <code>expects</code>
       <code>getHeaders</code>
       <code>getHeaders</code>
       <code>getHeaders</code>
@@ -1117,26 +1091,12 @@
     </PossiblyNullArgument>
   </file>
   <file src="test/src/Server/Validator/NoObjectExistsFactoryTest.php">
-    <PossiblyInvalidMethodCall>
-      <code>willReturn</code>
-    </PossiblyInvalidMethodCall>
-    <PossiblyUndefinedMethod>
-      <code>reveal</code>
-      <code>reveal</code>
-    </PossiblyUndefinedMethod>
     <UndefinedClass>
       <code>NoObjectExists</code>
       <code>NoObjectExists</code>
     </UndefinedClass>
   </file>
   <file src="test/src/Server/Validator/ObjectExistsFactoryTest.php">
-    <PossiblyInvalidMethodCall>
-      <code>willReturn</code>
-    </PossiblyInvalidMethodCall>
-    <PossiblyUndefinedMethod>
-      <code>reveal</code>
-      <code>reveal</code>
-    </PossiblyUndefinedMethod>
     <UndefinedClass>
       <code>ObjectExists</code>
       <code>ObjectExists</code>

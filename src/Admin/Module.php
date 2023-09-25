@@ -21,7 +21,7 @@ class Module
      *
      * @return array
      */
-    public function getModuleDependencies()
+    public function getModuleDependencies(): array
     {
         return ['Laminas\ApiTools\Admin'];
     }

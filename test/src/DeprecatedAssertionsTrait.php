@@ -9,9 +9,8 @@ use ReflectionProperty;
 
 trait DeprecatedAssertionsTrait
 {
-    /** @param mixed $expected */
     public static function assertAttributeEquals(
-        $expected,
+        mixed $expected,
         string $property,
         object $instance,
         string $message = ''
@@ -21,9 +20,8 @@ trait DeprecatedAssertionsTrait
         Assert::assertEquals($expected, $r->getValue($instance), $message);
     }
 
-    /** @param mixed $expected */
     public static function assertAttributeSame(
-        $expected,
+        mixed $expected,
         string $property,
         object $instance,
         string $message = ''

@@ -15,6 +15,8 @@ use LaminasTest\ApiTools\Doctrine\TestCase;
 use function json_decode;
 use function sprintf;
 
+use const JSON_THROW_ON_ERROR;
+
 class DoctrineMetadata1Test extends TestCase
 {
     protected function setUp(): void
@@ -48,12 +50,12 @@ class DoctrineMetadata1Test extends TestCase
             '/api-tools/api/doctrine/doctrine.entitymanager.orm_default/metadata/Db%5CEntity%5CArtist',
             Request::METHOD_GET
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
         $this->assertArrayHasKey('name', $body);
         $this->assertEquals('Db\Entity\Artist', $body['name']);
 
         $this->dispatch('/api-tools/api/doctrine/doctrine.entitymanager.orm_default/metadata', Request::METHOD_GET);
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
         $this->assertArrayHasKey('_embedded', $body);
     }
 

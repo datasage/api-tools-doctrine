@@ -17,6 +17,7 @@ use Laminas\ServiceManager\ServiceManager;
 use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophecy\ProphecyInterface;
 
 class DoctrineRestServiceModelFactoryFactoryTest extends TestCase
@@ -24,8 +25,8 @@ class DoctrineRestServiceModelFactoryFactoryTest extends TestCase
     use DeprecatedAssertionsTrait;
     use ProphecyTrait;
 
-    /** @var ProphecyInterface|ServiceManager */
-    private $container;
+    /** @var ObjectProphecy<ServiceManager> */
+    private ObjectProphecy $container;
 
     protected function setUp(): void
     {

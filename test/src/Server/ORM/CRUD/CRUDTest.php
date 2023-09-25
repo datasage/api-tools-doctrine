@@ -28,8 +28,8 @@ use LaminasTestApiToolsDb\Entity\Product;
 use LaminasTestApiToolsDbApi\V1\Rest\Artist\ArtistResource;
 use LaminasTestApiToolsGeneral\Listener\EventCatcher;
 use PHPUnit\Framework\Assert;
-use PHPUnit_Framework_MockObject_MockObject;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use function in_array;
 use function json_decode;
 use function json_encode;
@@ -37,10 +37,11 @@ use function print_r;
 use function sprintf;
 use function strrev;
 
+use const JSON_THROW_ON_ERROR;
+
 class CRUDTest extends TestCase
 {
-    /** @var EntityManager */
-    protected $em;
+    protected EntityManager $em;
 
     protected function setUp(): void
     {
@@ -195,7 +196,7 @@ class CRUDTest extends TestCase
                 'createdAt' => '2016-08-09 22:30:42',
             ]
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(201);
         $this->assertEquals('ArtistOne', $body['name']);
@@ -219,7 +220,7 @@ class CRUDTest extends TestCase
                 'artist'    => $artist->getId(),
             ]
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(201);
         $this->assertEquals('Album One', $body['name']);
@@ -228,10 +229,8 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testCreateWithListenerThatReturnsApiProblem($method, $message): void
+    public function testCreateWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $this->$method(DoctrineResourceEvent::EVENT_CREATE_PRE);
         $this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');
@@ -244,7 +243,7 @@ class CRUDTest extends TestCase
                 'createdAt' => '2016-08-21 22:33:17',
             ]
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -262,7 +261,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/rest/product/' . $product->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals($product->getId(), $body['id']);
@@ -287,7 +286,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             DoctrineResourceEvent::EVENT_FETCH_PRE,
-            function (DoctrineResourceEvent $e) use ($spy) {
+            function (DoctrineResourceEvent $e) use ($spy): void {
                 Assert::assertInstanceOf(ResourceEvent::class, $e->getResourceEvent());
                 $spy->caught = true;
             }
@@ -307,7 +306,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/v1/test/rest/product/' . $product->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals($product->getId(), $body['id']);
@@ -333,14 +332,12 @@ class CRUDTest extends TestCase
 
     public function testCreateByExplicitlySettingEntityFactoryInConstructor(): void
     {
-        /** @var InstantiatorInterface|PHPUnit_Framework_MockObject_MockObject $entityFactoryMock */
+        /** @var MockObject $entityFactoryMock */
         $entityFactoryMock = $this->getMockBuilder(InstantiatorInterface::class)->getMock();
         $entityFactoryMock->expects(self::once())
             ->method('instantiate')
             ->with(Artist::class)
-            ->willReturnCallback(function ($class) {
-                return new $class();
-            });
+            ->willReturnCallback(fn($class): object => new $class());
 
         /** @var ServiceManager $sm */
         $sm = $this->getApplication()->getServiceManager();
@@ -382,7 +379,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/rest/artist/' . $artist->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('Artist Name', $body['name']);
@@ -399,7 +396,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/rest/artist-by-name/' . $artist->getName());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('ArtistTwo', $body['name']);
@@ -413,7 +410,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/rest/artist/' . $artist->getId() . '/album/' . $album->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('NewAlbum', $body['name']);
@@ -421,17 +418,15 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testFetchWithListenerThatReturnsApiProblem($method, $message): void
+    public function testFetchWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Fetch ApiProblem');
         $this->$method(DoctrineResourceEvent::EVENT_FETCH_PRE);
         $this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');
 
         $this->dispatch('/test/rest/artist/' . $artist->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -449,7 +444,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/rest/artist');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals(2, $body['total_items']);
@@ -468,7 +463,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/rest/artist');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals(0, $body['total_items']);
@@ -481,17 +476,15 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testFetchAllWithListenerThatReturnsApiProblem($method, $message): void
+    public function testFetchAllWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $this->createArtist('Artist FetchAll ApiProblem');
         $this->$method(DoctrineResourceEvent::EVENT_FETCH_ALL_PRE);
         $this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');
 
         $this->dispatch('/test/rest/artist');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -512,7 +505,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setContent(json_encode(['name' => 'Artist Patch Edit']));
 
         $this->dispatch('/test/rest/artist/' . $artist->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('Artist Patch Edit', $body['name']);
@@ -527,10 +520,8 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testPatchWithListenerThatReturnsApiProblem($method, $message): void
+    public function testPatchWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Patch ApiProblem');
         $this->$method(DoctrineResourceEvent::EVENT_PATCH_PRE);
@@ -542,7 +533,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setContent(json_encode(['name' => 'ArtistTenPatchEdit']));
 
         $this->dispatch('/test/rest/artist/' . $artist->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -583,7 +574,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setContent(json_encode($patchList));
 
         $this->dispatch('/test/rest/artist');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('oneNewName', $body['_embedded']['artist'][0]['name']);
@@ -597,10 +588,8 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testPatchListWithListenerThatReturnsApiProblem($method, $message): void
+    public function testPatchListWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Patch List ApiProblem');
         $this->$method(DoctrineResourceEvent::EVENT_PATCH_LIST_PRE);
@@ -617,7 +606,7 @@ class CRUDTest extends TestCase
         ]));
 
         $this->dispatch('/test/rest/artist');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -641,7 +630,7 @@ class CRUDTest extends TestCase
         ]));
 
         $this->dispatch('/test/rest/artist/' . $artist->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('Artist Put Edit', $body['name']);
@@ -656,10 +645,8 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testPutWithListenerThatReturnsApiProblem($method, $message): void
+    public function testPutWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Put ApiProblem');
         $this->$method(DoctrineResourceEvent::EVENT_UPDATE_PRE);
@@ -674,7 +661,7 @@ class CRUDTest extends TestCase
         ]));
 
         $this->dispatch('/test/rest/artist/' . $artist->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -703,10 +690,8 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testDeleteWithListenerThatReturnsApiProblem($method, $message): void
+    public function testDeleteWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Delete ApiProblem');
         $this->$method(DoctrineResourceEvent::EVENT_DELETE_PRE);
@@ -714,7 +699,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_DELETE);
 
         $this->dispatch('/test/rest/artist/' . $artist->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -791,10 +776,8 @@ class CRUDTest extends TestCase
 
     /**
      * @dataProvider listener
-     * @param string $method
-     * @param string $message
      */
-    public function testDeleteListWithListenerThatReturnsApiProblem($method, $message): void
+    public function testDeleteListWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $this->$method(DoctrineResourceEvent::EVENT_DELETE_LIST_PRE);
 
@@ -818,7 +801,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setContent(json_encode($deleteList));
 
         $this->dispatch('/test/rest/artist');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -835,26 +818,24 @@ class CRUDTest extends TestCase
     }
 
     /**
-     * @return void
      * @psalm-return never
      */
-    public function testGetRpcNoParams()
+    public function testGetRpcNoParams(): void
     {
         $this->markTestIncomplete('Doctrine RPC Services are not fully implemented.');
 
         $this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');
 
         $this->dispatch('/test/artist/album');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         print_r($body);
     }
 
     /**
-     * @return void
      * @psalm-return never
      */
-    public function testGetRpcWithParams()
+    public function testGetRpcWithParams(): void
     {
         $this->markTestIncomplete('Doctrine RPC Services are not fully implemented.');
 
@@ -864,14 +845,11 @@ class CRUDTest extends TestCase
         $this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');
 
         $this->dispatch(sprintf('/test/artist/%d/album/%d', $artist->getId(), $album->getId()));
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         print_r($body);
     }
 
-    /**
-     * @param array $expectedEvents
-     */
     protected function validateTriggeredEvents(array $expectedEvents): void
     {
         $serviceManager = $this->getApplication()->getServiceManager();
@@ -880,9 +858,6 @@ class CRUDTest extends TestCase
         $this->assertEquals($expectedEvents, $eventCatcher->getCaughtEvents());
     }
 
-    /**
-     * @param array $expectedEvents
-     */
     protected function validateTriggeredEventsContains(array $expectedEvents): void
     {
         $serviceManager = $this->getApplication()->getServiceManager();
@@ -901,9 +876,8 @@ class CRUDTest extends TestCase
 
     /**
      * @param null|string $name
-     * @return Artist
      */
-    protected function createArtist($name = null)
+    protected function createArtist($name = null): Artist
     {
         $artist = new Artist();
         $artist->setName($name ?: 'Artist name');
@@ -916,9 +890,8 @@ class CRUDTest extends TestCase
 
     /**
      * @param null|string $name
-     * @return Album
      */
-    protected function createAlbum($name = null, ?Artist $artist = null)
+    protected function createAlbum($name = null, ?Artist $artist = null): Album
     {
         $album = new Album();
         $album->setName($name ?: 'Album name');
@@ -930,10 +903,7 @@ class CRUDTest extends TestCase
         return $album;
     }
 
-    /**
-     * @return Product
-     */
-    protected function createProduct()
+    protected function createProduct(): Product
     {
         $product = new Product();
         $this->em->persist($product);
@@ -962,7 +932,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             $eventName,
-            function (DoctrineResourceEvent $e) use ($eventName) {
+            function (DoctrineResourceEvent $e) use ($eventName): ApiProblem {
                 $e->stopPropagation();
                 return new ApiProblem(400, sprintf('LaminasTestSharedListenerFailure: %s', $eventName));
             }

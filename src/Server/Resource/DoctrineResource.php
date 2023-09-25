@@ -45,7 +45,8 @@ use function is_object;
 use function is_string;
 use function md5;
 use function method_exists;
-use function rand;
+use function mt_getrandmax;
+use function random_int;
 
 class DoctrineResource extends AbstractResourceListener implements
     ObjectManagerAwareInterface,
@@ -71,36 +72,20 @@ class DoctrineResource extends AbstractResourceListener implements
 
     /** @var string */
     protected $routeIdentifierName;
+    protected QueryCreateFilterInterface $queryCreateFilter;
+    protected string $multiKeyDelimiter = '.';
+    protected ?HydratorInterface $hydrator;
 
-    /** @var QueryCreateFilterInterface */
-    protected $queryCreateFilter;
-
-    /** @var string */
-    protected $multiKeyDelimiter = '.';
-
-    /** @var HydratorInterface|null */
-    protected $hydrator;
-
-    /** @var InstantiatorInterface|null */
-    private $entityFactory;
-
-    public function __construct(?InstantiatorInterface $entityFactory = null)
+    public function __construct(private ?InstantiatorInterface $entityFactory = null)
     {
-        $this->entityFactory = $entityFactory;
     }
 
-    /**
-     * @return SharedEventManager
-     */
-    public function getSharedEventManager()
+    public function getSharedEventManager(): SharedEventManager
     {
         return $this->sharedEventManager;
     }
 
-    /**
-     * @return $this
-     */
-    public function setSharedEventManager(SharedEventManager $sharedEventManager)
+    public function setSharedEventManager(SharedEventManager $sharedEventManager): static
     {
         $this->sharedEventManager = $sharedEventManager;
 
@@ -116,7 +101,7 @@ class DoctrineResource extends AbstractResourceListener implements
      *
      * @return $this
      */
-    public function setEventManager(EventManagerInterface $events)
+    public function setEventManager(EventManagerInterface $eventManager)
     {
         $identifiers = [self::class, static::class];
         if (isset($this->eventIdentifier)) {
@@ -131,8 +116,8 @@ class DoctrineResource extends AbstractResourceListener implements
             }
             // silently ignore invalid eventIdentifier types
         }
-        $events->setIdentifiers($identifiers);
-        $this->events = $events;
+        $eventManager->setIdentifiers($identifiers);
+        $this->events = $eventManager;
         if (method_exists($this, 'attachDefaultListeners')) {
             $this->attachDefaultListeners();
         }
@@ -158,10 +143,9 @@ class DoctrineResource extends AbstractResourceListener implements
 
     /**
      * @param array|QueryProviderInterface[] $queryProviders
-     * @return void
      * @throws InvalidArgumentException If parameter is not an array or \Traversable object.
      */
-    public function setQueryProviders($queryProviders)
+    public function setQueryProviders($queryProviders): void
     {
         if (! is_array($queryProviders) && ! $queryProviders instanceof Traversable) {
             throw new InvalidArgumentException('queryProviders must be array or Traversable object');
@@ -192,11 +176,7 @@ class DoctrineResource extends AbstractResourceListener implements
     {
         $queryProviders = $this->getQueryProviders();
 
-        if (isset($queryProviders[$method])) {
-            return $queryProviders[$method];
-        }
-
-        return $queryProviders['default'];
+        return $queryProviders[$method] ?? $queryProviders['default'];
     }
 
     /**
@@ -211,7 +191,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param string $value
      * @return $this
      */
-    public function setEntityIdentifierName($value)
+    public function setEntityIdentifierName($value): static
     {
         $this->entityIdentifierName = $value;
 
@@ -230,7 +210,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param string $routeIdentifierName
      * @return $this
      */
-    public function setRouteIdentifierName($routeIdentifierName)
+    public function setRouteIdentifierName($routeIdentifierName): static
     {
         $this->routeIdentifierName = $routeIdentifierName;
         return $this;
@@ -239,7 +219,7 @@ class DoctrineResource extends AbstractResourceListener implements
     /**
      * @return $this
      */
-    public function setQueryCreateFilter(QueryCreateFilterInterface $value)
+    public function setQueryCreateFilter(QueryCreateFilterInterface $value): static
     {
         $this->queryCreateFilter = $value;
 
@@ -258,7 +238,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param string $value
      * @return $this
      */
-    public function setMultiKeyDelimiter($value)
+    public function setMultiKeyDelimiter($value): static
     {
         $this->multiKeyDelimiter = $value;
 
@@ -336,7 +316,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * Delete a resource
      *
      * @param mixed $id
-     * @return ApiProblem|mixed
+     * @return ApiProblem|bool
      */
     public function delete($id)
     {
@@ -516,7 +496,7 @@ class DoctrineResource extends AbstractResourceListener implements
         $this->getSharedEventManager()->attach(
             RestController::class,
             'getList.post',
-            function (EventInterface $e) {
+            function (EventInterface $e): void {
                 /** @var Collection $halCollection */
                 $halCollection = $e->getParam('collection');
                 $collection    = $halCollection->getCollection();
@@ -629,7 +609,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $data The original data supplied to the resource method, if any
      * @return ResponseCollection
      */
-    protected function triggerDoctrineEvent($name, $entity, $data = null)
+    protected function triggerDoctrineEvent($name, mixed $entity, mixed $data = null)
     {
         $event = new DoctrineResourceEvent($name, $this);
         $event->setEntity($entity);
@@ -711,7 +691,7 @@ class DoctrineResource extends AbstractResourceListener implements
             if ($queryBuilder instanceof MongoDBQueryBuilder) {
                 $queryBuilder->field($key)->equals($value);
             } else {
-                $parameterName = 'a' . md5((string) rand());
+                $parameterName = 'a' . md5((string) random_int(0, mt_getrandmax()));
                 $queryBuilder->andwhere($queryBuilder->expr()->eq('row.' . $key, ":$parameterName"));
                 $queryBuilder->setParameter($parameterName, $value, $classMetaData->getTypeOfField($key));
             }
@@ -719,7 +699,7 @@ class DoctrineResource extends AbstractResourceListener implements
 
         try {
             $entity = $queryBuilder->getQuery()->getSingleResult();
-        } catch (NoResultException $e) {
+        } catch (NoResultException) {
             $entity = null;
         }
 

@@ -18,14 +18,13 @@ class ObjectExistsFactoryTest extends TestCase
 {
     use ProphecyTrait;
 
-    /** @var ObjectProphecy|ServiceManager */
-    private $serviceManager;
+    /** @var ObjectProphecy<ServiceManager> */
+    private ObjectProphecy $serviceManager;
 
-    /** @var ValidatorPluginManager */
-    private $validators;
+    private ValidatorPluginManager $validators;
 
-    /** @var ObjectProphecy|ObjectRepository */
-    private $objectRepository;
+    /** @var ObjectProphecy<ObjectRepository> */
+    private ObjectProphecy $objectRepository;
 
     protected function setUp(): void
     {

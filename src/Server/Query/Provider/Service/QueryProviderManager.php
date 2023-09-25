@@ -8,8 +8,7 @@ use Laminas\ApiTools\Doctrine\Server\Query\Provider\QueryProviderInterface;
 use Laminas\ServiceManager\AbstractPluginManager;
 use Laminas\ServiceManager\Exception;
 
-use function gettype;
-use function is_object;
+use function get_debug_type;
 use function sprintf;
 
 class QueryProviderManager extends AbstractPluginManager
@@ -25,14 +24,14 @@ class QueryProviderManager extends AbstractPluginManager
      * @param mixed $instance
      * @throws Exception\InvalidServiceException
      */
-    public function validate($instance)
+    public function validate($instance): void
     {
         if (! $instance instanceof $this->instanceOf) {
             throw new Exception\InvalidServiceException(sprintf(
                 '%s can only create instances of %s; %s is invalid',
                 static::class,
                 $this->instanceOf,
-                is_object($instance) ? $instance::class : gettype($instance)
+                get_debug_type($instance)
             ));
         }
     }
@@ -42,11 +41,9 @@ class QueryProviderManager extends AbstractPluginManager
      *
      * Proxies to `validate()`.
      *
-     * @param mixed $plugin
-     * @return void
      * @throws Exception\InvalidArgumentException
      */
-    public function validatePlugin($plugin)
+    public function validatePlugin(mixed $plugin): void
     {
         try {
             $this->validate($plugin);

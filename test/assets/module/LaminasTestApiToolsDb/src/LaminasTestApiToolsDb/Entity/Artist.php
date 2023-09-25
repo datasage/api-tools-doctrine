@@ -74,7 +74,7 @@ class Artist
      * @return $this
      * @throws Exception
      */
-    public function addAlbum($album)
+    public function addAlbum($album): static
     {
         if ($album instanceof Album) {
             $this->album[] = $album;

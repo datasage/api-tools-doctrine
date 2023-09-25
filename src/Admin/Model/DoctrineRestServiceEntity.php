@@ -28,7 +28,7 @@ class DoctrineRestServiceEntity extends RestServiceEntity implements ArraySerial
     /** @var bool */
     protected $useGeneratedHydrator = true;
 
-    public function exchangeArray(array $data)
+    public function exchangeArray(array $data): void
     {
         parent::exchangeArray($data);
 

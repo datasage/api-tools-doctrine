@@ -28,7 +28,7 @@ class NewDoctrineServiceEntity extends LaminasNewRestServiceEntity implements Ar
     /** @var bool */
     protected $useGeneratedHydrator = true;
 
-    public function exchangeArray(array $data)
+    public function exchangeArray(array $data): void
     {
         parent::exchangeArray($data);
 

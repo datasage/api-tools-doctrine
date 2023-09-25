@@ -7,6 +7,7 @@ namespace Laminas\ApiTools\Doctrine\Admin\Model;
 use Laminas\ApiTools\Admin\Model\ModuleModel;
 use Laminas\ApiTools\Admin\Model\ModulePathSpec;
 use Laminas\ApiTools\Configuration\ConfigResourceFactory;
+use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRpcServiceModelFactory;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Psr\Container\ContainerInterface;
 
@@ -14,10 +15,7 @@ use function sprintf;
 
 class DoctrineRpcServiceModelFactoryFactory
 {
-    /**
-     * @return DoctrineRpcServiceModelFactory
-     */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): DoctrineRpcServiceModelFactory
     {
         if (
             ! $container->has(ModulePathSpec::class)

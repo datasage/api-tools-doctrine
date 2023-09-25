@@ -8,6 +8,7 @@ use Laminas\ApiTools\Admin\Exception;
 use Laminas\ApiTools\Admin\Model\ModuleEntity;
 use Laminas\ApiTools\Admin\Model\ModulePathSpec;
 use Laminas\ApiTools\Configuration\ConfigResource;
+use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRpcServiceEntity;
 use Laminas\ApiTools\Rest\Exception\CreationException;
 use Laminas\ApiTools\Rest\Exception\PatchException;
 use Laminas\Filter\FilterChain;
@@ -32,8 +33,7 @@ use function unlink;
 
 class DoctrineRpcServiceModel
 {
-    /** @var ConfigResource */
-    protected $configResource;
+    protected ConfigResource $configResource;
 
     /** @var FilterChain */
     protected $filter;
@@ -41,11 +41,9 @@ class DoctrineRpcServiceModel
     /** @var string */
     protected $module;
 
-    /** @var ModuleEntity */
-    protected $moduleEntity;
+    protected ModuleEntity $moduleEntity;
 
-    /** @var ModulePathSpec */
-    protected $modules;
+    protected ModulePathSpec $modules;
 
     public function __construct(ModuleEntity $moduleEntity, ModulePathSpec $modules, ConfigResource $config)
     {
@@ -62,7 +60,7 @@ class DoctrineRpcServiceModel
      * @param string $controllerServiceName
      * @return DoctrineRpcServiceEntity|false
      */
-    public function fetch($controllerServiceName)
+    public function fetch($controllerServiceName): bool|DoctrineRpcServiceEntity
     {
         $data   = ['controller_service_name' => $controllerServiceName];
         $config = $this->configResource->fetch(true);
@@ -110,7 +108,7 @@ class DoctrineRpcServiceModel
      * @return (DoctrineRpcServiceEntity|false)[]
      * @psalm-return list<DoctrineRpcServiceEntity|false>
      */
-    public function fetchAll($version = null)
+    public function fetchAll($version = null): array
     {
         $config = $this->configResource->fetch(true);
         if (! isset($config['api-tools-rpc-doctrine-controller'])) {
@@ -167,7 +165,7 @@ class DoctrineRpcServiceModel
      * @param array $options
      * @return DoctrineRpcServiceEntity|false
      */
-    public function createService($serviceName, $route, $httpMethods, $selector, $options)
+    public function createService($serviceName, $route, array $httpMethods, $selector, $options)
     {
         $serviceName = ucfirst($serviceName);
 
@@ -192,7 +190,7 @@ class DoctrineRpcServiceModel
      * @param bool $deleteFiles
      * @return true
      */
-    public function deleteService(DoctrineRpcServiceEntity $entity, $deleteFiles = true)
+    public function deleteService(DoctrineRpcServiceEntity $entity, $deleteFiles = true): bool
     {
         $serviceName = $entity->controllerServiceName;
         $routeName   = $entity->routeName;
@@ -209,10 +207,8 @@ class DoctrineRpcServiceModel
 
     /**
      * Delete the files which were automatically created
-     *
-     * @return void
      */
-    public function deleteFiles(DoctrineRpcServiceEntity $entity)
+    public function deleteFiles(DoctrineRpcServiceEntity $entity): void
     {
         $this->configResource->fetch(true);
 
@@ -303,7 +299,7 @@ class DoctrineRpcServiceModel
      * @param string $controllerService
      * @return string The newly created route name
      */
-    public function createRoute($route, $serviceName, $controllerService = null)
+    public function createRoute($route, $serviceName, $controllerService = null): string
     {
         if (null === $controllerService) {
             $controllerService = sprintf('%s\\Rpc\\%s\\Controller', $this->module, $serviceName);
@@ -362,7 +358,6 @@ class DoctrineRpcServiceModel
      *
      * @param string $controllerService
      * @param string $routeName
-     * @param array $httpMethods
      * @param null|string|callable $callable
      * @return array
      */
@@ -424,9 +419,8 @@ class DoctrineRpcServiceModel
      *
      * @param string $controllerService
      * @param string $routeMatch
-     * @return bool
      */
-    public function updateRoute($controllerService, $routeMatch)
+    public function updateRoute($controllerService, $routeMatch): bool
     {
         $services = $this->fetch($controllerService);
         if (! $services) {
@@ -448,10 +442,9 @@ class DoctrineRpcServiceModel
      * Update the allowed HTTP methods for a given service
      *
      * @param string $controllerService
-     * @param array $httpMethods
      * @return true
      */
-    public function updateHttpMethods($controllerService, array $httpMethods)
+    public function updateHttpMethods($controllerService, array $httpMethods): bool
     {
         $config = $this->configResource->fetch(true);
         $config['api-tools-rpc'][$controllerService]['http_methods'] = $httpMethods;
@@ -467,7 +460,7 @@ class DoctrineRpcServiceModel
      * @param string $selector
      * @return true
      */
-    public function updateSelector($controllerService, $selector)
+    public function updateSelector($controllerService, $selector): bool
     {
         $config = $this->configResource->fetch(true);
         $config['api-tools-content-negotiation']['controllers'][$controllerService] = $selector;
@@ -480,11 +473,9 @@ class DoctrineRpcServiceModel
      * Update configuration for a content negotiation whitelist for a named controller service
      *
      * @param string $controllerService
-     * @param string $headerType
-     * @param array $whitelist
      * @return true
      */
-    public function updateContentNegotiationWhitelist($controllerService, $headerType, array $whitelist)
+    public function updateContentNegotiationWhitelist($controllerService, string $headerType, array $whitelist): bool
     {
         if (! in_array($headerType, ['accept', 'content_type'])) {
             /* @todo define exception in Rpc namespace */
@@ -503,9 +494,8 @@ class DoctrineRpcServiceModel
      * Removes the route configuration for a named route
      *
      * @param string $routeName
-     * @return void
      */
-    public function deleteRouteConfig($routeName)
+    public function deleteRouteConfig($routeName): void
     {
         $config = $this->configResource->fetch(true);
 
@@ -518,11 +508,8 @@ class DoctrineRpcServiceModel
 
     /**
      * Delete the RPC configuration for a named RPC service
-     *
-     * @param string $serviceName
-     * @return void
      */
-    public function deleteDoctrineRpcConfig($serviceName)
+    public function deleteDoctrineRpcConfig(string $serviceName): void
     {
         $key = ['api-tools-rpc', $serviceName];
         $this->configResource->deleteKey($key);
@@ -556,9 +543,8 @@ class DoctrineRpcServiceModel
      * service
      *
      * @param string $serviceName
-     * @return void
      */
-    public function deleteContentNegotiationConfig($serviceName)
+    public function deleteContentNegotiationConfig($serviceName): void
     {
         $key = ['api-tools-content-negotiation', 'controllers', $serviceName];
         $this->configResource->deleteKey($key);
@@ -605,7 +591,6 @@ class DoctrineRpcServiceModel
      * Retrieve the URL match for the given route name
      *
      * @param string $routeName
-     * @param array $config
      * @return false|string
      */
     protected function getRouteMatchStringFromModuleConfig($routeName, array $config)

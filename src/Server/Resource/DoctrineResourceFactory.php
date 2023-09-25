@@ -8,6 +8,7 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Doctrine\Server\Query\CreateFilter\QueryCreateFilterInterface;
+use Laminas\ApiTools\Doctrine\Server\Resource\DoctrineResource;
 use Laminas\ApiTools\Hal\Plugin\Hal;
 use Laminas\Hydrator\HydratorInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
@@ -29,10 +30,9 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
      * Can this factory create the requested service?
      *
      * @param string $requestedName
-     * @return bool
      * @throws ServiceNotFoundException
      */
-    public function canCreate(ContainerInterface $container, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName): bool
     {
         if (! $container->has('config')) {
             return false;
@@ -139,11 +139,10 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
      *
      * @param array $config
      * @param string $requestedName
-     * @return string
      * @throws ServiceNotCreatedException If the discovered resource class
      *     does not exist or is not a subclass of DoctrineResource.
      */
-    protected function getResourceClassFromConfig($config, $requestedName)
+    protected function getResourceClassFromConfig($config, $requestedName): string
     {
         $defaultClass = DoctrineResource::class;
 
@@ -168,11 +167,9 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
      * If the configuration has a "object_manager" key, and that service exists,
      * then the configuration is valid.
      *
-     * @param array $config
      * @param string $requestedName
-     * @return bool
      */
-    protected function isValidConfig(array $config, $requestedName, ContainerInterface $container)
+    protected function isValidConfig(array $config, $requestedName, ContainerInterface $container): bool
     {
         if (
             ! isset($config['object_manager'])
@@ -191,18 +188,16 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
      *
      * @param string $name
      * @param string $requestedName
-     * @return DoctrineResource
      */
-    public function createServiceWithName(ServiceLocatorInterface $container, $name, $requestedName)
+    public function createServiceWithName(ServiceLocatorInterface $container, $name, $requestedName): DoctrineResource
     {
         return $this($container, $requestedName);
     }
 
     /**
      * @param string $className
-     * @return string
      */
-    protected function normalizeClassname($className)
+    protected function normalizeClassname($className): string
     {
         return '\\' . ltrim($className, '\\');
     }
@@ -240,11 +235,9 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param array $config
-     * @param ObjectManager $objectManager
      * @return QueryCreateFilterInterface
      */
-    protected function loadQueryCreateFilter(ContainerInterface $container, array $config, $objectManager)
+    protected function loadQueryCreateFilter(ContainerInterface $container, array $config, ObjectManager $objectManager)
     {
         $createFilterManager = $container->get('LaminasApiToolsDoctrineQueryCreateFilterManager');
         $filterManagerAlias  = $config['query_create_filter'] ?? 'default';
@@ -259,12 +252,11 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param array $config
      * @param ObjectManager $objectManager
      * @return array
      * @throws ServiceNotCreatedException
      */
-    protected function loadQueryProviders(ContainerInterface $serviceLocator, array $config, $objectManager)
+    protected function loadQueryProviders(ContainerInterface $serviceLocator, array $config, $objectManager): array
     {
         $queryProviders = [];
         $queryManager   = $serviceLocator->get('LaminasApiToolsDoctrineQueryProviderManager');
@@ -300,10 +292,9 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param array $config
      * @return array
      */
-    protected function loadConfiguredListeners(ContainerInterface $container, array $config)
+    protected function loadConfiguredListeners(ContainerInterface $container, array $config): array
     {
         if (! isset($config['listeners'])) {
             return [];

@@ -11,7 +11,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ProphecyInterface;
+use Prophecy\Prophecy\ObjectProphecy;
 use Psr\Container\ContainerInterface;
 
 class DoctrineAutodiscoveryModelFactoryTest extends TestCase
@@ -19,8 +19,8 @@ class DoctrineAutodiscoveryModelFactoryTest extends TestCase
     use DeprecatedAssertionsTrait;
     use ProphecyTrait;
 
-    /** @var ProphecyInterface|ServiceLocatorInterface|ContainerInterface */
-    private $container;
+    /** @var ObjectProphecy<ServiceLocatorInterface> */
+    private ObjectProphecy $container;
 
     protected function setUp(): void
     {

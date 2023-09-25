@@ -22,8 +22,8 @@ class DoctrineRpcServiceResourceFactoryTest extends TestCase
     use DeprecatedAssertionsTrait;
     use ProphecyTrait;
 
-    /** @var ProphecyInterface|ContainerInterface */
-    private $container;
+    /** @var ProphecyInterface<ContainerInterface> */
+    private ProphecyInterface $container;
 
     protected function setUp(): void
     {

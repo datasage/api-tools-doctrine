@@ -8,20 +8,12 @@ use Laminas\Hydrator\HydratorInterface;
 
 class DoctrineHydrator implements HydratorInterface
 {
-    /** @var HydratorInterface */
-    protected $extractService;
-
-    /** @var HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface */
-    protected $hydrateService;
-
     /**
      * @param HydratorInterface $extractService
      * @param HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface $hydrateService
      */
-    public function __construct($extractService, $hydrateService)
+    public function __construct(protected $extractService, protected $hydrateService)
     {
-        $this->extractService = $extractService;
-        $this->hydrateService = $hydrateService;
     }
 
     /**

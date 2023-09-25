@@ -10,6 +10,7 @@ use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineAutodiscoveryModel;
 use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophecy\ProphecyInterface;
 use Psr\Container\ContainerInterface;
 
@@ -18,11 +19,9 @@ class DoctrineAutodiscoveryControllerFactoryTest extends TestCase
     use DeprecatedAssertionsTrait;
     use ProphecyTrait;
 
-    /** @var ProphecyInterface|ContainerInterface */
-    private $container;
-
-    /** @var DoctrineAutodiscoveryModel */
-    private $model;
+    /** @var ObjectProphecy<ContainerInterface> */
+    private ObjectProphecy $container;
+    private DoctrineAutodiscoveryModel $model;
 
     protected function setUp(): void
     {

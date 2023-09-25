@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\ApiTools\Doctrine\Server\Service;
 
 use Doctrine\Laminas\Hydrator;
+use Doctrine\Laminas\Hydrator\DoctrineObject;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ObjectManager;
@@ -123,7 +124,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
         if ($useCustomHydrator) {
             try {
                 $extractService = $container->build($config['hydrator'], $config);
-            } catch (ServiceNotFoundException $e) {
+            } catch (ServiceNotFoundException) {
                 $extractService = $container->get($config['hydrator']);
             }
 
@@ -164,7 +165,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @return ObjectManager
      * @throws ServiceNotCreatedException
      */
-    protected function loadObjectManager(ContainerInterface $container, $config)
+    protected function loadObjectManager(ContainerInterface $container, array $config)
     {
         if (! $container->has($config['object_manager'])) {
             throw new ServiceNotCreatedException('The object_manager could not be found.');
@@ -178,7 +179,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @return null|HydratorInterface
      */
-    protected function loadEntityHydrator(ContainerInterface $container, $config, $objectManager)
+    protected function loadEntityHydrator(ContainerInterface $container, array $config, $objectManager)
     {
         $objectManagerType = $this->getObjectManagerType($objectManager);
         if ($objectManagerType !== self::OBJECT_MANAGER_TYPE_ODM_MONGODB) {
@@ -194,7 +195,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @return HydratorInterface
      */
-    protected function loadDoctrineModuleHydrator(ContainerInterface $container, $config, $objectManager)
+    protected function loadDoctrineModuleHydrator(ContainerInterface $container, array $config, $objectManager): DoctrineObject
     {
         return new Hydrator\DoctrineObject($objectManager, $config['by_value']);
     }
@@ -205,7 +206,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @throws ServiceNotCreatedException
      */
-    public function configureHydrator($hydrator, ContainerInterface $container, $config, $objectManager)
+    public function configureHydrator($hydrator, ContainerInterface $container, $config, $objectManager): void
     {
         $this->configureHydratorFilters($hydrator, $container, $config, $objectManager);
         $this->configureHydratorStrategies($hydrator, $container, $config, $objectManager);
@@ -218,7 +219,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @throws ServiceNotCreatedException
      */
-    public function configureHydratorNamingStrategy($hydrator, ContainerInterface $container, $config, $objectManager)
+    public function configureHydratorNamingStrategy($hydrator, ContainerInterface $container, array $config, $objectManager): void
     {
         if (! $hydrator instanceof NamingStrategyEnabledInterface || ! isset($config['naming_strategy'])) {
             return;

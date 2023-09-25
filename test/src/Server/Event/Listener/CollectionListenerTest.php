@@ -19,10 +19,8 @@ class CollectionListenerTest extends TestCase
 {
     /**
      * @dataProvider trueFalseProvider
-     * @param bool $withEntityFactory
-     * @return void
      */
-    public function testProcessNewEntity($withEntityFactory)
+    public function testProcessNewEntity(bool $withEntityFactory): void
     {
         $artist = $this->getMockBuilder(Artist::class)->getMock();
         $data   = [];

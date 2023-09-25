@@ -13,7 +13,7 @@ use function method_exists;
 
 class EventCatcher
 {
-    const EVENT_IDENTIFIER = DoctrineResource::class;
+    public const EVENT_IDENTIFIER = DoctrineResource::class;
 
     /** @var array */
     protected $listeners = [];

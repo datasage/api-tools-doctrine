@@ -19,7 +19,7 @@ class DoctrineMetadataServiceResource extends AbstractResourceListener
     /**
      * @return $this
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function setServiceManager(ServiceManager $serviceManager): static
     {
         $this->serviceManager = $serviceManager;
 
@@ -39,7 +39,7 @@ class DoctrineMetadataServiceResource extends AbstractResourceListener
      * @psalm-return never
      * @throws Exception Always.
      */
-    public function create($data)
+    public function create($data): void
     {
         throw new Exception('Not Implemented');
     }
@@ -109,7 +109,7 @@ class DoctrineMetadataServiceResource extends AbstractResourceListener
      * @psalm-return never
      * @throws Exception Always.
      */
-    public function patch($id, $data)
+    public function patch($id, $data): void
     {
         throw new Exception('Not Implemented');
     }
@@ -119,7 +119,7 @@ class DoctrineMetadataServiceResource extends AbstractResourceListener
      * @psalm-return never
      * @throws Exception Always.
      */
-    public function delete($id)
+    public function delete($id): void
     {
         throw new Exception('Not Implemented');
     }

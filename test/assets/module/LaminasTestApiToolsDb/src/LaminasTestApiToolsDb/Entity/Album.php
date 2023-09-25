@@ -85,7 +85,7 @@ class Album
      * @param null|Album $album
      * @return $this
      */
-    public function setAlbum($album)
+    public function setAlbum($album): static
     {
         if (null !== $album && ! $album instanceof Album) {
             throw new InvalidArgumentException('Invalid album argument');

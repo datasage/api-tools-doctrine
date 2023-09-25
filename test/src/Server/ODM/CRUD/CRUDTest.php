@@ -24,6 +24,8 @@ use PHPUnit\Framework\MockObject\MockObject;
 use function json_decode;
 use function json_encode;
 
+use const JSON_THROW_ON_ERROR;
+
 class CRUDTest extends TestCase
 {
     /** @var DocumentManager */
@@ -97,7 +99,7 @@ class CRUDTest extends TestCase
                 'createdAt' => '2016-08-21 23:04:19',
             ]
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(201);
         $this->assertEquals('MetaOne', $body['name']);
@@ -113,7 +115,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             DoctrineResourceEvent::EVENT_CREATE_PRE,
-            function (DoctrineResourceEvent $e) {
+            function (DoctrineResourceEvent $e): ApiProblem {
                 $e->stopPropagation();
                 return new ApiProblem(400, 'LaminasTestCreateFailure');
             }
@@ -125,7 +127,7 @@ class CRUDTest extends TestCase
             Request::METHOD_POST,
             ['name' => 'Meta ODM', 'createdAt' => '2016-08-21 23:09:58']
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -139,9 +141,7 @@ class CRUDTest extends TestCase
         $entityFactoryMock->expects(self::once())
             ->method('instantiate')
             ->with(Meta::class)
-            ->willReturnCallback(function ($class) {
-                return new $class();
-            });
+            ->willReturnCallback(fn($class): object => new $class());
 
         /** @var ServiceManager $sm */
         $sm = $this->getApplication()->getServiceManager();
@@ -172,7 +172,7 @@ class CRUDTest extends TestCase
                 'createdAt' => '2016-08-21 23:04:19',
             ]
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(201);
         $this->assertEquals('MetaOne', $body['name']);
@@ -189,7 +189,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/meta/' . $meta->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('Meta Fetch', $body['name']);
@@ -206,7 +206,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             DoctrineResourceEvent::EVENT_FETCH_PRE,
-            function (DoctrineResourceEvent $e) {
+            function (DoctrineResourceEvent $e): ApiProblem {
                 $e->stopPropagation();
                 return new ApiProblem(400, 'LaminasTestFetchFailure');
             }
@@ -215,7 +215,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');
 
         $this->dispatch('/test/meta/' . $meta->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -230,7 +230,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/meta');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals(2, $body['total_items']);
@@ -249,7 +249,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_GET);
 
         $this->dispatch('/test/meta');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals(0, $body['total_items']);
@@ -267,7 +267,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             DoctrineResourceEvent::EVENT_FETCH_ALL_PRE,
-            function (DoctrineResourceEvent $e) {
+            function (DoctrineResourceEvent $e): ApiProblem {
                 $e->stopPropagation();
                 return new ApiProblem(400, 'LaminasTestFetchAllFailure');
             }
@@ -275,7 +275,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');
 
         $this->dispatch('/test/meta');
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -293,7 +293,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setContent(json_encode(['name' => 'Meta Patch Edit']));
 
         $this->dispatch('/test/meta/' . $meta->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('Meta Patch Edit', $body['name']);
@@ -313,7 +313,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             DoctrineResourceEvent::EVENT_PATCH_PRE,
-            function (DoctrineResourceEvent $e) {
+            function (DoctrineResourceEvent $e): ApiProblem {
                 $e->stopPropagation();
                 return new ApiProblem(400, 'LaminasTestPatchFailure');
             }
@@ -326,7 +326,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setContent(json_encode(['name' => 'MetaTenPatchEdit']));
 
         $this->dispatch('/test/meta/' . $meta->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -347,7 +347,7 @@ class CRUDTest extends TestCase
         ]));
 
         $this->dispatch('/test/meta/' . $meta->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(200);
         $this->assertEquals('Meta Put Edit', $body['name']);
@@ -367,7 +367,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             DoctrineResourceEvent::EVENT_UPDATE_PRE,
-            function (DoctrineResourceEvent $e) {
+            function (DoctrineResourceEvent $e): ApiProblem {
                 $e->stopPropagation();
                 return new ApiProblem(400, 'LaminasTestPutFailure');
             }
@@ -383,7 +383,7 @@ class CRUDTest extends TestCase
         ]));
 
         $this->dispatch('/test/meta/' . $meta->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -414,7 +414,7 @@ class CRUDTest extends TestCase
         $sharedEvents->attach(
             DoctrineResource::class,
             DoctrineResourceEvent::EVENT_DELETE_PRE,
-            function (DoctrineResourceEvent $e) {
+            function (DoctrineResourceEvent $e): ApiProblem {
                 $e->stopPropagation();
                 return new ApiProblem(400, 'LaminasTestDeleteFailure');
             }
@@ -423,7 +423,7 @@ class CRUDTest extends TestCase
         $this->getRequest()->setMethod(Request::METHOD_DELETE);
 
         $this->dispatch('/test/meta/' . $meta->getId());
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertResponseStatusCode(400);
         $this->assertInstanceOf(ApiProblemResponse::class, $this->getResponse());
@@ -462,9 +462,6 @@ class CRUDTest extends TestCase
         $this->assertNull($this->dm->getRepository(Meta::class)->find($id));
     }
 
-    /**
-     * @param array $expectedEvents
-     */
     protected function validateTriggeredEvents(array $expectedEvents): void
     {
         $serviceManager = $this->getApplication()->getServiceManager();
@@ -475,9 +472,8 @@ class CRUDTest extends TestCase
 
     /**
      * @param null|string $name
-     * @return Meta
      */
-    protected function createMeta($name = null)
+    protected function createMeta($name = null): Meta
     {
         $meta = new Meta();
         $meta->setName($name ?: 'Meta Name');

@@ -22,10 +22,8 @@ class Module
 
     /**
      * Module init
-     *
-     * @return void
      */
-    public function init(ModuleManager $moduleManager)
+    public function init(ModuleManager $moduleManager): void
     {
         $sm              = $moduleManager->getEvent()->getParam('ServiceManager');
         $serviceListener = $sm->get('ServiceListener');
