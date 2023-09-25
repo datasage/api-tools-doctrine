@@ -6,6 +6,8 @@ return [
     'modules'                 => [
         'DoctrineModule',
         'DoctrineORMModule',
+        'Laminas\Cache',
+        'Laminas\Cache\Storage\Adapter\Memory',
         'Laminas\ApiTools',
         'Laminas\ApiTools\Admin',
         'Laminas\ApiTools\Hal',
