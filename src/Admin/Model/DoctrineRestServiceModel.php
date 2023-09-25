@@ -47,29 +47,18 @@ use function vsprintf;
 class DoctrineRestServiceModel implements EventManagerAwareInterface
 {
     protected ConfigResource $configResource;
-
-    /** @var EventManagerInterface */
-    protected $events;
-
-    /** @var string */
-    protected $module;
-
+    protected EventManagerInterface $events;
+    protected string $module;
     protected ModuleEntity $moduleEntity;
-
-    /** @var string */
-    protected $modulePath;
+    protected string $modulePath;
 
     protected ModulePathSpec $modules;
-
-    /** @var PhpRenderer */
-    protected $renderer;
+    protected ?PhpRenderer $renderer = null;
 
     /**
      * Allowed REST update options that are scalars
-     *
-     * @var array
      */
-    protected $restScalarUpdateOptions = [
+    protected array $restScalarUpdateOptions = [
         'pageSize'             => 'page_size',
         'pageSizeParam'        => 'page_size_param',
         'entityClass'          => 'entity_class',
@@ -80,17 +69,14 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
 
     /**
      * Allowed REST update options that are arrays
-     *
-     * @var array
      */
-    protected $restArrayUpdateOptions = [
+    protected array $restArrayUpdateOptions = [
         'collectionHttpMethods'    => 'collection_http_methods',
         'collectionQueryWhitelist' => 'collection_query_whitelist',
         'entityHttpMethods'        => 'entity_http_methods',
     ];
 
-    /** @var array */
-    protected $doctrineHydratorOptions = [
+    protected array $doctrineHydratorOptions = [
         'entityClass'          => 'entity_class',
         'objectManager'        => 'object_manager',
         'byValue'              => 'by_value',
@@ -98,11 +84,8 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
         'hydratorStrategies'   => 'strategies',
     ];
 
-    /** @var FilterChain */
-    protected $routeNameFilter;
-
-    /** @var ServiceManager */
-    protected $serviceManager;
+    protected ?FilterChain $routeNameFilter = null;
+    protected ServiceManager $serviceManager;
 
     public function __construct(ModuleEntity $moduleEntity, ModulePathSpec $modules, ConfigResource $config)
     {
@@ -604,14 +587,13 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
 
     /**
      * Create the route configuration
-     *
-     * @param string $resourceName
-     * @param string $route
-     * @param string $identifier
-     * @param string $controllerService
      */
-    public function createRoute($resourceName, $route, $identifier, $controllerService): string
-    {
+    public function createRoute(
+        string $resourceName,
+        string $route,
+        string $identifier,
+        string $controllerService
+    ): string {
         $filter    = $this->getRouteNameFilter();
         $routeName = sprintf(
             '%s.rest.doctrine.%s',
@@ -662,13 +644,13 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
 
     /**
      * Creates REST configuration
-     *
-     * @param string $controllerService
-     * @param string $resourceClass
-     * @param string $routeName
      */
-    public function createRestConfig(DoctrineRestServiceEntity $details, $controllerService, $resourceClass, $routeName): void
-    {
+    public function createRestConfig(
+        DoctrineRestServiceEntity $details,
+        string $controllerService,
+        string $resourceClass,
+        string $routeName
+    ): void {
         $config = [
             'api-tools-rest' => [
                 $controllerService => [
@@ -694,10 +676,8 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
     /**
      * Create content negotiation configuration based on payload and discovered
      * controller service name
-     *
-     * @param string $controllerService
      */
-    public function createContentNegotiationConfig(DoctrineRestServiceEntity $details, $controllerService): void
+    public function createContentNegotiationConfig(DoctrineRestServiceEntity $details, string $controllerService): void
     {
         $config    = [
             'controllers' => [
@@ -718,13 +698,13 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
 
     /**
      * Create Doctrine configuration
-     *
-     * @param string $entityClass
-     * @param string $collectionClass
-     * @param string $routeName
      */
-    public function createDoctrineConfig(DoctrineRestServiceEntity $details, $entityClass, $collectionClass, $routeName): void
-    {
+    public function createDoctrineConfig(
+        DoctrineRestServiceEntity $details,
+        string $entityClass,
+        string $collectionClass,
+        string $routeName
+    ): void {
         $details->getArrayCopy();
         $this->getServiceManager()->get($details->objectManager);
 
@@ -746,16 +726,13 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
     /**
      * Create Doctrine hydrator configuration
      *
-     * @param string $entityClass
-     * @param string $collectionClass
-     * @param string $routeName
      * @throws CreationException
      */
     public function createDoctrineHydratorConfig(
         DoctrineRestServiceEntity $details,
-        $entityClass,
-        $collectionClass,
-        $routeName
+        string $entityClass,
+        string $collectionClass,
+        string $routeName
     ): void {
         $entityValue = $details->getArrayCopy();
 
@@ -787,13 +764,13 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
 
     /**
      * Create HAL configuration
-     *
-     * @param string $entityClass
-     * @param string $collectionClass
-     * @param string $routeName
      */
-    public function createHalConfig(DoctrineRestServiceEntity $details, $entityClass, $collectionClass, $routeName): void
-    {
+    public function createHalConfig(
+        DoctrineRestServiceEntity $details,
+        string $entityClass,
+        string $collectionClass,
+        string $routeName
+    ): void {
         $config = [
             'api-tools-hal' => [
                 'metadata_map' => [
@@ -878,8 +855,10 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
     /**
      * Update Doctrine hydrator configuration
      */
-    public function updateDoctrineHydratorConfig(DoctrineRestServiceEntity $original, DoctrineRestServiceEntity $update): void
-    {
+    public function updateDoctrineHydratorConfig(
+        DoctrineRestServiceEntity $original,
+        DoctrineRestServiceEntity $update
+    ): void {
         foreach ($this->doctrineHydratorOptions as $property => $configKey) {
             if ($update->$property === null) {
                 continue;

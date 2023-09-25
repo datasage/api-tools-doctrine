@@ -195,8 +195,11 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @return HydratorInterface
      */
-    protected function loadDoctrineModuleHydrator(ContainerInterface $container, array $config, $objectManager): DoctrineObject
-    {
+    protected function loadDoctrineModuleHydrator(
+        ContainerInterface $container,
+        array $config,
+        $objectManager
+    ): DoctrineObject {
         return new Hydrator\DoctrineObject($objectManager, $config['by_value']);
     }
 
@@ -219,8 +222,12 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @throws ServiceNotCreatedException
      */
-    public function configureHydratorNamingStrategy($hydrator, ContainerInterface $container, array $config, $objectManager): void
-    {
+    public function configureHydratorNamingStrategy(
+        $hydrator,
+        ContainerInterface $container,
+        array $config,
+        $objectManager
+    ): void {
         if (! $hydrator instanceof NamingStrategyEnabledInterface || ! isset($config['naming_strategy'])) {
             return;
         }
