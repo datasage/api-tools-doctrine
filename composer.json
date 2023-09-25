@@ -58,6 +58,7 @@
         "laminas/laminas-serializer": "^2.8.0",
         "laminas/laminas-test": "^4.0.0",
         "mongodb/mongodb": "^1.1.0",
+        "phpspec/prophecy": "^1.15.0",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.5.10",
         "psalm/plugin-phpunit": "^0.16.1 || ^0.17.0 || ^0.18.0",
