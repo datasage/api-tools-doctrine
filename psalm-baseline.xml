@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.13.1@086b94371304750d1c673315321a55d15fc59015">
+<files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
   <file src="config/admin.config.php">
     <UndefinedClass>
       <code>Controller\DoctrineAutodiscovery</code>
@@ -156,6 +156,12 @@
     </ParamNameMismatch>
   </file>
   <file src="src/Admin/Model/DoctrineRestServiceModel.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[vsprintf(
+                        '#%sV[^%s]+%sRest%s(?<service>[^%s]+)%sController#',
+                        array_fill(0, 6, $q)
+                    )]]></code>
+    </ArgumentTypeCoercion>
     <DocblockTypeContradiction>
       <code><![CDATA[! $this->events]]></code>
       <code><![CDATA[$this->events]]></code>
@@ -163,14 +169,6 @@
     <ImplementedReturnTypeMismatch>
       <code>self</code>
     </ImplementedReturnTypeMismatch>
-    <InvalidArgument>
-      <code>sprintf</code>
-    </InvalidArgument>
-    <InvalidArrayOffset>
-      <code><![CDATA[[
-            $template => $path,
-        ]]]></code>
-    </InvalidArrayOffset>
     <InvalidPropertyFetch>
       <code><![CDATA[$service->resourceClass]]></code>
     </InvalidPropertyFetch>
@@ -203,7 +201,11 @@
       <code><![CDATA[$this->renderer instanceof PhpRenderer]]></code>
       <code><![CDATA[$this->routeNameFilter instanceof FilterChain]]></code>
     </RedundantConditionGivenDocblockType>
+    <RedundantFunctionCall>
+      <code>sprintf</code>
+    </RedundantFunctionCall>
     <TooManyArguments>
+      <code>sprintf</code>
       <code>trigger</code>
     </TooManyArguments>
     <UndefinedVariable>
@@ -345,14 +347,15 @@
     </ParamNameMismatch>
   </file>
   <file src="src/Server/Event/DoctrineResourceEvent.php">
+    <MissingTemplateParam>
+      <code>DoctrineResourceEvent</code>
+    </MissingTemplateParam>
     <PropertyNotSetInConstructor>
       <code>$data</code>
       <code>$entityClassName</code>
       <code>$entityId</code>
       <code>$objectManager</code>
       <code>$resourceEvent</code>
-      <code>DoctrineResourceEvent</code>
-      <code>DoctrineResourceEvent</code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Server/Event/Listener/CollectionListener.php">
@@ -376,6 +379,7 @@
     </PossiblyFalsePropertyAssignmentValue>
     <PossiblyInvalidArgument>
       <code>$hydratorMap</code>
+      <code><![CDATA[$this->entityCollectionValuedAssociations[$entity]]]></code>
       <code><![CDATA[$this->getAssociatedEntityInputFilter($association, $inputFilter)]]></code>
     </PossiblyInvalidArgument>
     <PossiblyInvalidArrayAccess>
@@ -395,6 +399,9 @@
     <PossiblyNullArrayAccess>
       <code><![CDATA[$this->getEntityHydratorMap()[$entityClass]]]></code>
     </PossiblyNullArrayAccess>
+    <PossiblyNullReference>
+      <code>getServiceManager</code>
+    </PossiblyNullReference>
     <PossiblyUndefinedMethod>
       <code>hydrate</code>
     </PossiblyUndefinedMethod>
@@ -421,6 +428,9 @@
     </TypeDoesNotContainType>
   </file>
   <file src="src/Server/Paginator/Adapter/DoctrineOdmAdapter.php">
+    <ImplementedReturnTypeMismatch>
+      <code>array</code>
+    </ImplementedReturnTypeMismatch>
     <InvalidClass>
       <code>Builder</code>
       <code>Builder</code>
@@ -433,6 +443,9 @@
     <InvalidReturnType>
       <code>count</code>
     </InvalidReturnType>
+    <MissingTemplateParam>
+      <code>AdapterInterface</code>
+    </MissingTemplateParam>
     <NullableReturnStatement>
       <code><![CDATA[$queryBuilder->getQuery()->execute()]]></code>
     </NullableReturnStatement>
@@ -444,7 +457,11 @@
     </PossiblyNullReference>
   </file>
   <file src="src/Server/Paginator/Adapter/DoctrineOrmAdapter.php">
+    <ImplementedReturnTypeMismatch>
+      <code>array</code>
+    </ImplementedReturnTypeMismatch>
     <MissingTemplateParam>
+      <code>AdapterInterface</code>
       <code>DoctrineOrmAdapter</code>
     </MissingTemplateParam>
   </file>
@@ -1093,6 +1110,11 @@
       <code>setService</code>
       <code>setService</code>
     </UndefinedInterfaceMethod>
+  </file>
+  <file src="test/src/Server/ORM/CRUD/TestAsset/FailureAggregateListener.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$event->getName()]]></code>
+    </PossiblyNullArgument>
   </file>
   <file src="test/src/Server/Validator/NoObjectExistsFactoryTest.php">
     <PossiblyInvalidMethodCall>

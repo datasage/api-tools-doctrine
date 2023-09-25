@@ -25,7 +25,6 @@ use Psr\Container\ContainerInterface;
 
 use function array_key_exists;
 use function class_exists;
-use function get_class;
 use function is_array;
 use function sprintf;
 
@@ -157,7 +156,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
             return self::OBJECT_MANAGER_TYPE_ORM;
         }
 
-        throw new ServiceNotCreatedException('Unknown object manager type: ' . get_class($objectManager));
+        throw new ServiceNotCreatedException('Unknown object manager type: ' . $objectManager::class);
     }
 
     /**
@@ -233,7 +232,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
         $namingStrategy = $container->get($namingStrategyKey);
         if (! $namingStrategy instanceof NamingStrategyInterface) {
             throw new ServiceNotCreatedException(
-                sprintf('Invalid naming strategy class %s', get_class($namingStrategy))
+                sprintf('Invalid naming strategy class %s', $namingStrategy::class)
             );
         }
 
@@ -269,7 +268,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
             $strategy = $container->get($strategyKey);
             if (! $strategy instanceof StrategyInterface) {
                 throw new ServiceNotCreatedException(
-                    sprintf('Invalid strategy class %s for field %s', get_class($strategy), $field)
+                    sprintf('Invalid strategy class %s for field %s', $strategy::class, $field)
                 );
             }
 
@@ -319,7 +318,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
             $filterService = $container->get($filterService);
             if (! $filterService instanceof FilterInterface) {
                 throw new ServiceNotCreatedException(
-                    sprintf('Filter service %s must implement FilterInterface', get_class($filterService))
+                    sprintf('Filter service %s must implement FilterInterface', $filterService::class)
                 );
             }
 

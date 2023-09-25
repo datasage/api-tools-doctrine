@@ -24,7 +24,6 @@ use Traversable;
 
 use function array_key_exists;
 use function count;
-use function get_class;
 use function is_array;
 use function is_object;
 
@@ -208,7 +207,7 @@ class CollectionListener implements ListenerAggregateInterface
     protected function getClassMetadata($entity)
     {
         if (is_object($entity)) {
-            $entity = get_class($entity);
+            $entity = $entity::class;
         }
         if (! array_key_exists($entity, $this->classMetadataMap)) {
             $metadata = $this->getObjectManager()->getClassMetadata($entity);
@@ -231,7 +230,7 @@ class CollectionListener implements ListenerAggregateInterface
     protected function getEntityCollectionValuedAssociations($entity, $data = null, $stripEmptyAssociations = false)
     {
         if (is_object($entity)) {
-            $entity = get_class($entity);
+            $entity = $entity::class;
         }
         if (! array_key_exists($entity, $this->entityCollectionValuedAssociations)) {
             $collectionValuedAssociations = [];
