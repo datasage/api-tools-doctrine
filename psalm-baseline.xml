@@ -162,10 +162,6 @@
                         array_fill(0, 6, $q)
                     )]]></code>
     </ArgumentTypeCoercion>
-    <DocblockTypeContradiction>
-      <code><![CDATA[! $this->events]]></code>
-      <code><![CDATA[$this->events]]></code>
-    </DocblockTypeContradiction>
     <ImplementedReturnTypeMismatch>
       <code>self</code>
     </ImplementedReturnTypeMismatch>
@@ -195,15 +191,8 @@
       <code>$service</code>
     </PossiblyFalseArgument>
     <PropertyNotSetInConstructor>
-      <code>$events</code>
-      <code>$renderer</code>
-      <code>$routeNameFilter</code>
       <code>$serviceManager</code>
     </PropertyNotSetInConstructor>
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[$this->renderer instanceof PhpRenderer]]></code>
-      <code><![CDATA[$this->routeNameFilter instanceof FilterChain]]></code>
-    </RedundantConditionGivenDocblockType>
     <RedundantFunctionCall>
       <code>sprintf</code>
     </RedundantFunctionCall>

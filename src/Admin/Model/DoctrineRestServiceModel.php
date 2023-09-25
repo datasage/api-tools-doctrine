@@ -47,7 +47,7 @@ use function vsprintf;
 class DoctrineRestServiceModel implements EventManagerAwareInterface
 {
     protected ConfigResource $configResource;
-    protected EventManagerInterface $events;
+    protected ?EventManagerInterface $events = null;
     protected string $module;
     protected ModuleEntity $moduleEntity;
     protected string $modulePath;
@@ -198,6 +198,7 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
     {
         if (! $this->events) {
             $this->setEventManager(new EventManager());
+            return $this->getEventManager();
         }
 
         return $this->events;
