@@ -33,7 +33,7 @@
     },
     "require": {
         "php": "^7.4 || ~8.0.0 || ~8.1.0",
-        "datasage/laminas-doctrine-hydration-module": "^4.2 || ^5.0",
+        "doctrine/doctrine-laminas-hydrator": "^3",
         "doctrine/persistence": "^2.0 || ^3.0",
         "laminas-api-tools/api-tools": "^1.3",
         "laminas-api-tools/api-tools-rest": "^1.7.0",

@@ -6,6 +6,7 @@ namespace Laminas\ApiTools\Doctrine\Server\Resource;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Instantiator\InstantiatorInterface;
+use Doctrine\Laminas\Hydrator\DoctrineObject;
 use Doctrine\ODM\MongoDB\Query\Builder as MongoDBQueryBuilder;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NoResultException;
@@ -77,7 +78,7 @@ class DoctrineResource extends AbstractResourceListener implements
     /** @var string */
     protected $multiKeyDelimiter = '.';
 
-    /** @var HydratorInterface */
+    /** @var HydratorInterface|null */
     protected $hydrator;
 
     /** @var InstantiatorInterface|null */
@@ -281,7 +282,7 @@ class DoctrineResource extends AbstractResourceListener implements
     {
         if (! $this->hydrator) {
             // FIXME: find a way to test this line from a created API.  Shouldn't all created API's have a hydrator?
-            $this->hydrator = new Hydrator\DoctrineObject($this->getObjectManager(), $this->getEntityClass());
+            $this->hydrator = new DoctrineObject($this->getObjectManager());
         }
 
         return $this->hydrator;

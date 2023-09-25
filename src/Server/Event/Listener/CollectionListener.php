@@ -11,6 +11,7 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
 use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Doctrine\Server\Event\DoctrineResourceEvent;
 use Laminas\ApiTools\Doctrine\Server\Exception\InvalidArgumentException;
+use Laminas\ApiTools\Doctrine\Server\Service\DoctrineHydratorFactory;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\Hydrator\HydratorInterface;
@@ -19,7 +20,6 @@ use Laminas\InputFilter\InputFilterInterface;
 use Laminas\InputFilter\InputInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\Stdlib\ArrayObject;
-use Phpro\DoctrineHydrationModule\Service\DoctrineHydratorFactory;
 use Traversable;
 
 use function array_key_exists;
@@ -37,6 +37,8 @@ use function is_object;
  */
 class CollectionListener implements ListenerAggregateInterface
 {
+    public const CONFIG_NAMESPACE = 'doctrine-hydrator';
+
     /** @var array */
     protected $listeners = [];
 

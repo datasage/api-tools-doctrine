@@ -529,10 +529,8 @@
       <code><![CDATA[$this->getMultiKeyDelimiter()]]></code>
     </ArgumentTypeCoercion>
     <DocblockTypeContradiction>
-      <code><![CDATA[! $this->hydrator]]></code>
       <code>! is_array($queryProviders)</code>
       <code>$data instanceof ApiProblem</code>
-      <code><![CDATA[$this->hydrator]]></code>
       <code><![CDATA[is_string($this->eventIdentifier)]]></code>
       <code><![CDATA[is_string($this->eventIdentifier)
                 || is_array($this->eventIdentifier)
@@ -580,7 +578,6 @@
     <PropertyNotSetInConstructor>
       <code>$entityIdentifierName</code>
       <code>$events</code>
-      <code>$hydrator</code>
       <code>$queryCreateFilter</code>
       <code>$queryProviders</code>
       <code>$routeIdentifierName</code>
@@ -598,9 +595,6 @@
                 || is_array($this->eventIdentifier)]]></code>
       <code><![CDATA[isset($this->eventIdentifier)]]></code>
     </RedundantConditionGivenDocblockType>
-    <UndefinedClass>
-      <code>Hydrator\DoctrineObject</code>
-    </UndefinedClass>
     <UndefinedDocblockClass>
       <code>$routeMatch</code>
       <code><![CDATA[$this->getEvent()->getRouteMatch()]]></code>
