@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
+use Laminas\Cache\Storage\Adapter\Memory;
+
 return [
     'modules'                 => [
         'DoctrineModule',
         'DoctrineMongoODMModule',
         'Laminas\Cache',
-        'Laminas\Cache\Storage\Adapter\Memory',
+        Memory::class,
         'Laminas\ApiTools',
         'Laminas\ApiTools\Admin',
         'Laminas\ApiTools\Hal',

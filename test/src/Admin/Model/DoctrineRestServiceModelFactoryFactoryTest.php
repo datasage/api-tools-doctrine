@@ -18,7 +18,6 @@ use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
-use Prophecy\Prophecy\ProphecyInterface;
 
 class DoctrineRestServiceModelFactoryFactoryTest extends TestCase
 {
