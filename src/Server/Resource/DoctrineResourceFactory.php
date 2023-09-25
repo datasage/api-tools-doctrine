@@ -7,14 +7,14 @@ namespace Laminas\ApiTools\Doctrine\Server\Resource;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ObjectManager;
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Doctrine\Server\Query\CreateFilter\QueryCreateFilterInterface;
 use Laminas\ApiTools\Hal\Plugin\Hal;
 use Laminas\Hydrator\HydratorInterface;
-use Laminas\ServiceManager\AbstractFactoryInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Exception\ServiceNotFoundException;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Psr\Container\ContainerInterface;
 use RuntimeException;
 
 use function class_exists;

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Admin\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Admin\Model\DocumentationModel;
 use Laminas\ApiTools\Admin\Model\InputFilterModel;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 use function sprintf;
 
@@ -15,7 +17,8 @@ class DoctrineRpcServiceResourceFactory
 {
     /**
      * @return DoctrineRpcServiceResource
-     * @throws ServiceNotCreatedException When missing required dependencies.
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container)
     {

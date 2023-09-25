@@ -48,20 +48,6 @@
       <code>DoctrineAutodiscoveryController</code>
     </PropertyNotSetInConstructor>
   </file>
-  <file src="src/Admin/Controller/DoctrineAutodiscoveryControllerFactory.php">
-    <DeprecatedInterface>
-      <code>DoctrineAutodiscoveryControllerFactory</code>
-    </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code>getServiceLocator</code>
-    </DeprecatedMethod>
-    <ParamNameMismatch>
-      <code>$container</code>
-    </ParamNameMismatch>
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[$container->getServiceLocator()]]></code>
-    </RedundantConditionGivenDocblockType>
-  </file>
   <file src="src/Admin/Model/DoctrineAutodiscoveryModel.php">
     <NoInterfaceProperties>
       <code><![CDATA[$classMetadata->fieldMappings]]></code>
@@ -325,7 +311,7 @@
       <code>DoctrineRpcServiceEntity|ApiProblem</code>
     </MoreSpecificReturnType>
     <PossiblyInvalidArgument>
-      <code><![CDATA[$creationData['http_methods']]]></code>
+      <code>$creationData['http_methods']</code>
     </PossiblyInvalidArgument>
     <PropertyNotSetInConstructor>
       <code>DoctrineRpcServiceResource</code>
@@ -611,55 +597,53 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Resource/DoctrineResourceFactory.php">
-    <DeprecatedInterface>
-      <code>DoctrineResourceFactory</code>
-    </DeprecatedInterface>
     <InvalidStringClass>
       <code>new $resourceClass($entityFactory)</code>
     </InvalidStringClass>
-    <NullableReturnStatement>
-      <code>null</code>
-      <code>null</code>
-      <code>null</code>
-    </NullableReturnStatement>
-    <ParamNameMismatch>
-      <code>$container</code>
-      <code>$container</code>
-    </ParamNameMismatch>
+    <PossiblyNullArgument>
+      <code>$hydrator</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="src/Server/Service/DoctrineHydrator.php">
+    <ImplementedReturnTypeMismatch>
+      <code>object</code>
+    </ImplementedReturnTypeMismatch>
+    <InvalidArgument>
+      <code>$data</code>
+      <code>$object</code>
+    </InvalidArgument>
+    <InvalidReturnStatement>
+      <code><![CDATA[$this->hydrateService]]></code>
+      <code><![CDATA[$this->hydrateService->hydrate($object, $data)]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code>HydratorInterface</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/Server/Service/DoctrineHydratorFactory.php">
+    <ArgumentTypeCoercion>
+      <code>$objectManager</code>
+    </ArgumentTypeCoercion>
+    <MissingReturnType>
+      <code>configureHydrator</code>
+      <code>configureHydratorFilters</code>
+      <code>configureHydratorNamingStrategy</code>
+      <code>configureHydratorStrategies</code>
+    </MissingReturnType>
+    <UndefinedInterfaceMethod>
+      <code>build</code>
+      <code>getHydratorFactory</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Validator/NoObjectExistsFactory.php">
-    <DeprecatedInterface>
-      <code>NoObjectExistsFactory</code>
-    </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code>getServiceLocator</code>
-    </DeprecatedMethod>
-    <ParamNameMismatch>
-      <code>$container</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument>
       <code>$options</code>
     </PossiblyNullArgument>
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[$container->getServiceLocator()]]></code>
-    </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Server/Validator/ObjectExistsFactory.php">
-    <DeprecatedInterface>
-      <code>ObjectExistsFactory</code>
-    </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code>getServiceLocator</code>
-    </DeprecatedMethod>
-    <ParamNameMismatch>
-      <code>$container</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument>
       <code>$options</code>
     </PossiblyNullArgument>
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[$container->getServiceLocator()]]></code>
-    </RedundantConditionGivenDocblockType>
   </file>
   <file src="test/config/ORM/local.php">
     <UndefinedClass>
@@ -669,7 +653,6 @@
   </file>
   <file src="test/src/Admin/Controller/DoctrineAutodiscoveryControllerFactoryTest.php">
     <PossiblyUndefinedMethod>
-      <code>reveal</code>
       <code>reveal</code>
     </PossiblyUndefinedMethod>
   </file>
@@ -800,12 +783,12 @@
   </file>
   <file src="test/src/Admin/Model/DoctrineRestServiceResourceTest.php">
     <ArgumentTypeCoercion>
-      <code><![CDATA['Db\Entity\Artist']]></code>
-      <code><![CDATA['Db\Entity\Artist']]></code>
+      <code>'Db\Entity\Artist'</code>
+      <code>'Db\Entity\Artist'</code>
     </ArgumentTypeCoercion>
     <UndefinedClass>
-      <code><![CDATA['Db\Entity\Artist']]></code>
-      <code><![CDATA['Db\Entity\Artist']]></code>
+      <code>'Db\Entity\Artist'</code>
+      <code>'Db\Entity\Artist'</code>
       <code>Artist</code>
     </UndefinedClass>
     <UndefinedInterfaceMethod>

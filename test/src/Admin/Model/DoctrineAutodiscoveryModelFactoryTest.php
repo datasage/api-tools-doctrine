@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasTest\ApiTools\Doctrine\Admin\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineAutodiscoveryModel;
 use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineAutodiscoveryModelFactory;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
@@ -13,6 +12,7 @@ use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ProphecyInterface;
+use Psr\Container\ContainerInterface;
 
 class DoctrineAutodiscoveryModelFactoryTest extends TestCase
 {

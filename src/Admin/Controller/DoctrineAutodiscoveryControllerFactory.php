@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Admin\Controller;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineAutodiscoveryModel;
-use Laminas\ServiceManager\AbstractPluginManager;
-use Laminas\ServiceManager\FactoryInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class DoctrineAutodiscoveryControllerFactory implements FactoryInterface
 {
@@ -25,21 +23,5 @@ class DoctrineAutodiscoveryControllerFactory implements FactoryInterface
         $model = $container->get(DoctrineAutodiscoveryModel::class);
 
         return new DoctrineAutodiscoveryController($model);
-    }
-
-    /**
-     * Create and return DoctrineAutodiscoveryController instance (v2).
-     *
-     * Provided for backwards compatibility; proxies to __invoke().
-     *
-     * @return DoctrineAutodiscoveryController
-     */
-    public function createService(ServiceLocatorInterface $container)
-    {
-        if ($container instanceof AbstractPluginManager) {
-            $container = $container->getServiceLocator() ?: $container;
-        }
-
-        return $this($container, DoctrineAutodiscoveryController::class);
     }
 }

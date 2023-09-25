@@ -1,27 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\ApiTools\Doctrine\Server\Service;
 
 use Laminas\Hydrator\HydratorInterface;
 
-/**
- * Class DoctrineHydrator.
- */
 class DoctrineHydrator implements HydratorInterface
 {
-    /**
-     * @var HydratorInterface
-     */
+    /** @var HydratorInterface */
     protected $extractService;
 
-    /**
-     * @var HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface
-     */
+    /** @var HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface */
     protected $hydrateService;
 
     /**
-     * @param $extractService
-     * @param $hydrateService
+     * @param HydratorInterface $extractService
+     * @param HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface $hydrateService
      */
     public function __construct($extractService, $hydrateService)
     {
@@ -48,8 +43,6 @@ class DoctrineHydrator implements HydratorInterface
     /**
      * Extract values from an object.
      *
-     * @param object $object
-     *
      * @return array
      */
     public function extract(object $object): array
@@ -61,8 +54,6 @@ class DoctrineHydrator implements HydratorInterface
      * Hydrate $object with the provided $data.
      *
      * @param array $data
-     * @param object $object
-     *
      * @return object
      */
     public function hydrate(array $data, object $object)

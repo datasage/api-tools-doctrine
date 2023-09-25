@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasTest\ApiTools\Doctrine\Admin\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Admin\Model\ModuleModel;
 use Laminas\ApiTools\Admin\Model\ModulePathSpec;
 use Laminas\ApiTools\Configuration\ConfigResourceFactory;
@@ -17,6 +16,7 @@ use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ProphecyInterface;
+use Psr\Container\ContainerInterface;
 
 class DoctrineRpcServiceModelFactoryFactoryTest extends TestCase
 {

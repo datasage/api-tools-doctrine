@@ -1,35 +1,40 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\ApiTools\Doctrine\Server\Service;
 
-use Doctrine\Persistence\ObjectManager;
+use Doctrine\Laminas\Hydrator;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ORM\EntityManager;
+use Doctrine\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use Doctrine\Laminas\Hydrator;
-use Interop\Container\ContainerInterface;
 use Laminas\Hydrator\AbstractHydrator;
 use Laminas\Hydrator\Filter\FilterComposite;
-use Laminas\Hydrator\Filter\FilterInterface;
 use Laminas\Hydrator\Filter\FilterEnabledInterface;
+use Laminas\Hydrator\Filter\FilterInterface;
 use Laminas\Hydrator\HydratorInterface;
-use Laminas\Hydrator\NamingStrategy\NamingStrategyInterface;
 use Laminas\Hydrator\NamingStrategy\NamingStrategyEnabledInterface;
-use Laminas\Hydrator\Strategy\StrategyInterface;
+use Laminas\Hydrator\NamingStrategy\NamingStrategyInterface;
 use Laminas\Hydrator\Strategy\StrategyEnabledInterface;
-use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
+use Laminas\Hydrator\Strategy\StrategyInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Exception\ServiceNotFoundException;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
+use Psr\Container\ContainerInterface;
 
-/**
- * Class DoctrineHydratorFactory.
- */
+use function array_key_exists;
+use function class_exists;
+use function get_class;
+use function is_array;
+use function sprintf;
+
 class DoctrineHydratorFactory implements AbstractFactoryInterface
 {
     public const FACTORY_NAMESPACE = 'doctrine-hydrator';
 
     public const OBJECT_MANAGER_TYPE_ODM_MONGODB = 'ODM/MongoDB';
-    public const OBJECT_MANAGER_TYPE_ORM = 'ORM';
+    public const OBJECT_MANAGER_TYPE_ORM         = 'ORM';
 
     /**
      * Cache of canCreateServiceWithName lookups.
@@ -41,11 +46,8 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     /**
      * Determine if we can create a service with name.
      *
-     * @param ContainerInterface $container
      * @param string             $requestedName
-     *
      * @return bool
-     *
      * @throws ServiceNotFoundException
      */
     public function canCreate(ContainerInterface $container, $requestedName)
@@ -54,16 +56,17 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
             return $this->lookupCache[$requestedName];
         }
 
-        if (!$container->has('config')) {
+        if (! $container->has('config')) {
             return false;
         }
 
         // Validate object is set
-        $config = $container->get('config');
+        $config    = $container->get('config');
         $namespace = self::FACTORY_NAMESPACE;
-        if (!isset($config[$namespace])
-            || !is_array($config[$namespace])
-            || !isset($config[$namespace][$requestedName])
+        if (
+            ! isset($config[$namespace])
+            || ! is_array($config[$namespace])
+            || ! isset($config[$namespace][$requestedName])
         ) {
             $this->lookupCache[$requestedName] = false;
 
@@ -72,7 +75,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
 
         // Validate object manager
         $config = $config[$namespace];
-        if (!isset($config[$requestedName]) || !isset($config[$requestedName]['object_manager'])) {
+        if (! isset($config[$requestedName]) || ! isset($config[$requestedName]['object_manager'])) {
             throw new ServiceNotFoundException(sprintf(
                 '%s requires that a valid "object_manager" is specified for hydrator %s; no service found',
                 __METHOD__,
@@ -81,7 +84,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
         }
 
         // Validate object class
-        if (!isset($config[$requestedName]['entity_class'])) {
+        if (! isset($config[$requestedName]['entity_class'])) {
             throw new ServiceNotFoundException(sprintf(
                 '%s requires that a valid "entity_class" is specified for hydrator %s; no service found',
                 __METHOD__,
@@ -97,13 +100,11 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     /**
      * Create and return the database-connected resource.
      *
-     * @param ContainerInterface $container
      * @param string             $requestedName
      * @param null|array         $options
-     *
      * @return DoctrineHydrator
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $config = $container->get('config');
         $config = $config[self::FACTORY_NAMESPACE][$requestedName];
@@ -113,8 +114,8 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
         $extractService = null;
         $hydrateService = null;
 
-        $useEntityHydrator = (array_key_exists('use_generated_hydrator', $config) && $config['use_generated_hydrator']);
-        $useCustomHydrator = (array_key_exists('hydrator', $config));
+        $useEntityHydrator = array_key_exists('use_generated_hydrator', $config) && $config['use_generated_hydrator'];
+        $useCustomHydrator = array_key_exists('hydrator', $config);
 
         if ($useEntityHydrator) {
             $hydrateService = $this->loadEntityHydrator($container, $config, $objectManager);
@@ -130,11 +131,11 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
             $hydrateService = $extractService;
         }
 
-        # Use DoctrineModuleHydrator by default
-        if (!isset($extractService, $hydrateService)) {
+        // Use DoctrineModuleHydrator by default
+        if (! isset($extractService, $hydrateService)) {
             $doctrineModuleHydrator = $this->loadDoctrineModuleHydrator($container, $config, $objectManager);
-            $extractService = ($extractService ?: $doctrineModuleHydrator);
-            $hydrateService = ($hydrateService ?: $doctrineModuleHydrator);
+            $extractService         = $extractService ?: $doctrineModuleHydrator;
+            $hydrateService         = $hydrateService ?: $doctrineModuleHydrator;
         }
 
         $this->configureHydrator($extractService, $container, $config, $objectManager);
@@ -144,10 +145,8 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param $objectManager
-     *
+     * @param DocumentManager|EntityManager $objectManager
      * @return string
-     *
      * @throws ServiceNotCreatedException
      */
     protected function getObjectManagerType($objectManager)
@@ -162,16 +161,13 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param ContainerInterface $container
      * @param array              $config
-     *
      * @return ObjectManager
-     *
      * @throws ServiceNotCreatedException
      */
     protected function loadObjectManager(ContainerInterface $container, $config)
     {
-        if (!$container->has($config['object_manager'])) {
+        if (! $container->has($config['object_manager'])) {
             throw new ServiceNotCreatedException('The object_manager could not be found.');
         }
 
@@ -179,30 +175,24 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param ContainerInterface $container
      * @param array              $config
      * @param ObjectManager      $objectManager
-     *
      * @return null|HydratorInterface
      */
     protected function loadEntityHydrator(ContainerInterface $container, $config, $objectManager)
     {
         $objectManagerType = $this->getObjectManagerType($objectManager);
-        if ($objectManagerType != self::OBJECT_MANAGER_TYPE_ODM_MONGODB) {
+        if ($objectManagerType !== self::OBJECT_MANAGER_TYPE_ODM_MONGODB) {
             return;
         }
 
         $hydratorFactory = $objectManager->getHydratorFactory();
-        $hydrator = $hydratorFactory->getHydratorFor($config['entity_class']);
-
-        return $hydrator;
+        return $hydratorFactory->getHydratorFor($config['entity_class']);
     }
 
     /**
-     * @param ContainerInterface $container
      * @param array              $config
      * @param ObjectManager      $objectManager
-     *
      * @return HydratorInterface
      */
     protected function loadDoctrineModuleHydrator(ContainerInterface $container, $config, $objectManager)
@@ -212,10 +202,8 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
 
     /**
      * @param AbstractHydrator   $hydrator
-     * @param ContainerInterface $container
      * @param array              $config
      * @param ObjectManager      $objectManager
-     *
      * @throws ServiceNotCreatedException
      */
     public function configureHydrator($hydrator, ContainerInterface $container, $config, $objectManager)
@@ -227,25 +215,23 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
 
     /**
      * @param AbstractHydrator   $hydrator
-     * @param ContainerInterface $container
      * @param array              $config
      * @param ObjectManager      $objectManager
-     *
      * @throws ServiceNotCreatedException
      */
     public function configureHydratorNamingStrategy($hydrator, ContainerInterface $container, $config, $objectManager)
     {
-        if (!($hydrator instanceof NamingStrategyEnabledInterface) || !isset($config['naming_strategy'])) {
+        if (! $hydrator instanceof NamingStrategyEnabledInterface || ! isset($config['naming_strategy'])) {
             return;
         }
 
         $namingStrategyKey = $config['naming_strategy'];
-        if (!$container->has($namingStrategyKey)) {
+        if (! $container->has($namingStrategyKey)) {
             throw new ServiceNotCreatedException(sprintf('Invalid naming strategy %s.', $namingStrategyKey));
         }
 
         $namingStrategy = $container->get($namingStrategyKey);
-        if (!$namingStrategy instanceof NamingStrategyInterface) {
+        if (! $namingStrategy instanceof NamingStrategyInterface) {
             throw new ServiceNotCreatedException(
                 sprintf('Invalid naming strategy class %s', get_class($namingStrategy))
             );
@@ -261,28 +247,27 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
 
     /**
      * @param AbstractHydrator   $hydrator
-     * @param ContainerInterface $container
      * @param array              $config
      * @param ObjectManager      $objectManager
-     *
      * @throws ServiceNotCreatedException
      */
     protected function configureHydratorStrategies($hydrator, ContainerInterface $container, $config, $objectManager)
     {
-        if (!$hydrator instanceof StrategyEnabledInterface
-            || !isset($config['strategies'])
-            || !is_array($config['strategies'])
+        if (
+            ! $hydrator instanceof StrategyEnabledInterface
+            || ! isset($config['strategies'])
+            || ! is_array($config['strategies'])
         ) {
             return;
         }
 
         foreach ($config['strategies'] as $field => $strategyKey) {
-            if (!$container->has($strategyKey)) {
+            if (! $container->has($strategyKey)) {
                 throw new ServiceNotCreatedException(sprintf('Invalid strategy %s for field %s', $strategyKey, $field));
             }
 
             $strategy = $container->get($strategyKey);
-            if (!$strategy instanceof StrategyInterface) {
+            if (! $strategy instanceof StrategyInterface) {
                 throw new ServiceNotCreatedException(
                     sprintf('Invalid strategy class %s for field %s', get_class($strategy), $field)
                 );
@@ -301,17 +286,16 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * Add filters to the Hydrator based on a predefined configuration format, if specified.
      *
      * @param AbstractHydrator   $hydrator
-     * @param ContainerInterface $container
      * @param array              $config
      * @param ObjectManager      $objectManager
-     *
      * @throws ServiceNotCreatedException
      */
     protected function configureHydratorFilters($hydrator, ContainerInterface $container, $config, $objectManager)
     {
-        if (!$hydrator instanceof FilterEnabledInterface
-            || !isset($config['filters'])
-            || !is_array($config['filters'])
+        if (
+            ! $hydrator instanceof FilterEnabledInterface
+            || ! isset($config['filters'])
+            || ! is_array($config['filters'])
         ) {
             return;
         }
@@ -319,21 +303,21 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
         foreach ($config['filters'] as $name => $filterConfig) {
             $conditionMap = [
                 'and' => FilterComposite::CONDITION_AND,
-                'or' => FilterComposite::CONDITION_OR,
+                'or'  => FilterComposite::CONDITION_OR,
             ];
-            $condition = isset($filterConfig['condition']) ?
+            $condition    = isset($filterConfig['condition']) ?
                 $conditionMap[$filterConfig['condition']] :
                 FilterComposite::CONDITION_OR;
 
             $filterService = $filterConfig['filter'];
-            if (!$container->has($filterService)) {
+            if (! $container->has($filterService)) {
                 throw new ServiceNotCreatedException(
                     sprintf('Invalid filter %s for field %s: service does not exist', $filterService, $name)
                 );
             }
 
             $filterService = $container->get($filterService);
-            if (!$filterService instanceof FilterInterface) {
+            if (! $filterService instanceof FilterInterface) {
                 throw new ServiceNotCreatedException(
                     sprintf('Filter service %s must implement FilterInterface', get_class($filterService))
                 );
