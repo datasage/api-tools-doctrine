@@ -17,9 +17,7 @@ abstract class AbstractQueryProvider implements ObjectManagerAwareInterface, Que
     use ProvidesObjectManager;
 
     /**
-     * @param string $entityClass
-     * @param array $parameters
-     * @return mixed This will return an ORM or ODM Query\Builder
+     * @inheritDoc
      */
     abstract public function createQuery(ResourceEvent $event, $entityClass, $parameters);
 

@@ -9,6 +9,7 @@ use Doctrine\Instantiator\InstantiatorInterface;
 use Doctrine\Laminas\Hydrator\DoctrineObject;
 use Doctrine\ODM\MongoDB\Query\Builder as MongoDBQueryBuilder;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Persistence\ProvidesObjectManager;
@@ -626,10 +627,10 @@ class DoctrineResource extends AbstractResourceListener implements
      *
      * @param string|int $id
      * @param string $method
-     * @param null|array $data parameters
-     * @return object
+     * @param array $data parameters
+     * @return mixed|ApiProblem
      */
-    protected function findEntity($id, $method, $data = null)
+    protected function findEntity($id, $method, $data = [])
     {
         // Match identity identifier name(s) with id(s)
         $ids      = explode($this->getMultiKeyDelimiter(), (string) $id);
@@ -699,7 +700,7 @@ class DoctrineResource extends AbstractResourceListener implements
 
         try {
             $entity = $queryBuilder->getQuery()->getSingleResult();
-        } catch (NoResultException) {
+        } catch (NoResultException | NonUniqueResultException) {
             $entity = null;
         }
 

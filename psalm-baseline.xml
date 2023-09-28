@@ -481,9 +481,6 @@
     <ArgumentTypeCoercion>
       <code>$entityClass</code>
     </ArgumentTypeCoercion>
-    <ImplementedParamTypeMismatch>
-      <code>$queryBuilder</code>
-    </ImplementedParamTypeMismatch>
     <PossiblyInvalidArgument>
       <code><![CDATA[$queryBuilder->getQuery()]]></code>
     </PossiblyInvalidArgument>
@@ -492,32 +489,14 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Query/Provider/DefaultOdm.php">
-    <ImplementedParamTypeMismatch>
-      <code>$queryBuilder</code>
-    </ImplementedParamTypeMismatch>
-    <InvalidClass>
-      <code>$queryBuilder</code>
-      <code>Builder</code>
-    </InvalidClass>
     <MoreSpecificImplementedParamType>
       <code>$entityClass</code>
       <code>$entityClass</code>
-      <code>$queryBuilder</code>
     </MoreSpecificImplementedParamType>
     <UndefinedInterfaceMethod>
       <code>createQueryBuilder</code>
       <code>createQueryBuilder</code>
     </UndefinedInterfaceMethod>
-  </file>
-  <file src="src/Server/Query/Provider/DefaultOrm.php">
-    <UndefinedInterfaceMethod>
-      <code>createQueryBuilder</code>
-    </UndefinedInterfaceMethod>
-  </file>
-  <file src="src/Server/Query/Provider/QueryProviderInterface.php">
-    <UndefinedDocblockClass>
-      <code>QueryBuilder|Builder</code>
-    </UndefinedDocblockClass>
   </file>
   <file src="src/Server/Query/Provider/Service/QueryProviderManager.php">
     <MissingTemplateParam>
@@ -571,9 +550,6 @@
       <code>setCurrentPageNumber</code>
       <code>setItemCountPerPage</code>
     </PossiblyInvalidMethodCall>
-    <PossiblyNullArgument>
-      <code>$data</code>
-    </PossiblyNullArgument>
     <PossiblyNullReference>
       <code>getParams</code>
       <code>getRequest</code>
