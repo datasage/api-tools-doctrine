@@ -33,7 +33,7 @@
     },
     "require": {
         "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-        "doctrine/collections": "^2",
+        "doctrine/collections": "^1 || ^2",
         "doctrine/doctrine-laminas-hydrator": "^3.2.1",
         "doctrine/doctrine-module": "^5.0.0 || ^6.0.0",
         "doctrine/persistence": "^2.0 || ^3.0",
@@ -108,6 +108,10 @@
       {
         "type": "git",
         "url": "https://github.com/datasage/api-tools-api-problem"
+      },
+      {
+        "type": "git",
+        "url": "https://github.com/datasage/api-tools-hal"
       },
       {
         "type": "git",

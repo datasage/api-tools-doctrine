@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbeac1db0e53f261a691421b3d0eab83",
+    "content-hash": "67f7bab21e5b7d61ee5c33b7625ff238",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1304,21 +1304,15 @@
         },
         {
             "name": "laminas-api-tools/api-tools-hal",
-            "version": "1.10.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laminas-api-tools/api-tools-hal.git",
-                "reference": "3cc89f2acce62e1a5b814f640993b27e8bb8de85"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-hal/zipball/3cc89f2acce62e1a5b814f640993b27e8bb8de85",
-                "reference": "3cc89f2acce62e1a5b814f640993b27e8bb8de85",
-                "shasum": ""
+                "url": "https://github.com/datasage/api-tools-hal",
+                "reference": "151857f7c96288b7eaeabd41bb83dfd8d56b8017"
             },
             "require": {
                 "ext-json": "*",
-                "laminas-api-tools/api-tools-api-problem": "^1.6.0",
+                "laminas-api-tools/api-tools-api-problem": "^1.8.0",
                 "laminas/laminas-eventmanager": "^3.0.1",
                 "laminas/laminas-filter": "^2.7.1",
                 "laminas/laminas-http": "^2.5.4",
@@ -1328,22 +1322,21 @@
                 "laminas/laminas-stdlib": "^3.0.1",
                 "laminas/laminas-uri": "^2.5.2",
                 "laminas/laminas-view": "^2.11.4",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "psr/link": "^1.0 || ^2.0"
             },
             "replace": {
                 "zfcampus/zf-hal": "^1.6.0"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
+                "laminas/laminas-coding-standard": "^3",
                 "laminas/laminas-modulemanager": "^2.10.1",
                 "laminas/laminas-router": "^3.11",
                 "phpdocumentor/reflection-docblock": "^5.2.2",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.27",
-                "psalm/plugin-phpunit": "^0.16.1",
-                "vimeo/psalm": "^4.30"
+                "phpspec/prophecy-phpunit": "^2",
+                "phpunit/phpunit": "^10",
+                "psalm/plugin-phpunit": "^0.19",
+                "vimeo/psalm": "^5"
             },
             "type": "library",
             "extra": {
@@ -1356,7 +1349,32 @@
                     "Laminas\\ApiTools\\Hal\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "LaminasTest\\ApiTools\\Hal\\": "test/"
+                }
+            },
+            "scripts": {
+                "check": [
+                    "@cs-check",
+                    "@test"
+                ],
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "test": [
+                    "phpunit"
+                ],
+                "test-coverage": [
+                    "phpunit --coverage-clover clover.xml"
+                ],
+                "static-analysis": [
+                    "psalm --shepherd --stats --show-info=true"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1371,20 +1389,14 @@
                 "rest"
             ],
             "support": {
-                "chat": "https://laminas.dev/chat",
                 "docs": "https://api-tools.getlaminas.org/documentation",
-                "forum": "https://discourse.laminas.dev",
                 "issues": "https://github.com/laminas-api-tools/api-tools-hal/issues",
+                "source": "https://github.com/laminas-api-tools/api-tools-hal",
                 "rss": "https://github.com/laminas-api-tools/api-tools-hal/releases.atom",
-                "source": "https://github.com/laminas-api-tools/api-tools-hal"
+                "chat": "https://laminas.dev/chat",
+                "forum": "https://discourse.laminas.dev"
             },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2023-07-10T20:48:58+00:00"
+            "time": "2024-11-26T19:11:59+00:00"
         },
         {
             "name": "laminas-api-tools/api-tools-mvc-auth",
@@ -8544,30 +8556,30 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.4",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
-                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Psr\\Log\\": "Psr/Log/"
+                    "Psr\\Log\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8588,9 +8600,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.4"
+                "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
-            "time": "2021-05-03T11:20:27+00:00"
+            "time": "2024-09-11T13:17:53+00:00"
         },
         {
             "name": "sebastian/cli-parser",
