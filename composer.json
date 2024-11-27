@@ -65,13 +65,13 @@
         "laminas-api-tools/api-tools-hal": "^1.6.1",
         "laminas/laminas-coding-standard": "^3",
         "laminas/laminas-http": "^2.20",
+        "laminas/laminas-i18n": "^2.29",
         "laminas/laminas-test": "^4.8",
         "mongodb/mongodb": "^1.1.0",
         "phpspec/prophecy": "^1.15.0",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^10",
         "psalm/plugin-phpunit": "^0.19",
-        "shipmonk/composer-dependency-analyser": "^1.8",
         "vimeo/psalm": "^5"
     },
     "conflict": {

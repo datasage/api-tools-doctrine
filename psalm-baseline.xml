@@ -605,10 +605,6 @@
       <code><![CDATA[$this->eventIdentifier instanceof Traversable]]></code>
       <code><![CDATA[is_object($this->eventIdentifier)]]></code>
     </TypeDoesNotContainType>
-    <UndefinedDocblockClass>
-      <code><![CDATA[$routeMatch]]></code>
-      <code><![CDATA[$this->getEvent()->getRouteMatch()]]></code>
-    </UndefinedDocblockClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[$queryProviders]]></code>
       <code><![CDATA[$queryProviders]]></code>
@@ -699,9 +695,6 @@
     </UndefinedClass>
   </file>
   <file src="test/src/Admin/Model/DoctrineMetadata1Test.php">
-    <UndefinedClass>
-      <code><![CDATA[$this->markTestIncomplete()]]></code>
-    </UndefinedClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[getHeaders]]></code>
     </UndefinedInterfaceMethod>
@@ -710,9 +703,6 @@
     </UndefinedThisPropertyAssignment>
   </file>
   <file src="test/src/Admin/Model/DoctrineMetadata2Test.php">
-    <UndefinedClass>
-      <code><![CDATA[$this->markTestIncomplete()]]></code>
-    </UndefinedClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[getHeaders]]></code>
     </UndefinedInterfaceMethod>
@@ -747,7 +737,6 @@
       <code><![CDATA['Db\Entity\Artist']]></code>
     </ArgumentTypeCoercion>
     <UndefinedClass>
-      <code><![CDATA[$this->markTestIncomplete()]]></code>
       <code><![CDATA['Db\Entity\Artist']]></code>
       <code><![CDATA['Db\Entity\Artist']]></code>
       <code><![CDATA[Artist]]></code>
