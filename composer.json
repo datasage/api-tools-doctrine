@@ -29,7 +29,6 @@
     "extra": {
         "laminas": {
             "module": [
-                "Laminas\\ApiTools\\Doctrine\\Admin",
                 "Laminas\\ApiTools\\Doctrine\\Server"
             ]
         }
@@ -41,11 +40,9 @@
         "doctrine/doctrine-module": "^5.0.0 || ^6.0.0",
         "doctrine/persistence": "^2.0 || ^3.0",
         "laminas-api-tools/api-tools-api-problem": "^1.6",
-        "laminas-api-tools/api-tools-configuration": "^1.6",
         "laminas-api-tools/api-tools-content-negotiation": "^1.7",
         "laminas-api-tools/api-tools-rest": "^1.7.0",
         "laminas/laminas-eventmanager": "^3",
-        "laminas/laminas-filter": "^2",
         "laminas/laminas-hydrator": "^3.0 || ^4.0",
         "laminas/laminas-inputfilter": "^2.31",
         "laminas/laminas-modulemanager": "^2.17",
@@ -53,17 +50,16 @@
         "laminas/laminas-paginator": "^2.19",
         "laminas/laminas-servicemanager": "^3.23",
         "laminas/laminas-stdlib": "^3.3",
-        "laminas/laminas-validator": "^2.64",
-        "laminas/laminas-view": "^2.11.3"
+        "laminas/laminas-validator": "^2.64"
     },
     "require-dev": {
         "doctrine/doctrine-mongo-odm-module": "^5.0.0 || ^5.0.0",
         "doctrine/doctrine-orm-module": "^5.0.0 || ^6.0.0",
         "doctrine/mongodb-odm": "^2.0.0",
-        "laminas-api-tools/api-tools-admin": "^2.0.1",
-        "laminas-api-tools/api-tools-admin-ui": "^2.1",
         "laminas-api-tools/api-tools-hal": "^1.6.1",
+        "laminas-api-tools/api-tools-provider": "^1.7",
         "laminas/laminas-coding-standard": "^3",
+        "laminas/laminas-filter": "^2",
         "laminas/laminas-http": "^2.20",
         "laminas/laminas-i18n": "^2.29",
         "laminas/laminas-test": "^4.8",
@@ -79,9 +75,6 @@
         "doctrine/orm": "<2.6.3"
     },
     "suggest": {
-        "laminas-api-tools/api-tools-admin": "Admin interface",
-        "api-skeletons/zf-doctrine-hydrator": "Hydrator strategies for Doctrine in Laminas API Tools",
-        "api-skeletons/zf-oauth2-doctrine": "OAuth2 Doctrine Adapter for Laminas API Tools",
         "doctrine/doctrine-mongo-odm-module": "For Mongo ODM mapping",
         "doctrine/doctrine-orm-module": "For ORM mapping"
     },
@@ -92,7 +85,12 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "LaminasTest\\ApiTools\\Doctrine\\": "test/src/"
+            "LaminasTest\\ApiTools\\Doctrine\\": "test/src/",
+            "LaminasTestApiToolsDb\\": "test/assets/module/LaminasTestApiToolsDb/src/LaminasTestApiToolsDb",
+            "LaminasTestApiToolsDbApi\\": "test/assets/module/LaminasTestApiToolsDbApi/src/LaminasTestApiToolsDbApi",
+            "LaminasTestApiToolsDbMongo\\": "test/assets/module/LaminasTestApiToolsDbMongo/src/LaminasTestApiToolsDbMongo",
+            "LaminasTestApiToolsDbMongoApi\\": "test/assets/module/LaminasTestApiToolsDbMongoApi/src/LaminasTestApiToolsDbMongoApi",
+            "LaminasTestApiToolsGeneral\\": "test/assets/module/LaminasTestApiToolsGeneral/src/LaminasTestApiToolsGeneral"
         }
     },
     "scripts": {
