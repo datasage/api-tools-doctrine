@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="config/admin.config.php">
     <UndefinedClass>
-      <code>Controller\DoctrineAutodiscovery</code>
-      <code>Controller\DoctrineAutodiscovery</code>
-      <code>Controller\DoctrineAutodiscovery</code>
-      <code>Controller\DoctrineAutodiscovery</code>
-      <code>Controller\DoctrineAutodiscovery</code>
-      <code>Controller\DoctrineAutodiscovery</code>
-      <code>Controller\DoctrineAutodiscovery</code>
-      <code>Controller\DoctrineMetadataService</code>
-      <code>Controller\DoctrineMetadataService</code>
-      <code>Controller\DoctrineMetadataService</code>
-      <code>Controller\DoctrineMetadataService</code>
-      <code>Controller\DoctrineMetadataService</code>
-      <code>Controller\DoctrineRestService</code>
-      <code>Controller\DoctrineRestService</code>
-      <code>Controller\DoctrineRestService</code>
-      <code>Controller\DoctrineRestService</code>
-      <code>Controller\DoctrineRestService</code>
-      <code>Controller\DoctrineRpcService</code>
-      <code>Controller\DoctrineRpcService</code>
-      <code>Controller\DoctrineRpcService</code>
-      <code>Controller\DoctrineRpcService</code>
-      <code>Controller\DoctrineRpcService</code>
-      <code>DoctrineAutodiscovery</code>
-      <code>Server\Validator\NoObjectExists</code>
-      <code>Server\Validator\ObjectExists</code>
+      <code><![CDATA[Controller\DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Controller\DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Controller\DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Controller\DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Controller\DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Controller\DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Controller\DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Controller\DoctrineMetadataService]]></code>
+      <code><![CDATA[Controller\DoctrineMetadataService]]></code>
+      <code><![CDATA[Controller\DoctrineMetadataService]]></code>
+      <code><![CDATA[Controller\DoctrineMetadataService]]></code>
+      <code><![CDATA[Controller\DoctrineMetadataService]]></code>
+      <code><![CDATA[Controller\DoctrineRestService]]></code>
+      <code><![CDATA[Controller\DoctrineRestService]]></code>
+      <code><![CDATA[Controller\DoctrineRestService]]></code>
+      <code><![CDATA[Controller\DoctrineRestService]]></code>
+      <code><![CDATA[Controller\DoctrineRestService]]></code>
+      <code><![CDATA[Controller\DoctrineRpcService]]></code>
+      <code><![CDATA[Controller\DoctrineRpcService]]></code>
+      <code><![CDATA[Controller\DoctrineRpcService]]></code>
+      <code><![CDATA[Controller\DoctrineRpcService]]></code>
+      <code><![CDATA[Controller\DoctrineRpcService]]></code>
+      <code><![CDATA[DoctrineAutodiscovery]]></code>
+      <code><![CDATA[Server\Validator\NoObjectExists]]></code>
+      <code><![CDATA[Server\Validator\ObjectExists]]></code>
     </UndefinedClass>
   </file>
   <file src="config/server.config.php">
     <UndefinedClass>
-      <code>NoObjectExists</code>
-      <code>ObjectExists</code>
-      <code>Validator\NoObjectExists</code>
-      <code>Validator\NoObjectExists</code>
-      <code>Validator\ObjectExists</code>
-      <code>Validator\ObjectExists</code>
+      <code><![CDATA[NoObjectExists]]></code>
+      <code><![CDATA[ObjectExists]]></code>
+      <code><![CDATA[Validator\NoObjectExists]]></code>
+      <code><![CDATA[Validator\NoObjectExists]]></code>
+      <code><![CDATA[Validator\ObjectExists]]></code>
+      <code><![CDATA[Validator\ObjectExists]]></code>
     </UndefinedClass>
   </file>
   <file src="src/Admin/Controller/DoctrineAutodiscoveryController.php">
     <PropertyNotSetInConstructor>
-      <code>DoctrineAutodiscoveryController</code>
-      <code>DoctrineAutodiscoveryController</code>
-      <code>DoctrineAutodiscoveryController</code>
-      <code>DoctrineAutodiscoveryController</code>
-      <code>DoctrineAutodiscoveryController</code>
+      <code><![CDATA[DoctrineAutodiscoveryController]]></code>
+      <code><![CDATA[DoctrineAutodiscoveryController]]></code>
+      <code><![CDATA[DoctrineAutodiscoveryController]]></code>
+      <code><![CDATA[DoctrineAutodiscoveryController]]></code>
+      <code><![CDATA[DoctrineAutodiscoveryController]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Admin/Model/DoctrineAutodiscoveryModel.php">
@@ -58,101 +58,101 @@
   </file>
   <file src="src/Admin/Model/DoctrineAutodiscoveryModelFactory.php">
     <ArgumentTypeCoercion>
-      <code>$container</code>
+      <code><![CDATA[$container]]></code>
     </ArgumentTypeCoercion>
   </file>
   <file src="src/Admin/Model/DoctrineMetadataServiceEntity.php">
     <ImplementedReturnTypeMismatch>
-      <code>$this</code>
+      <code><![CDATA[$this]]></code>
     </ImplementedReturnTypeMismatch>
     <MissingConstructor>
-      <code>$associationMappings</code>
-      <code>$changeTrackingPolicy</code>
-      <code>$columnNames</code>
-      <code>$containsForeignIdentifier</code>
-      <code>$customGeneratorDefinition</code>
-      <code>$customRepositoryClassName</code>
-      <code>$discriminatorColumn</code>
-      <code>$discriminatorMap</code>
-      <code>$discriminatorValue</code>
-      <code>$entityListeners</code>
-      <code>$fieldMappings</code>
-      <code>$fieldNames</code>
-      <code>$generatorType</code>
-      <code>$idGenerator</code>
-      <code>$identifier</code>
-      <code>$inheritanceType</code>
-      <code>$isIdentifierComposite</code>
-      <code>$isMappedSuperclass</code>
-      <code>$isReadOnly</code>
-      <code>$isVersioned</code>
-      <code>$lifecycleCallbacks</code>
-      <code>$name</code>
-      <code>$namedNativeQueries</code>
-      <code>$namedQueries</code>
-      <code>$namespace</code>
-      <code>$namingStrategy</code>
-      <code>$parentClasses</code>
-      <code>$reflClass</code>
-      <code>$reflFields</code>
-      <code>$rootEntityName</code>
-      <code>$sequenceGeneratorDefinition</code>
-      <code>$sqlResultSetMappings</code>
-      <code>$subClasses</code>
-      <code>$table</code>
-      <code>$tableGeneratorDefinition</code>
-      <code>$versionField</code>
+      <code><![CDATA[$associationMappings]]></code>
+      <code><![CDATA[$changeTrackingPolicy]]></code>
+      <code><![CDATA[$columnNames]]></code>
+      <code><![CDATA[$containsForeignIdentifier]]></code>
+      <code><![CDATA[$customGeneratorDefinition]]></code>
+      <code><![CDATA[$customRepositoryClassName]]></code>
+      <code><![CDATA[$discriminatorColumn]]></code>
+      <code><![CDATA[$discriminatorMap]]></code>
+      <code><![CDATA[$discriminatorValue]]></code>
+      <code><![CDATA[$entityListeners]]></code>
+      <code><![CDATA[$fieldMappings]]></code>
+      <code><![CDATA[$fieldNames]]></code>
+      <code><![CDATA[$generatorType]]></code>
+      <code><![CDATA[$idGenerator]]></code>
+      <code><![CDATA[$identifier]]></code>
+      <code><![CDATA[$inheritanceType]]></code>
+      <code><![CDATA[$isIdentifierComposite]]></code>
+      <code><![CDATA[$isMappedSuperclass]]></code>
+      <code><![CDATA[$isReadOnly]]></code>
+      <code><![CDATA[$isVersioned]]></code>
+      <code><![CDATA[$lifecycleCallbacks]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$namedNativeQueries]]></code>
+      <code><![CDATA[$namedQueries]]></code>
+      <code><![CDATA[$namespace]]></code>
+      <code><![CDATA[$namingStrategy]]></code>
+      <code><![CDATA[$parentClasses]]></code>
+      <code><![CDATA[$reflClass]]></code>
+      <code><![CDATA[$reflFields]]></code>
+      <code><![CDATA[$rootEntityName]]></code>
+      <code><![CDATA[$sequenceGeneratorDefinition]]></code>
+      <code><![CDATA[$sqlResultSetMappings]]></code>
+      <code><![CDATA[$subClasses]]></code>
+      <code><![CDATA[$table]]></code>
+      <code><![CDATA[$tableGeneratorDefinition]]></code>
+      <code><![CDATA[$versionField]]></code>
     </MissingConstructor>
     <ParamNameMismatch>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
     </ParamNameMismatch>
   </file>
   <file src="src/Admin/Model/DoctrineMetadataServiceResource.php">
     <ArgumentTypeCoercion>
-      <code>$entityClassName</code>
+      <code><![CDATA[$entityClassName]]></code>
     </ArgumentTypeCoercion>
     <InvalidStringClass>
-      <code>new $entityClass()</code>
-      <code>new $entityClass()</code>
+      <code><![CDATA[new $entityClass()]]></code>
+      <code><![CDATA[new $entityClass()]]></code>
     </InvalidStringClass>
     <LessSpecificReturnStatement>
-      <code>$metadataEntity</code>
-      <code>$return</code>
+      <code><![CDATA[$metadataEntity]]></code>
+      <code><![CDATA[$return]]></code>
     </LessSpecificReturnStatement>
     <MissingConstructor>
-      <code>$serviceManager</code>
+      <code><![CDATA[$serviceManager]]></code>
     </MissingConstructor>
     <MoreSpecificImplementedParamType>
-      <code>$data</code>
-      <code>$data</code>
-      <code>$entityClassName</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$params</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$entityClassName]]></code>
+      <code><![CDATA[$id]]></code>
+      <code><![CDATA[$id]]></code>
+      <code><![CDATA[$params]]></code>
     </MoreSpecificImplementedParamType>
     <MoreSpecificReturnType>
-      <code>RestServiceEntity[]|ApiProblem</code>
-      <code>RestServiceEntity|ApiProblem</code>
+      <code><![CDATA[RestServiceEntity[]|ApiProblem]]></code>
+      <code><![CDATA[RestServiceEntity|ApiProblem]]></code>
     </MoreSpecificReturnType>
     <ParamNameMismatch>
-      <code>$entityClassName</code>
+      <code><![CDATA[$entityClassName]]></code>
     </ParamNameMismatch>
   </file>
   <file src="src/Admin/Model/DoctrineMetadataServiceResourceFactory.php">
     <ArgumentTypeCoercion>
-      <code>$container</code>
+      <code><![CDATA[$container]]></code>
     </ArgumentTypeCoercion>
   </file>
   <file src="src/Admin/Model/DoctrineRestServiceEntity.php">
     <MissingConstructor>
-      <code>$hydratorName</code>
-      <code>$objectManager</code>
+      <code><![CDATA[$hydratorName]]></code>
+      <code><![CDATA[$objectManager]]></code>
     </MissingConstructor>
     <NonInvariantDocblockPropertyType>
-      <code>$hydratorName</code>
+      <code><![CDATA[$hydratorName]]></code>
     </NonInvariantDocblockPropertyType>
     <ParamNameMismatch>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
     </ParamNameMismatch>
   </file>
   <file src="src/Admin/Model/DoctrineRestServiceModel.php">
@@ -163,72 +163,79 @@
                     )]]></code>
     </ArgumentTypeCoercion>
     <ImplementedReturnTypeMismatch>
-      <code>self</code>
+      <code><![CDATA[self]]></code>
     </ImplementedReturnTypeMismatch>
     <InvalidPropertyFetch>
       <code><![CDATA[$service->resourceClass]]></code>
     </InvalidPropertyFetch>
     <MismatchingDocblockReturnType>
-      <code>DoctrineRestServiceModel</code>
+      <code><![CDATA[DoctrineRestServiceModel]]></code>
     </MismatchingDocblockReturnType>
     <MissingClosureParamType>
-      <code>$r</code>
+      <code><![CDATA[$r]]></code>
     </MissingClosureParamType>
     <NullableReturnStatement>
-      <code>null</code>
-      <code>null</code>
+      <code><![CDATA[null]]></code>
+      <code><![CDATA[null]]></code>
     </NullableReturnStatement>
     <ParamNameMismatch>
-      <code>$events</code>
+      <code><![CDATA[$events]]></code>
     </ParamNameMismatch>
     <PossiblyFalseArgument>
-      <code>$original</code>
-      <code>$original</code>
-      <code>$original</code>
-      <code>$original</code>
-      <code>$original</code>
-      <code>$service</code>
-      <code>$service</code>
+      <code><![CDATA[$original]]></code>
+      <code><![CDATA[$original]]></code>
+      <code><![CDATA[$original]]></code>
+      <code><![CDATA[$original]]></code>
+      <code><![CDATA[$original]]></code>
+      <code><![CDATA[$service]]></code>
+      <code><![CDATA[$service]]></code>
     </PossiblyFalseArgument>
     <PropertyNotSetInConstructor>
-      <code>$serviceManager</code>
+      <code><![CDATA[$serviceManager]]></code>
     </PropertyNotSetInConstructor>
     <RedundantFunctionCall>
-      <code>sprintf</code>
+      <code><![CDATA[sprintf]]></code>
     </RedundantFunctionCall>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[! $pattern]]></code>
+      <code><![CDATA[file_put_contents(
+                $classPath,
+                '<' . "?php\n" . $renderer->render($model)
+            )]]></code>
+    </RiskyTruthyFalsyComparison>
     <TooManyArguments>
-      <code>sprintf</code>
-      <code>trigger</code>
+      <code><![CDATA[sprintf]]></code>
+      <code><![CDATA[trigger]]></code>
     </TooManyArguments>
     <UndefinedVariable>
-      <code>$response</code>
+      <code><![CDATA[$response]]></code>
     </UndefinedVariable>
   </file>
   <file src="src/Admin/Model/DoctrineRestServiceModelFactory.php">
     <ImplementedReturnTypeMismatch>
-      <code>DoctrineRestServiceModel</code>
-      <code>DoctrineRestServiceModel</code>
+      <code><![CDATA[DoctrineRestServiceModel]]></code>
+      <code><![CDATA[DoctrineRestServiceModel]]></code>
     </ImplementedReturnTypeMismatch>
     <MismatchingDocblockReturnType>
-      <code>DoctrineRestServiceModelFactory</code>
+      <code><![CDATA[DoctrineRestServiceModelFactory]]></code>
     </MismatchingDocblockReturnType>
     <PossiblyNullArgument>
-      <code>$moduleEntity</code>
+      <code><![CDATA[$moduleEntity]]></code>
     </PossiblyNullArgument>
     <PropertyNotSetInConstructor>
-      <code>$serviceManager</code>
+      <code><![CDATA[$serviceManager]]></code>
     </PropertyNotSetInConstructor>
     <UndefinedMethod>
-      <code>setSharedManager</code>
+      <code><![CDATA[setSharedManager]]></code>
     </UndefinedMethod>
   </file>
   <file src="src/Admin/Model/DoctrineRestServiceModelFactoryFactory.php">
     <ArgumentTypeCoercion>
-      <code>$container</code>
+      <code><![CDATA[$container]]></code>
     </ArgumentTypeCoercion>
     <UndefinedClass>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
     </UndefinedClass>
   </file>
   <file src="src/Admin/Model/DoctrineRestServiceResource.php">
@@ -239,53 +246,60 @@
       <code><![CDATA[$this->model]]></code>
     </InvalidReturnStatement>
     <LessSpecificReturnStatement>
-      <code>$service</code>
-      <code>parent::fetch($id)</code>
+      <code><![CDATA[$service]]></code>
+      <code><![CDATA[parent::fetch($id)]]></code>
     </LessSpecificReturnStatement>
     <MismatchingDocblockReturnType>
-      <code>DoctrineRestServiceResource</code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
     </MismatchingDocblockReturnType>
     <MoreSpecificImplementedParamType>
-      <code>$data</code>
-      <code>$id</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$id]]></code>
     </MoreSpecificImplementedParamType>
     <MoreSpecificReturnType>
-      <code>DoctrineRestServiceEntity|ApiProblem</code>
-      <code>DoctrineRestServiceEntity|ApiProblem</code>
+      <code><![CDATA[DoctrineRestServiceEntity|ApiProblem]]></code>
+      <code><![CDATA[DoctrineRestServiceEntity|ApiProblem]]></code>
     </MoreSpecificReturnType>
     <PropertyNotSetInConstructor>
-      <code>DoctrineRestServiceResource</code>
-      <code>DoctrineRestServiceResource</code>
-      <code>DoctrineRestServiceResource</code>
-      <code>DoctrineRestServiceResource</code>
-      <code>DoctrineRestServiceResource</code>
-      <code>DoctrineRestServiceResource</code>
-      <code>DoctrineRestServiceResource</code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
+      <code><![CDATA[DoctrineRestServiceResource]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Admin/Model/DoctrineRpcServiceModel.php">
     <PropertyNotSetInConstructor>
-      <code>$filter</code>
+      <code><![CDATA[$filter]]></code>
     </PropertyNotSetInConstructor>
     <RedundantConditionGivenDocblockType>
       <code><![CDATA[$this->filter instanceof FilterChain]]></code>
     </RedundantConditionGivenDocblockType>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[! $pattern]]></code>
+      <code><![CDATA[! file_put_contents(
+                $classPath,
+                "<" . "?php\n" . $renderer->render($view)
+            )]]></code>
+    </RiskyTruthyFalsyComparison>
     <UndefinedClass>
-      <code>InvokableFactory</code>
+      <code><![CDATA[InvokableFactory]]></code>
     </UndefinedClass>
   </file>
   <file src="src/Admin/Model/DoctrineRpcServiceModelFactory.php">
     <ImplementedReturnTypeMismatch>
-      <code>DoctrineRpcServiceModel</code>
+      <code><![CDATA[DoctrineRpcServiceModel]]></code>
     </ImplementedReturnTypeMismatch>
     <PossiblyNullArgument>
-      <code>$moduleEntity</code>
+      <code><![CDATA[$moduleEntity]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="src/Admin/Model/DoctrineRpcServiceModelFactoryFactory.php">
     <UndefinedClass>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
     </UndefinedClass>
   </file>
   <file src="src/Admin/Model/DoctrineRpcServiceResource.php">
@@ -293,96 +307,96 @@
       <code><![CDATA[$this->model instanceof DoctrineRpcServiceModel]]></code>
     </DocblockTypeContradiction>
     <FalsableReturnStatement>
-      <code>$service</code>
+      <code><![CDATA[$service]]></code>
     </FalsableReturnStatement>
     <InvalidReturnStatement>
       <code><![CDATA[$this->model]]></code>
     </InvalidReturnStatement>
     <LessSpecificReturnStatement>
-      <code>$service</code>
-      <code>parent::fetch($id)</code>
+      <code><![CDATA[$service]]></code>
+      <code><![CDATA[parent::fetch($id)]]></code>
     </LessSpecificReturnStatement>
     <MismatchingDocblockReturnType>
-      <code>DoctrineRpcServiceResource</code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
     </MismatchingDocblockReturnType>
     <MoreSpecificImplementedParamType>
-      <code>$data</code>
-      <code>$id</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$id]]></code>
     </MoreSpecificImplementedParamType>
     <MoreSpecificReturnType>
-      <code>DoctrineRpcServiceEntity|ApiProblem</code>
-      <code>DoctrineRpcServiceEntity|ApiProblem</code>
+      <code><![CDATA[DoctrineRpcServiceEntity|ApiProblem]]></code>
+      <code><![CDATA[DoctrineRpcServiceEntity|ApiProblem]]></code>
     </MoreSpecificReturnType>
     <PossiblyInvalidArgument>
-      <code>$creationData['http_methods']</code>
+      <code><![CDATA[$creationData['http_methods']]]></code>
     </PossiblyInvalidArgument>
     <PropertyNotSetInConstructor>
-      <code>DoctrineRpcServiceResource</code>
-      <code>DoctrineRpcServiceResource</code>
-      <code>DoctrineRpcServiceResource</code>
-      <code>DoctrineRpcServiceResource</code>
-      <code>DoctrineRpcServiceResource</code>
-      <code>DoctrineRpcServiceResource</code>
-      <code>DoctrineRpcServiceResource</code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
+      <code><![CDATA[DoctrineRpcServiceResource]]></code>
     </PropertyNotSetInConstructor>
     <TooManyArguments>
-      <code>createService</code>
+      <code><![CDATA[createService]]></code>
     </TooManyArguments>
   </file>
   <file src="src/Admin/Model/NewDoctrineServiceEntity.php">
     <InvalidPropertyAssignmentValue>
-      <code>$value</code>
-      <code>$value</code>
-      <code>$value</code>
-      <code>$value</code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
     </InvalidPropertyAssignmentValue>
     <MissingConstructor>
-      <code>$hydratorName</code>
-      <code>$objectManager</code>
+      <code><![CDATA[$hydratorName]]></code>
+      <code><![CDATA[$objectManager]]></code>
     </MissingConstructor>
     <NonInvariantDocblockPropertyType>
-      <code>$hydratorName</code>
+      <code><![CDATA[$hydratorName]]></code>
     </NonInvariantDocblockPropertyType>
     <ParamNameMismatch>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
     </ParamNameMismatch>
   </file>
   <file src="src/Server/Event/DoctrineResourceEvent.php">
     <MissingTemplateParam>
-      <code>DoctrineResourceEvent</code>
+      <code><![CDATA[DoctrineResourceEvent]]></code>
     </MissingTemplateParam>
     <PropertyNotSetInConstructor>
-      <code>$data</code>
-      <code>$entityClassName</code>
-      <code>$entityId</code>
-      <code>$objectManager</code>
-      <code>$resourceEvent</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$entityClassName]]></code>
+      <code><![CDATA[$entityId]]></code>
+      <code><![CDATA[$objectManager]]></code>
+      <code><![CDATA[$resourceEvent]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Server/Event/Listener/CollectionListener.php">
     <ArgumentTypeCoercion>
-      <code>$entity</code>
+      <code><![CDATA[$entity]]></code>
     </ArgumentTypeCoercion>
     <InvalidPropertyAssignmentValue>
       <code><![CDATA[$this->entityHydratorMap]]></code>
       <code><![CDATA[$this->entityHydratorMap]]></code>
-      <code>[]</code>
+      <code><![CDATA[[]]]></code>
     </InvalidPropertyAssignmentValue>
     <LessSpecificReturnStatement>
-      <code>$hydratorMap[$entityClass]</code>
+      <code><![CDATA[$hydratorMap[$entityClass]]]></code>
       <code><![CDATA[$this->entityHydratorMap[$entityClass]]]></code>
     </LessSpecificReturnStatement>
     <MismatchingDocblockParamType>
-      <code>array|null</code>
+      <code><![CDATA[array|null]]></code>
     </MismatchingDocblockParamType>
     <MoreSpecificReturnType>
-      <code>AbstractHydrator|DoctrineObject</code>
+      <code><![CDATA[AbstractHydrator|DoctrineObject]]></code>
     </MoreSpecificReturnType>
     <PossiblyFalsePropertyAssignmentValue>
-      <code>false</code>
+      <code><![CDATA[false]]></code>
     </PossiblyFalsePropertyAssignmentValue>
     <PossiblyInvalidArgument>
-      <code>$hydratorMap</code>
+      <code><![CDATA[$hydratorMap]]></code>
       <code><![CDATA[$this->entityCollectionValuedAssociations[$entity]]]></code>
       <code><![CDATA[$this->getAssociatedEntityInputFilter($association, $inputFilter)]]></code>
     </PossiblyInvalidArgument>
@@ -390,12 +404,12 @@
       <code><![CDATA[$this->getEntityHydratorMap()[$entityClass]]]></code>
     </PossiblyInvalidArrayAccess>
     <PossiblyInvalidMethodCall>
-      <code>getServiceManager</code>
+      <code><![CDATA[getServiceManager]]></code>
     </PossiblyInvalidMethodCall>
     <PossiblyNullArgument>
-      <code>$associationTargetClass</code>
-      <code>$associationTargetClass</code>
-      <code>$data</code>
+      <code><![CDATA[$associationTargetClass]]></code>
+      <code><![CDATA[$associationTargetClass]]></code>
+      <code><![CDATA[$data]]></code>
       <code><![CDATA[$event->getResourceEvent()->getInputFilter()]]></code>
       <code><![CDATA[$metadata->getAssociationTargetClass($association)]]></code>
       <code><![CDATA[$this->getEntityHydratorMap()[$entityClass]]]></code>
@@ -404,280 +418,303 @@
       <code><![CDATA[$this->getEntityHydratorMap()[$entityClass]]]></code>
     </PossiblyNullArrayAccess>
     <PossiblyNullReference>
-      <code>getServiceManager</code>
+      <code><![CDATA[getServiceManager]]></code>
     </PossiblyNullReference>
     <PossiblyUndefinedMethod>
-      <code>hydrate</code>
+      <code><![CDATA[hydrate]]></code>
     </PossiblyUndefinedMethod>
     <PropertyNotSetInConstructor>
-      <code>$inputFilter</code>
-      <code>$objectData</code>
-      <code>$objectManager</code>
-      <code>$rootEntity</code>
-      <code>$serviceManager</code>
+      <code><![CDATA[$inputFilter]]></code>
+      <code><![CDATA[$objectData]]></code>
+      <code><![CDATA[$objectManager]]></code>
+      <code><![CDATA[$rootEntity]]></code>
+      <code><![CDATA[$serviceManager]]></code>
     </PropertyNotSetInConstructor>
     <RedundantCondition>
       <code><![CDATA[$stripEmptyAssociations === true && ! empty($data) && is_array($data)]]></code>
-      <code>is_array($data)</code>
+      <code><![CDATA[is_array($data)]]></code>
     </RedundantCondition>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[empty($data)]]></code>
+    </RiskyTruthyFalsyComparison>
     <TooManyArguments>
-      <code>getIdentifierFieldNames</code>
+      <code><![CDATA[getIdentifierFieldNames]]></code>
     </TooManyArguments>
     <TypeDoesNotContainType>
-      <code>! $metadata</code>
-      <code>! $metadata</code>
-      <code>! $metadata instanceof ClassMetadata</code>
-      <code>! $metadata || ! $metadata instanceof ClassMetadata</code>
-      <code>! $metadata || ! $metadata instanceof ClassMetadata</code>
+      <code><![CDATA[! $metadata]]></code>
+      <code><![CDATA[! $metadata]]></code>
+      <code><![CDATA[! $metadata instanceof ClassMetadata]]></code>
+      <code><![CDATA[! $metadata || ! $metadata instanceof ClassMetadata]]></code>
+      <code><![CDATA[! $metadata || ! $metadata instanceof ClassMetadata]]></code>
     </TypeDoesNotContainType>
   </file>
   <file src="src/Server/Paginator/Adapter/DoctrineOdmAdapter.php">
     <ImplementedReturnTypeMismatch>
-      <code>array</code>
+      <code><![CDATA[array]]></code>
     </ImplementedReturnTypeMismatch>
     <InvalidClass>
-      <code>Builder</code>
-      <code>Builder</code>
-      <code>Builder</code>
-      <code>Builder</code>
+      <code><![CDATA[Builder]]></code>
+      <code><![CDATA[Builder]]></code>
+      <code><![CDATA[Builder]]></code>
+      <code><![CDATA[Builder]]></code>
     </InvalidClass>
     <InvalidReturnStatement>
       <code><![CDATA[$queryBuilder->getQuery()->execute()]]></code>
     </InvalidReturnStatement>
     <InvalidReturnType>
-      <code>count</code>
+      <code><![CDATA[int]]></code>
     </InvalidReturnType>
     <MissingTemplateParam>
-      <code>AdapterInterface</code>
+      <code><![CDATA[AdapterInterface]]></code>
     </MissingTemplateParam>
     <NullableReturnStatement>
       <code><![CDATA[$queryBuilder->getQuery()->execute()]]></code>
     </NullableReturnStatement>
     <PossiblyInvalidMethodCall>
-      <code>toArray</code>
+      <code><![CDATA[toArray]]></code>
     </PossiblyInvalidMethodCall>
     <PossiblyNullReference>
-      <code>toArray</code>
+      <code><![CDATA[toArray]]></code>
     </PossiblyNullReference>
   </file>
   <file src="src/Server/Paginator/Adapter/DoctrineOrmAdapter.php">
     <ImplementedReturnTypeMismatch>
-      <code>array</code>
+      <code><![CDATA[array]]></code>
     </ImplementedReturnTypeMismatch>
     <MissingTemplateParam>
-      <code>AdapterInterface</code>
-      <code>DoctrineOrmAdapter</code>
+      <code><![CDATA[AdapterInterface]]></code>
+      <code><![CDATA[DoctrineOrmAdapter]]></code>
     </MissingTemplateParam>
   </file>
   <file src="src/Server/Query/CreateFilter/Service/QueryCreateFilterManager.php">
     <MissingTemplateParam>
-      <code>QueryCreateFilterManager</code>
+      <code><![CDATA[QueryCreateFilterManager]]></code>
     </MissingTemplateParam>
     <NonInvariantDocblockPropertyType>
-      <code>$instanceOf</code>
+      <code><![CDATA[$instanceOf]]></code>
     </NonInvariantDocblockPropertyType>
   </file>
   <file src="src/Server/Query/Provider/AbstractQueryProvider.php">
     <ArgumentTypeCoercion>
-      <code>$entityClass</code>
+      <code><![CDATA[$entityClass]]></code>
     </ArgumentTypeCoercion>
     <PossiblyInvalidArgument>
       <code><![CDATA[$queryBuilder->getQuery()]]></code>
     </PossiblyInvalidArgument>
     <UndefinedInterfaceMethod>
-      <code>createQueryBuilder</code>
+      <code><![CDATA[createQueryBuilder]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Query/Provider/DefaultOdm.php">
     <MoreSpecificImplementedParamType>
-      <code>$entityClass</code>
-      <code>$entityClass</code>
+      <code><![CDATA[$entityClass]]></code>
+      <code><![CDATA[$entityClass]]></code>
     </MoreSpecificImplementedParamType>
     <UndefinedInterfaceMethod>
-      <code>createQueryBuilder</code>
-      <code>createQueryBuilder</code>
+      <code><![CDATA[createQueryBuilder]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Query/Provider/Service/QueryProviderManager.php">
     <MissingTemplateParam>
-      <code>QueryProviderManager</code>
+      <code><![CDATA[QueryProviderManager]]></code>
     </MissingTemplateParam>
     <NonInvariantDocblockPropertyType>
-      <code>$instanceOf</code>
+      <code><![CDATA[$instanceOf]]></code>
     </NonInvariantDocblockPropertyType>
   </file>
   <file src="src/Server/Resource/DoctrineResource.php">
     <ArgumentTypeCoercion>
-      <code>$entityClass</code>
+      <code><![CDATA[$entityClass]]></code>
       <code><![CDATA[$this->getCollectionClass()]]></code>
       <code><![CDATA[$this->getEntityClass()]]></code>
       <code><![CDATA[$this->getMultiKeyDelimiter()]]></code>
       <code><![CDATA[$this->getMultiKeyDelimiter()]]></code>
     </ArgumentTypeCoercion>
     <DocblockTypeContradiction>
-      <code>! is_array($queryProviders)</code>
-      <code>$data instanceof ApiProblem</code>
+      <code><![CDATA[! is_array($queryProviders)]]></code>
+      <code><![CDATA[$data instanceof ApiProblem]]></code>
       <code><![CDATA[is_string($this->eventIdentifier)]]></code>
       <code><![CDATA[is_string($this->eventIdentifier)
                 || is_array($this->eventIdentifier)
                 || $this->eventIdentifier instanceof Traversable]]></code>
     </DocblockTypeContradiction>
     <ImplementedReturnTypeMismatch>
-      <code>$this</code>
+      <code><![CDATA[$this]]></code>
     </ImplementedReturnTypeMismatch>
     <InvalidArgument>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
       <code><![CDATA[$this->getEntityClass()]]></code>
       <code><![CDATA[$this->getEntityClass()]]></code>
-      <code>true</code>
+      <code><![CDATA[true]]></code>
     </InvalidArgument>
     <InvalidReturnStatement>
-      <code>$result</code>
-      <code>$return</code>
+      <code><![CDATA[$result]]></code>
+      <code><![CDATA[$return]]></code>
     </InvalidReturnStatement>
     <InvalidStringClass>
-      <code>new $entityClass()</code>
+      <code><![CDATA[new $entityClass()]]></code>
     </InvalidStringClass>
     <MoreSpecificImplementedParamType>
-      <code>$data</code>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$data]]></code>
     </MoreSpecificImplementedParamType>
     <ParamNameMismatch>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
     </ParamNameMismatch>
     <PossiblyInvalidMethodCall>
-      <code>getRequest</code>
-      <code>setCurrentPageNumber</code>
-      <code>setItemCountPerPage</code>
+      <code><![CDATA[getRequest]]></code>
+      <code><![CDATA[setCurrentPageNumber]]></code>
+      <code><![CDATA[setItemCountPerPage]]></code>
     </PossiblyInvalidMethodCall>
     <PossiblyNullReference>
-      <code>getParams</code>
-      <code>getRequest</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
+      <code><![CDATA[getParams]]></code>
+      <code><![CDATA[getRequest]]></code>
+      <code><![CDATA[hydrate]]></code>
+      <code><![CDATA[hydrate]]></code>
+      <code><![CDATA[hydrate]]></code>
     </PossiblyNullReference>
     <PropertyNotSetInConstructor>
-      <code>$entityIdentifierName</code>
-      <code>$events</code>
-      <code>$hydrator</code>
-      <code>$queryCreateFilter</code>
-      <code>$queryProviders</code>
-      <code>$routeIdentifierName</code>
-      <code>$sharedEventManager</code>
-      <code>DoctrineResource</code>
-      <code>DoctrineResource</code>
-      <code>DoctrineResource</code>
-      <code>DoctrineResource</code>
-      <code>DoctrineResource</code>
-      <code>DoctrineResource</code>
+      <code><![CDATA[$entityIdentifierName]]></code>
+      <code><![CDATA[$events]]></code>
+      <code><![CDATA[$hydrator]]></code>
+      <code><![CDATA[$queryCreateFilter]]></code>
+      <code><![CDATA[$queryProviders]]></code>
+      <code><![CDATA[$routeIdentifierName]]></code>
+      <code><![CDATA[$sharedEventManager]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
     </PropertyNotSetInConstructor>
+    <RedundantCastGivenDocblockType>
+      <code><![CDATA[(array) $queryProviders]]></code>
+      <code><![CDATA[(array) $this->eventIdentifier]]></code>
+    </RedundantCastGivenDocblockType>
     <RedundantConditionGivenDocblockType>
       <code><![CDATA[is_array($this->eventIdentifier)]]></code>
       <code><![CDATA[is_string($this->eventIdentifier)
                 || is_array($this->eventIdentifier)]]></code>
       <code><![CDATA[isset($this->eventIdentifier)]]></code>
     </RedundantConditionGivenDocblockType>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[! $entity]]></code>
+    </RiskyTruthyFalsyComparison>
+    <TypeDoesNotContainType>
+      <code><![CDATA[$this->eventIdentifier instanceof Traversable]]></code>
+      <code><![CDATA[is_object($this->eventIdentifier)]]></code>
+    </TypeDoesNotContainType>
     <UndefinedDocblockClass>
-      <code>$routeMatch</code>
+      <code><![CDATA[$routeMatch]]></code>
       <code><![CDATA[$this->getEvent()->getRouteMatch()]]></code>
     </UndefinedDocblockClass>
     <UndefinedInterfaceMethod>
-      <code>$queryProviders</code>
-      <code>$queryProviders</code>
-      <code>getConnection</code>
-      <code>getConnection</code>
-      <code>getConnection</code>
-      <code>getConnection</code>
-      <code>getConnection</code>
-      <code>getConnection</code>
+      <code><![CDATA[$queryProviders]]></code>
+      <code><![CDATA[$queryProviders]]></code>
+      <code><![CDATA[getConnection]]></code>
+      <code><![CDATA[getConnection]]></code>
+      <code><![CDATA[getConnection]]></code>
+      <code><![CDATA[getConnection]]></code>
+      <code><![CDATA[getConnection]]></code>
+      <code><![CDATA[getConnection]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Resource/DoctrineResourceFactory.php">
     <InvalidStringClass>
-      <code>new $resourceClass($entityFactory)</code>
+      <code><![CDATA[new $resourceClass($entityFactory)]]></code>
     </InvalidStringClass>
     <PossiblyNullArgument>
-      <code>$hydrator</code>
+      <code><![CDATA[$hydrator]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="src/Server/Service/DoctrineHydrator.php">
     <ImplementedReturnTypeMismatch>
-      <code>object</code>
+      <code><![CDATA[object]]></code>
     </ImplementedReturnTypeMismatch>
     <InvalidArgument>
-      <code>$data</code>
-      <code>$object</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$object]]></code>
     </InvalidArgument>
     <InvalidReturnStatement>
       <code><![CDATA[$this->hydrateService]]></code>
       <code><![CDATA[$this->hydrateService->hydrate($object, $data)]]></code>
     </InvalidReturnStatement>
     <InvalidReturnType>
-      <code>HydratorInterface</code>
+      <code><![CDATA[HydratorInterface]]></code>
     </InvalidReturnType>
   </file>
   <file src="src/Server/Service/DoctrineHydratorFactory.php">
     <ArgumentTypeCoercion>
-      <code>$objectManager</code>
+      <code><![CDATA[$objectManager]]></code>
     </ArgumentTypeCoercion>
     <MismatchingDocblockReturnType>
-      <code>HydratorInterface</code>
+      <code><![CDATA[HydratorInterface]]></code>
     </MismatchingDocblockReturnType>
     <MissingReturnType>
-      <code>configureHydratorFilters</code>
-      <code>configureHydratorStrategies</code>
+      <code><![CDATA[configureHydratorFilters]]></code>
+      <code><![CDATA[configureHydratorStrategies]]></code>
     </MissingReturnType>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$extractService]]></code>
+      <code><![CDATA[$hydrateService]]></code>
+    </RiskyTruthyFalsyComparison>
     <UndefinedInterfaceMethod>
-      <code>build</code>
-      <code>getHydratorFactory</code>
+      <code><![CDATA[build]]></code>
+      <code><![CDATA[getHydratorFactory]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Validator/NoObjectExistsFactory.php">
     <PossiblyNullArgument>
-      <code>$options</code>
+      <code><![CDATA[$options]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="src/Server/Validator/ObjectExistsFactory.php">
     <PossiblyNullArgument>
-      <code>$options</code>
+      <code><![CDATA[$options]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="test/config/ORM/local.php">
     <UndefinedClass>
-      <code>RevType</code>
-      <code>RevType</code>
+      <code><![CDATA[RevType]]></code>
+      <code><![CDATA[RevType]]></code>
     </UndefinedClass>
   </file>
   <file src="test/src/Admin/Model/DoctrineAutodiscoveryModelTest.php">
     <NullArgument>
-      <code>null</code>
-      <code>null</code>
-      <code>null</code>
-      <code>null</code>
+      <code><![CDATA[null]]></code>
+      <code><![CDATA[null]]></code>
+      <code><![CDATA[null]]></code>
+      <code><![CDATA[null]]></code>
     </NullArgument>
     <RedundantCondition>
-      <code>assertIsArray</code>
-      <code>assertIsArray</code>
+      <code><![CDATA[assertIsArray]]></code>
+      <code><![CDATA[assertIsArray]]></code>
     </RedundantCondition>
     <UndefinedClass>
-      <code>Album</code>
-      <code>Artist</code>
-      <code>Meta</code>
-      <code>Product</code>
+      <code><![CDATA[Album]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Product]]></code>
     </UndefinedClass>
   </file>
   <file src="test/src/Admin/Model/DoctrineMetadata1Test.php">
+    <UndefinedClass>
+      <code><![CDATA[$this->markTestIncomplete()]]></code>
+    </UndefinedClass>
     <UndefinedInterfaceMethod>
-      <code>getHeaders</code>
+      <code><![CDATA[getHeaders]]></code>
     </UndefinedInterfaceMethod>
     <UndefinedThisPropertyAssignment>
       <code><![CDATA[$this->resource]]></code>
     </UndefinedThisPropertyAssignment>
   </file>
   <file src="test/src/Admin/Model/DoctrineMetadata2Test.php">
+    <UndefinedClass>
+      <code><![CDATA[$this->markTestIncomplete()]]></code>
+    </UndefinedClass>
     <UndefinedInterfaceMethod>
-      <code>getHeaders</code>
+      <code><![CDATA[getHeaders]]></code>
     </UndefinedInterfaceMethod>
     <UndefinedThisPropertyAssignment>
       <code><![CDATA[$this->resource]]></code>
@@ -686,76 +723,38 @@
   </file>
   <file src="test/src/Admin/Model/DoctrineMetadataServiceResourceFactoryTest.php">
     <MismatchingDocblockPropertyType>
-      <code>ObjectProphecy</code>
+      <code><![CDATA[ObjectProphecy]]></code>
     </MismatchingDocblockPropertyType>
     <PossiblyUndefinedMethod>
-      <code>reveal</code>
-      <code>reveal</code>
+      <code><![CDATA[reveal]]></code>
+      <code><![CDATA[reveal]]></code>
     </PossiblyUndefinedMethod>
   </file>
   <file src="test/src/Admin/Model/DoctrineRestServiceModelFactoryFactoryTest.php">
     <UndefinedClass>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
     </UndefinedClass>
-  </file>
-  <file src="test/src/Admin/Model/DoctrineRestServiceResourceFactoryTest.php">
-    <LessSpecificReturnStatement>
-      <code><![CDATA[[
-            'all'                             => [
-                [
-                    DoctrineRestServiceModelFactory::class => false,
-                    InputFilterModel::class                => false,
-                    DocumentationModel::class              => false,
-                ],
-            ],
-            'DoctrineRestServiceModelFactory' => [
-                [
-                    DoctrineRestServiceModelFactory::class => false,
-                    InputFilterModel::class                => true,
-                    DocumentationModel::class              => true,
-                ],
-            ],
-            'InputFilterModel'                => [
-                [
-                    DoctrineRestServiceModelFactory::class => true,
-                    InputFilterModel::class                => false,
-                    DocumentationModel::class              => true,
-                ],
-            ],
-            'DocumentationModel'              => [
-                [
-                    DoctrineRestServiceModelFactory::class => true,
-                    InputFilterModel::class                => true,
-                    DocumentationModel::class              => false,
-                ],
-            ],
-        ]]]></code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType>
-      <code><![CDATA[array<string, array{
-     *     0: array<class-string, bool>
-     * }>]]></code>
-    </MoreSpecificReturnType>
   </file>
   <file src="test/src/Admin/Model/DoctrineRestServiceResourceTest.php">
     <ArgumentTypeCoercion>
-      <code>'Db\Entity\Artist'</code>
-      <code>'Db\Entity\Artist'</code>
+      <code><![CDATA['Db\Entity\Artist']]></code>
+      <code><![CDATA['Db\Entity\Artist']]></code>
     </ArgumentTypeCoercion>
     <UndefinedClass>
-      <code>'Db\Entity\Artist'</code>
-      <code>'Db\Entity\Artist'</code>
-      <code>Artist</code>
+      <code><![CDATA[$this->markTestIncomplete()]]></code>
+      <code><![CDATA['Db\Entity\Artist']]></code>
+      <code><![CDATA['Db\Entity\Artist']]></code>
+      <code><![CDATA[Artist]]></code>
     </UndefinedClass>
     <UndefinedInterfaceMethod>
-      <code>getHeaders</code>
-      <code>setMethod</code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[setMethod]]></code>
     </UndefinedInterfaceMethod>
     <UndefinedThisPropertyAssignment>
       <code><![CDATA[$this->resource]]></code>
@@ -763,291 +762,297 @@
   </file>
   <file src="test/src/Admin/Model/DoctrineRpcServiceModelFactoryFactoryTest.php">
     <MismatchingDocblockPropertyType>
-      <code>ObjectProphecy</code>
+      <code><![CDATA[ObjectProphecy]]></code>
     </MismatchingDocblockPropertyType>
     <PossiblyUndefinedMethod>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>reveal</code>
-      <code>reveal</code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[reveal]]></code>
+      <code><![CDATA[reveal]]></code>
     </PossiblyUndefinedMethod>
     <UndefinedClass>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
-      <code>ConfigResourceFactory</code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
+      <code><![CDATA[ConfigResourceFactory]]></code>
     </UndefinedClass>
   </file>
   <file src="test/src/Admin/Model/DoctrineRpcServiceResourceFactoryTest.php">
     <UndefinedInterfaceMethod>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="test/src/Server/Event/Listener/CollectionListenerTest.php">
     <PossiblyInvalidArgument>
-      <code>$entityFactory</code>
-      <code>$om</code>
+      <code><![CDATA[$entityFactory]]></code>
+      <code><![CDATA[$om]]></code>
     </PossiblyInvalidArgument>
     <PossiblyUndefinedMethod>
-      <code>expects</code>
-      <code>expects</code>
-      <code>expects</code>
+      <code><![CDATA[expects]]></code>
+      <code><![CDATA[expects]]></code>
+      <code><![CDATA[expects]]></code>
     </PossiblyUndefinedMethod>
     <UndefinedClass>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
     </UndefinedClass>
   </file>
   <file src="test/src/Server/ODM/CRUD/CRUDTest.php">
     <MissingClosureParamType>
-      <code>$class</code>
+      <code><![CDATA[$class]]></code>
     </MissingClosureParamType>
     <PossiblyNullReference>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>getCreatedAt</code>
-      <code>getId</code>
-      <code>getName</code>
-      <code>getName</code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[getCreatedAt]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getName]]></code>
+      <code><![CDATA[getName]]></code>
     </PossiblyNullReference>
     <PossiblyUndefinedMethod>
-      <code>expects</code>
+      <code><![CDATA[expects]]></code>
     </PossiblyUndefinedMethod>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$name]]></code>
+    </RiskyTruthyFalsyComparison>
     <UndefinedClass>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta</code>
-      <code>$meta1</code>
-      <code>$meta2</code>
-      <code>EventCatcher</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
-      <code>Meta</code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta]]></code>
+      <code><![CDATA[$meta1]]></code>
+      <code><![CDATA[$meta2]]></code>
+      <code><![CDATA[EventCatcher]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
+      <code><![CDATA[Meta]]></code>
     </UndefinedClass>
     <UndefinedInterfaceMethod>
-      <code>getConfig</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
+      <code><![CDATA[getConfig]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="test/src/Server/ORM/CRUD/CRUDTest.php">
     <MissingClosureParamType>
-      <code>$class</code>
+      <code><![CDATA[$class]]></code>
     </MissingClosureParamType>
     <PossiblyNullReference>
-      <code>attach</code>
-      <code>attach</code>
-      <code>getCreatedAt</code>
-      <code>getId</code>
-      <code>getId</code>
-      <code>getId</code>
-      <code>getId</code>
-      <code>getName</code>
-      <code>getName</code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[getCreatedAt]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getName]]></code>
+      <code><![CDATA[getName]]></code>
     </PossiblyNullReference>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$name]]></code>
+    </RiskyTruthyFalsyComparison>
     <UndefinedClass>
-      <code>$album</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist</code>
-      <code>$artist1</code>
-      <code>$artist1</code>
-      <code>$artist1</code>
-      <code>$artist1</code>
-      <code>$artist1</code>
-      <code>$artist1</code>
-      <code>$artist1</code>
-      <code>$artist2</code>
-      <code>$artist2</code>
-      <code>$artist2</code>
-      <code>$artist2</code>
-      <code>$artist2</code>
-      <code>$artist2</code>
-      <code>$artist2</code>
-      <code>$artist3</code>
-      <code>$artist3</code>
-      <code>$artist3</code>
-      <code>$artist3</code>
-      <code>$artist3</code>
-      <code>$artist3</code>
-      <code>$product</code>
-      <code>$product</code>
-      <code>$product</code>
-      <code>$product</code>
-      <code>$product</code>
-      <code>$product</code>
-      <code>?Artist</code>
-      <code>Album</code>
-      <code>Album</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>Artist</code>
-      <code>ArtistResource</code>
-      <code>DoctrineResource</code>
-      <code>DoctrineResource</code>
-      <code>EventCatcher</code>
-      <code>EventCatcher</code>
-      <code>Product</code>
-      <code>Product</code>
-      <code>Product</code>
+      <code><![CDATA[$album]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist]]></code>
+      <code><![CDATA[$artist1]]></code>
+      <code><![CDATA[$artist1]]></code>
+      <code><![CDATA[$artist1]]></code>
+      <code><![CDATA[$artist1]]></code>
+      <code><![CDATA[$artist1]]></code>
+      <code><![CDATA[$artist1]]></code>
+      <code><![CDATA[$artist1]]></code>
+      <code><![CDATA[$artist2]]></code>
+      <code><![CDATA[$artist2]]></code>
+      <code><![CDATA[$artist2]]></code>
+      <code><![CDATA[$artist2]]></code>
+      <code><![CDATA[$artist2]]></code>
+      <code><![CDATA[$artist2]]></code>
+      <code><![CDATA[$artist2]]></code>
+      <code><![CDATA[$artist3]]></code>
+      <code><![CDATA[$artist3]]></code>
+      <code><![CDATA[$artist3]]></code>
+      <code><![CDATA[$artist3]]></code>
+      <code><![CDATA[$artist3]]></code>
+      <code><![CDATA[$artist3]]></code>
+      <code><![CDATA[$product]]></code>
+      <code><![CDATA[$product]]></code>
+      <code><![CDATA[$product]]></code>
+      <code><![CDATA[$product]]></code>
+      <code><![CDATA[$product]]></code>
+      <code><![CDATA[$product]]></code>
+      <code><![CDATA[?Artist]]></code>
+      <code><![CDATA[Album]]></code>
+      <code><![CDATA[Album]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[Artist]]></code>
+      <code><![CDATA[ArtistResource]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
+      <code><![CDATA[DoctrineResource]]></code>
+      <code><![CDATA[EventCatcher]]></code>
+      <code><![CDATA[EventCatcher]]></code>
+      <code><![CDATA[Product]]></code>
+      <code><![CDATA[Product]]></code>
+      <code><![CDATA[Product]]></code>
     </UndefinedClass>
     <UndefinedInterfaceMethod>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>getHeaders</code>
-      <code>setAllowOverride</code>
-      <code>setAllowOverride</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setMethod</code>
-      <code>setService</code>
-      <code>setService</code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[setAllowOverride]]></code>
+      <code><![CDATA[setAllowOverride]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setMethod]]></code>
+      <code><![CDATA[setService]]></code>
+      <code><![CDATA[setService]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="test/src/Server/ORM/CRUD/TestAsset/FailureAggregateListener.php">
@@ -1057,31 +1062,31 @@
   </file>
   <file src="test/src/Server/Validator/NoObjectExistsFactoryTest.php">
     <UndefinedClass>
-      <code>NoObjectExists</code>
-      <code>NoObjectExists</code>
+      <code><![CDATA[NoObjectExists]]></code>
+      <code><![CDATA[NoObjectExists]]></code>
     </UndefinedClass>
   </file>
   <file src="test/src/Server/Validator/ObjectExistsFactoryTest.php">
     <UndefinedClass>
-      <code>ObjectExists</code>
-      <code>ObjectExists</code>
+      <code><![CDATA[ObjectExists]]></code>
+      <code><![CDATA[ObjectExists]]></code>
     </UndefinedClass>
   </file>
   <file src="test/src/TestCase.php">
     <LessSpecificReturnStatement>
-      <code>parent::setApplicationConfig($config)</code>
+      <code><![CDATA[parent::setApplicationConfig($config)]]></code>
     </LessSpecificReturnStatement>
     <MoreSpecificImplementedParamType>
-      <code>$config</code>
+      <code><![CDATA[$config]]></code>
     </MoreSpecificImplementedParamType>
     <MoreSpecificReturnType>
-      <code>$this</code>
+      <code><![CDATA[$this]]></code>
     </MoreSpecificReturnType>
     <ParamNameMismatch>
-      <code>$config</code>
+      <code><![CDATA[$config]]></code>
     </ParamNameMismatch>
     <PossiblyNullReference>
-      <code>getNumberOfRequiredParameters</code>
+      <code><![CDATA[getNumberOfRequiredParameters]]></code>
     </PossiblyNullReference>
   </file>
 </files>

@@ -161,7 +161,6 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param array              $config
      * @return ObjectManager
      * @throws ServiceNotCreatedException
      */
@@ -175,7 +174,6 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param array              $config
      * @param ObjectManager      $objectManager
      * @return null|HydratorInterface
      */
@@ -191,7 +189,6 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param array              $config
      * @param ObjectManager      $objectManager
      * @return HydratorInterface
      */
@@ -218,7 +215,6 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
 
     /**
      * @param AbstractHydrator   $hydrator
-     * @param array              $config
      * @param ObjectManager      $objectManager
      * @throws ServiceNotCreatedException
      */

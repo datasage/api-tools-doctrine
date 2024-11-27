@@ -160,7 +160,6 @@ class DoctrineRpcServiceModel
      * @todo Return the controller service name
      * @param string $serviceName
      * @param string $route
-     * @param array $httpMethods
      * @param null|string $selector
      * @param array $options
      * @return DoctrineRpcServiceEntity|false
@@ -188,7 +187,6 @@ class DoctrineRpcServiceModel
      * Delete a service
      *
      * @param bool $deleteFiles
-     * @return true
      */
     public function deleteService(DoctrineRpcServiceEntity $entity, $deleteFiles = true): bool
     {
@@ -442,7 +440,6 @@ class DoctrineRpcServiceModel
      * Update the allowed HTTP methods for a given service
      *
      * @param string $controllerService
-     * @return true
      */
     public function updateHttpMethods($controllerService, array $httpMethods): bool
     {
@@ -458,7 +455,6 @@ class DoctrineRpcServiceModel
      *
      * @param string $controllerService
      * @param string $selector
-     * @return true
      */
     public function updateSelector($controllerService, $selector): bool
     {
@@ -473,7 +469,6 @@ class DoctrineRpcServiceModel
      * Update configuration for a content negotiation whitelist for a named controller service
      *
      * @param string $controllerService
-     * @return true
      */
     public function updateContentNegotiationWhitelist($controllerService, string $headerType, array $whitelist): bool
     {

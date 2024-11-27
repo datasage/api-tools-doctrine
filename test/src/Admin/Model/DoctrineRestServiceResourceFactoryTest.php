@@ -37,7 +37,7 @@ class DoctrineRestServiceResourceFactoryTest extends TestCase
      *     0: array<class-string, bool>
      * }>
      */
-    public function missingDependencies(): array
+    public static function missingDependencies(): array
     {
         return [
             'all'                             => [

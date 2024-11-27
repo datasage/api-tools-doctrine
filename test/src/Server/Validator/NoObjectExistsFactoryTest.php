@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ObjectRepository;
 use DoctrineModule\Validator\NoObjectExists as NoObjectExistsOrigin;
 use Laminas\ApiTools\Doctrine\Server\Validator\NoObjectExists;
+use Laminas\I18n\Translator\TranslatorInterface;
 use Laminas\ServiceManager\ServiceManager;
 use Laminas\Validator\ValidatorPluginManager;
 use PHPUnit\Framework\TestCase;
@@ -58,6 +59,7 @@ class NoObjectExistsFactoryTest extends TestCase
         $entityManager->getRepository('MyEntity')->willReturn($this->objectRepository->reveal());
 
         $this->serviceManager->has('MvcTranslator')->willReturn(false);
+        $this->serviceManager->has(TranslatorInterface::class)->willReturn(false);
         $this->serviceManager->get(EntityManager::class)->willReturn($entityManager->reveal());
 
         $validator = $this->validators->get(

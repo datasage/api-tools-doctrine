@@ -253,7 +253,6 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
 
     /**
      * @param ObjectManager $objectManager
-     * @return array
      * @throws ServiceNotCreatedException
      */
     protected function loadQueryProviders(ContainerInterface $serviceLocator, array $config, $objectManager): array
@@ -291,9 +290,6 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
         return $queryProviders;
     }
 
-    /**
-     * @return array
-     */
     protected function loadConfiguredListeners(ContainerInterface $container, array $config): array
     {
         if (! isset($config['listeners'])) {

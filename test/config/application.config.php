@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Laminas\Cache\Storage\Adapter\Memory;
+use Laminas\I18n\Module;
 
 return [
     'modules'                 => [
@@ -24,6 +25,7 @@ return [
         'LaminasTestApiToolsGeneral',
         'LaminasTestApiToolsDb',
         'LaminasTestApiToolsDbApi',
+        Module::class,
     ],
     'module_listener_options' => [
         'config_glob_paths' => [

@@ -275,7 +275,6 @@ class DoctrineRestServiceModel implements EventManagerAwareInterface
      * Fetch all Doctrine services
      *
      * @param string $version
-     * @return array
      */
     public function fetchAll($version = null): array
     {

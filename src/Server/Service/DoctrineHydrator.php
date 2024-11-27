@@ -34,8 +34,6 @@ class DoctrineHydrator implements HydratorInterface
 
     /**
      * Extract values from an object.
-     *
-     * @return array
      */
     public function extract(object $object): array
     {
@@ -45,7 +43,6 @@ class DoctrineHydrator implements HydratorInterface
     /**
      * Hydrate $object with the provided $data.
      *
-     * @param array $data
      * @return object
      */
     public function hydrate(array $data, object $object)

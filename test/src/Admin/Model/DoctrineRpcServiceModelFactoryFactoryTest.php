@@ -35,7 +35,7 @@ class DoctrineRpcServiceModelFactoryFactoryTest extends TestCase
     }
 
     /** @psalm-return array<string, array{0: array<non-empty-string|class-string, bool>}> */
-    public function missingDependencies(): array
+    public static function missingDependencies(): array
     {
         return [
             'all'                   => [

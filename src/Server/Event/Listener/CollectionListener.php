@@ -109,7 +109,6 @@ class CollectionListener implements ListenerAggregateInterface
 
     /**
      * @param object|string $entity
-     * @param array $data
      * @return mixed
      */
     protected function iterateEntity($entity, array $data, InputFilterInterface $inputFilter): array

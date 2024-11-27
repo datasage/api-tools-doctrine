@@ -74,7 +74,7 @@ class CollectionListenerTest extends TestCase
     }
 
     /** @psalm-return array<array-key, array{0: bool}> */
-    public function trueFalseProvider(): array
+    public static function trueFalseProvider(): array
     {
         return [[false], [true]];
     }

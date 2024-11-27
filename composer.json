@@ -32,38 +32,42 @@
         }
     },
     "require": {
-        "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+        "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+        "doctrine/collections": "^2",
         "doctrine/doctrine-laminas-hydrator": "^3.2.1",
+        "doctrine/doctrine-module": "^5.0.0 || ^6.0.0",
         "doctrine/persistence": "^2.0 || ^3.0",
-        "laminas-api-tools/api-tools": "^1.3",
+        "laminas-api-tools/api-tools-api-problem": "^1.6",
+        "laminas-api-tools/api-tools-configuration": "^1.6",
+        "laminas-api-tools/api-tools-content-negotiation": "^1.7",
         "laminas-api-tools/api-tools-rest": "^1.7.0",
+        "laminas/laminas-eventmanager": "^3",
+        "laminas/laminas-filter": "^2",
         "laminas/laminas-hydrator": "^3.0 || ^4.0",
+        "laminas/laminas-inputfilter": "^2.31",
+        "laminas/laminas-modulemanager": "^2.17",
+        "laminas/laminas-mvc": "^3.0.2",
+        "laminas/laminas-paginator": "^2.19",
+        "laminas/laminas-servicemanager": "^3.23",
         "laminas/laminas-stdlib": "^3.3",
-        "laminas/laminas-view": "^2.11.3",
-        "laminas/laminas-zendframework-bridge": "^1.6"
+        "laminas/laminas-validator": "^2.64",
+        "laminas/laminas-view": "^2.11.3"
     },
     "require-dev": {
-        "doctrine/doctrine-module": "^5.0.0 || ^6.0.0",
         "doctrine/doctrine-mongo-odm-module": "^5.0.0 || ^5.0.0",
         "doctrine/doctrine-orm-module": "^5.0.0 || ^6.0.0",
         "doctrine/mongodb-odm": "^2.0.0",
         "laminas-api-tools/api-tools-admin": "^2.0.1",
-        "laminas-api-tools/api-tools-content-negotiation": "^1.7",
         "laminas-api-tools/api-tools-hal": "^1.6.1",
-        "laminas/laminas-coding-standard": "~2.3.0",
-        "laminas/laminas-form": "^2.9.2 || ^3.0.0",
-        "laminas/laminas-i18n": "^2.7.3",
-        "laminas/laminas-log": "^2.9.1",
-        "laminas/laminas-mvc": "^2.7.13 || ^3.0.2",
-        "laminas/laminas-serializer": "^2.8.0",
-        "laminas/laminas-test": "^4.0.0",
+        "laminas/laminas-coding-standard": "^3",
+        "laminas/laminas-http": "^2.20",
+        "laminas/laminas-test": "^4.8",
         "mongodb/mongodb": "^1.1.0",
         "phpspec/prophecy": "^1.15.0",
         "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^9.5.10",
-        "psalm/plugin-phpunit": "^0.16.1 || ^0.17.0 || ^0.18.0",
-        "rector/rector": "^0.18.4",
-        "symfony/yaml": "^5.0 || ^6.0",
+        "phpunit/phpunit": "^10",
+        "psalm/plugin-phpunit": "^0.19",
+        "shipmonk/composer-dependency-analyser": "^1.8",
         "vimeo/psalm": "^5"
     },
     "conflict": {
@@ -71,6 +75,7 @@
         "doctrine/orm": "<2.6.3"
     },
     "suggest": {
+        "laminas-api-tools/api-tools-admin": "Admin interface",
         "api-skeletons/zf-doctrine-hydrator": "Hydrator strategies for Doctrine in Laminas API Tools",
         "api-skeletons/zf-oauth2-doctrine": "OAuth2 Doctrine Adapter for Laminas API Tools",
         "doctrine/doctrine-mongo-odm-module": "For Mongo ODM mapping",
@@ -98,5 +103,15 @@
     },
     "replace": {
         "zfcampus/zf-apigility-doctrine": "^2.3.0"
-    }
+    },
+    "repositories": [
+      {
+        "type": "git",
+        "url": "https://github.com/datasage/api-tools-api-problem"
+      },
+      {
+        "type": "git",
+        "url": "https://github.com/datasage/api-tools-content-negotiation"
+      }
+    ]
 }

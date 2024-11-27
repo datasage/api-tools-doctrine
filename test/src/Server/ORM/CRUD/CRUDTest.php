@@ -913,7 +913,7 @@ class CRUDTest extends TestCase
     }
 
     /** @psalm-return array<string, array{0: string, 1: string}> */
-    public function listener(): array
+    public static function listener(): array
     {
         return [
             //          $methodToAttachListener,     $detailMessage
