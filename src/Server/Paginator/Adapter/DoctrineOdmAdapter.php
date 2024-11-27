@@ -22,9 +22,8 @@ class DoctrineOdmAdapter implements AdapterInterface
 
     /**
      * @param Builder $queryBuilder
-     * @return void
      */
-    public function setQueryBuilder($queryBuilder)
+    public function setQueryBuilder($queryBuilder): void
     {
         $this->queryBuilder = $queryBuilder;
     }
@@ -54,12 +53,13 @@ class DoctrineOdmAdapter implements AdapterInterface
     /**
      * {@inheritDoc}
      */
-    public function count()
+    public function count(): int
     {
         $queryBuilder = clone $this->getQueryBuilder();
+        $queryBuilder->count();
         $queryBuilder->skip(0);
-        $queryBuilder->limit(null);
+        $queryBuilder->limit(0);
 
-        return $queryBuilder->getQuery()->execute()->count();
+        return $queryBuilder->getQuery()->execute();
     }
 }

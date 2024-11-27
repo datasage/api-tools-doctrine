@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasTest\ApiTools\Doctrine\Admin\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Admin\Model\ModuleModel;
 use Laminas\ApiTools\Admin\Model\ModulePathSpec;
 use Laminas\ApiTools\Configuration\ConfigResourceFactory;
@@ -16,7 +15,9 @@ use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophecy\ProphecyInterface;
+use Psr\Container\ContainerInterface;
 
 class DoctrineRpcServiceModelFactoryFactoryTest extends TestCase
 {
@@ -24,7 +25,7 @@ class DoctrineRpcServiceModelFactoryFactoryTest extends TestCase
     use ProphecyTrait;
 
     /** @var ProphecyInterface|ContainerInterface */
-    private $container;
+    private ObjectProphecy $container;
 
     protected function setUp(): void
     {
@@ -34,7 +35,7 @@ class DoctrineRpcServiceModelFactoryFactoryTest extends TestCase
     }
 
     /** @psalm-return array<string, array{0: array<non-empty-string|class-string, bool>}> */
-    public function missingDependencies(): array
+    public static function missingDependencies(): array
     {
         return [
             'all'                   => [

@@ -34,7 +34,7 @@ class DoctrineRestServiceModelFactory extends RestServiceModelFactory
      *
      * @return DoctrineRestServiceModelFactory
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function setServiceManager(ServiceManager $serviceManager): static
     {
         $this->serviceManager = $serviceManager;
         return $this;

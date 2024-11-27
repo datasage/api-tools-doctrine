@@ -36,7 +36,7 @@ class DoctrineRpcServiceResource extends RpcServiceResource
      * @param string $moduleName
      * @return DoctrineRpcServiceResource
      */
-    public function setModuleName($moduleName)
+    public function setModuleName($moduleName): static
     {
         $this->moduleName = $moduleName;
         return $this;

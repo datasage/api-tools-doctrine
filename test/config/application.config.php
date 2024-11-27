@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
+use Laminas\Cache\Storage\Adapter\Memory;
+use Laminas\I18n\Module;
+
 return [
     'modules'                 => [
         'DoctrineModule',
         'DoctrineORMModule',
-        'Phpro\DoctrineHydrationModule',
+        'Laminas\Cache',
+        Memory::class,
         'Laminas\ApiTools',
         'Laminas\ApiTools\Admin',
         'Laminas\ApiTools\Hal',
@@ -21,6 +25,7 @@ return [
         'LaminasTestApiToolsGeneral',
         'LaminasTestApiToolsDb',
         'LaminasTestApiToolsDbApi',
+        Module::class,
     ],
     'module_listener_options' => [
         'config_glob_paths' => [

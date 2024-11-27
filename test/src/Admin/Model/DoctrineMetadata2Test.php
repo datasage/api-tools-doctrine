@@ -11,6 +11,8 @@ use LaminasTest\ApiTools\Doctrine\TestCase;
 
 use function json_decode;
 
+use const JSON_THROW_ON_ERROR;
+
 class DoctrineMetadata2Test extends TestCase
 {
     protected function setUp(): void
@@ -44,19 +46,19 @@ class DoctrineMetadata2Test extends TestCase
             '/api-tools/api/module/DbApi/doctrine/DbApi%5CV1%5CRest%5CArtist%5CController',
             Request::METHOD_GET
         );
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
         $this->assertArrayHasKey('controller_service_name', $body);
         $this->assertEquals('DbApi\V1\Rest\Artist\Controller', $body['controller_service_name']);
 
         $this->dispatch('/api-tools/api/module/DbApi/doctrine?version=1', Request::METHOD_GET);
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
         $this->assertEquals(
             'DbApi\V1\Rest\Artist\Controller',
             $body['_embedded']['doctrine'][0]['controller_service_name']
         );
 
         $this->dispatch('/api-tools/api/module/DbApi/doctrine', Request::METHOD_GET);
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
         $this->assertEquals(
             'DbApi\V1\Rest\Artist\Controller',
             $body['_embedded']['doctrine'][0]['controller_service_name']
@@ -99,7 +101,7 @@ class DoctrineMetadata2Test extends TestCase
         }
         $this->dispatch('/api-tools/api/module/DbApi/doctrine-rpc?version=1', Request::METHOD_GET);
         $this->dispatch('/api-tools/api/module/DbApi/doctrine-rpc', Request::METHOD_GET);
-        $body = json_decode($this->getResponse()->getBody(), true);
+        $body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
         $this->assertEquals(
             'DbApi\V1\Rpc\Artistalbum\Controller',
             $body['_embedded']['doctrine-rpc'][0]['controller_service_name']

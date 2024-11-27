@@ -4,21 +4,19 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Admin\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Admin\Model\ModuleModel;
 use Laminas\ApiTools\Admin\Model\ModulePathSpec;
 use Laminas\ApiTools\Configuration\ConfigResourceFactory;
+use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRestServiceModelFactory;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Psr\Container\ContainerInterface;
 
 use function sprintf;
 
 class DoctrineRestServiceModelFactoryFactory
 {
-    /**
-     * @return DoctrineRestServiceModelFactory
-     */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): DoctrineRestServiceModelFactory
     {
         if (
             ! $container->has(ModulePathSpec::class)
@@ -48,10 +46,8 @@ class DoctrineRestServiceModelFactoryFactory
 
     /**
      * Attach shared listeners to the DoctrineRestServiceModel.
-     *
-     * @return void
      */
-    private function attachSharedListeners(SharedEventManagerInterface $sharedEvents)
+    private function attachSharedListeners(SharedEventManagerInterface $sharedEvents): void
     {
         $sharedEvents->attach(
             DoctrineRestServiceModel::class,

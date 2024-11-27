@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server\Query\Provider;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\QueryBuilder;
 use Laminas\ApiTools\Rest\ResourceEvent;
 
 class DefaultOrm extends AbstractQueryProvider
 {
     /**
-     * @param string $entityClass
-     * @param array $parameters
-     * @return mixed This will return an ORM or ODM Query\Builder
+     * @inheritDoc
      */
-    public function createQuery(ResourceEvent $event, $entityClass, $parameters)
+    public function createQuery(ResourceEvent $event, $entityClass, $parameters): QueryBuilder
     {
-        $queryBuilder = $this->getObjectManager()->createQueryBuilder();
+        /** @var EntityManager $em */
+        $em           = $this->getObjectManager();
+        $queryBuilder = $em->createQueryBuilder();
         $queryBuilder
             ->select('row')
             ->from($entityClass, 'row');

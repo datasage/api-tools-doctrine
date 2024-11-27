@@ -32,7 +32,7 @@ class DoctrineRestServiceResource extends RestServiceResource
      * @param string $moduleName
      * @return DoctrineRestServiceResource
      */
-    public function setModuleName($moduleName)
+    public function setModuleName($moduleName): static
     {
         $this->moduleName = $moduleName;
         return $this;

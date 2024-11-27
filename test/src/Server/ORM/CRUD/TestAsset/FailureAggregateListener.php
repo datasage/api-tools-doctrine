@@ -16,29 +16,22 @@ class FailureAggregateListener implements ListenerAggregateInterface
 {
     use ListenerAggregateTrait;
 
-    /** @var string */
-    private $eventName;
-
     /**
      * @param string $eventName
      */
-    public function __construct($eventName)
+    public function __construct(private $eventName)
     {
-        $this->eventName = $eventName;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function attach(EventManagerInterface $events, $priority = 1)
+    public function attach(EventManagerInterface $events, $priority = 1): void
     {
         $this->listeners[] = $events->attach($this->eventName, [$this, 'failure']);
     }
 
-    /**
-     * @return ApiProblem
-     */
-    public function failure(DoctrineResourceEvent $event)
+    public function failure(DoctrineResourceEvent $event): ApiProblem
     {
         $event->stopPropagation();
         return new ApiProblem(400, sprintf('LaminasTestFailureAggregateListener: %s', $event->getName()));

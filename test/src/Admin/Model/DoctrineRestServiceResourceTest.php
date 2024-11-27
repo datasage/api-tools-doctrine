@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace LaminasTest\ApiTools\Doctrine\Admin\Model;
 
 use DateTime;
-use Db\Entity\Artist;
 use Doctrine\ORM\Tools\SchemaTool;
 use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRestServiceEntity;
 use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRestServiceResource;
 use LaminasTest\ApiTools\Doctrine\TestCase;
+use LaminasTestApiToolsDb\Entity\Artist;
 
 class DoctrineRestServiceResourceTest extends TestCase
 {

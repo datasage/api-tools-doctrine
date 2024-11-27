@@ -6,21 +6,12 @@ namespace Laminas\ApiTools\Doctrine\Server\Validator;
 
 use Doctrine\ORM\EntityManager;
 use DoctrineModule\Validator\ObjectExists;
-use Interop\Container\ContainerInterface;
-use Laminas\ServiceManager\AbstractPluginManager;
-use Laminas\ServiceManager\FactoryInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Laminas\Stdlib\ArrayUtils;
+use Psr\Container\ContainerInterface;
 
 class ObjectExistsFactory implements FactoryInterface
 {
-    /**
-     * Required for v2 compatibility.
-     *
-     * @var array
-     */
-    protected $options = [];
-
     /**
      * @param string $requestedName
      * @param null|array $options
@@ -37,32 +28,5 @@ class ObjectExistsFactory implements FactoryInterface
         }
 
         return new ObjectExists($options);
-    }
-
-    /**
-     * Create and return an ObjectExists validator (v2).
-     *
-     * Proxies to `__invoke()`.
-     *
-     * @return ObjectExists
-     */
-    public function createService(ServiceLocatorInterface $container)
-    {
-        if ($container instanceof AbstractPluginManager) {
-            $container = $container->getServiceLocator() ?: $container;
-        }
-
-        return $this($container, ObjectExists::class, $this->options);
-    }
-
-    /**
-     * Allow injecting options at build time; required for v2 compatibility.
-     *
-     * @param array $options
-     * @return void
-     */
-    public function setCreationOptions(array $options)
-    {
-        $this->options = $options;
     }
 }

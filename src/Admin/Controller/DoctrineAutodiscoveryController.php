@@ -10,8 +10,7 @@ use Laminas\Mvc\Controller\AbstractActionController;
 
 class DoctrineAutodiscoveryController extends AbstractActionController
 {
-    /** @var DoctrineAutodiscoveryModel */
-    protected $model;
+    protected DoctrineAutodiscoveryModel $model;
 
     /**
      * Constructor
@@ -21,8 +20,7 @@ class DoctrineAutodiscoveryController extends AbstractActionController
         $this->model = $model;
     }
 
-    /** @return ViewModel */
-    public function discoverAction()
+    public function discoverAction(): ViewModel
     {
         $module  = $this->params()->fromRoute('name');
         $version = $this->params()->fromRoute('version');

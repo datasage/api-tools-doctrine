@@ -17,7 +17,7 @@ class RevGenerator extends AbstractIdGenerator
     public function generate(EntityManager $em, $entity)
     {
         do {
-            $value = md5(time() . mt_rand());
+            $value = md5(time() . random_int(0, mt_getrandmax()));
         } while ($value === strrev($value));
 
         return $value;

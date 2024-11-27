@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server\Query\Provider;
 
-use Doctrine\MongoDB\Query\Builder;
+use Doctrine\ODM\MongoDB\Query\Builder;
 use Doctrine\ORM\QueryBuilder;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
+use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\Rest\ResourceEvent;
 use Laminas\Paginator\Adapter\AdapterInterface;
+use Laminas\Stdlib\Parameters;
 
 interface QueryProviderInterface extends ObjectManagerAwareInterface
 {
     /**
      * @param string $entityClass
-     * @param array $parameters
-     * @return mixed This will return an ORM or ODM Query\Builder
+     * @param Parameters|array $parameters
+     * @return QueryBuilder|Builder|ApiProblem This will return an ORM or ODM Query\Builder
      */
     public function createQuery(ResourceEvent $event, $entityClass, $parameters);
 

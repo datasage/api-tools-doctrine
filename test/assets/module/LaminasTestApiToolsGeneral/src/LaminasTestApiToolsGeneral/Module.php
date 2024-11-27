@@ -37,7 +37,7 @@ class Module implements ApiToolsProviderInterface, BootstrapListenerInterface
      *
      * @return void
      */
-    public function onBootstrap(EventInterface $e)
+    public function onBootstrap(EventInterface $e): void
     {
         $application    = $e->getApplication();
         $serviceManager = $application->getServiceManager();

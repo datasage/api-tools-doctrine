@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server;
 
+use Laminas\ApiTools\Doctrine\Server\Service\DoctrineHydratorFactory;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use ZF\Apigility\Doctrine\Server\Query\CreateFilter\DefaultCreateFilter;
 use ZF\Apigility\Doctrine\Server\Query\Provider\DefaultOdm;
@@ -26,6 +27,11 @@ return [
                 => Query\Provider\Service\QueryProviderManagerFactory::class,
             'LaminasApiToolsDoctrineQueryCreateFilterManager'
                 => Query\CreateFilter\Service\QueryCreateFilterManagerFactory::class,
+        ],
+    ],
+    'hydrators'                              => [
+        'abstract_factories' => [
+            DoctrineHydratorFactory::class,
         ],
     ],
     'api-tools-doctrine-query-provider'      => [

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace LaminasTest\ApiTools\Doctrine\Server\Event\Listener;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Instantiator\InstantiatorInterface;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Doctrine\Server\Event\Listener\CollectionListener;
 use Laminas\Hydrator\HydratorInterface;
 use LaminasTestApiToolsDb\Entity\Artist;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionMethod;
 use ReflectionProperty;
 
@@ -19,15 +19,13 @@ class CollectionListenerTest extends TestCase
 {
     /**
      * @dataProvider trueFalseProvider
-     * @param bool $withEntityFactory
-     * @return void
      */
-    public function testProcessNewEntity($withEntityFactory)
+    public function testProcessNewEntity(bool $withEntityFactory): void
     {
         $artist = $this->getMockBuilder(Artist::class)->getMock();
         $data   = [];
 
-        /** @var ObjectManager|PHPUnit_Framework_MockObject_MockObject $om */
+        /** @var ObjectManager|MockObject $om */
         $om            = $this->getMockBuilder(ObjectManager::class)->getMock();
         $classMetadata = $this->getMockBuilder(ClassMetadata::class)
                 ->disableOriginalConstructor()
@@ -52,7 +50,7 @@ class CollectionListenerTest extends TestCase
             ->with($data, self::isInstanceOf(Artist::class));
 
         if ($withEntityFactory) {
-            /** @var InstantiatorInterface|PHPUnit_Framework_MockObject_MockObject $entityFactory */
+            /** @var InstantiatorInterface|MockObject $entityFactory */
             $entityFactory = $this->getMockBuilder(InstantiatorInterface::class)->getMock();
 
             $entityFactory->expects(self::once())
@@ -76,7 +74,7 @@ class CollectionListenerTest extends TestCase
     }
 
     /** @psalm-return array<array-key, array{0: bool}> */
-    public function trueFalseProvider(): array
+    public static function trueFalseProvider(): array
     {
         return [[false], [true]];
     }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Admin\Model;
 
-use Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory;
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\Mapping\AbstractClassMetadataFactory;
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Admin\Model\AbstractAutodiscoveryModel;
 
 use function strrpos;
@@ -19,10 +19,8 @@ class DoctrineAutodiscoveryModel extends AbstractAutodiscoveryModel
      *
      * @param string $module
      * @param int $version
-     * @param string $adapterName
-     * @return array
      */
-    public function fetchFields($module, $version, $adapterName)
+    public function fetchFields($module, $version, string $adapterName): array
     {
         $entities = [];
 

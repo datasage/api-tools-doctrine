@@ -22,10 +22,8 @@ class Module
 
     /**
      * Module init
-     *
-     * @return void
      */
-    public function init(ModuleManager $moduleManager)
+    public function init(ModuleManager $moduleManager): void
     {
         $sm              = $moduleManager->getEvent()->getParam('ServiceManager');
         $serviceListener = $sm->get('ServiceListener');
@@ -43,15 +41,5 @@ class Module
             QueryCreateFilterInterface::class,
             'getLaminasApiToolsDoctrineQueryCreateFilterConfig'
         );
-    }
-
-    /**
-     * Expected to return an array of modules on which the current one depends on
-     *
-     * @return array
-     */
-    public function getModuleDependencies()
-    {
-        return ['Phpro\DoctrineHydrationModule'];
     }
 }

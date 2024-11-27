@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasTest\ApiTools\Doctrine\Admin\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Admin\Model\DocumentationModel;
 use Laminas\ApiTools\Admin\Model\InputFilterModel;
 use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRestServiceModelFactory;
@@ -14,15 +13,16 @@ use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use LaminasTest\ApiTools\Doctrine\DeprecatedAssertionsTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ProphecyInterface;
+use Prophecy\Prophecy\ObjectProphecy;
+use Psr\Container\ContainerInterface;
 
 class DoctrineRestServiceResourceFactoryTest extends TestCase
 {
     use DeprecatedAssertionsTrait;
     use ProphecyTrait;
 
-    /** @var ProphecyInterface|ContainerInterface */
-    private $container;
+    /** @var ObjectProphecy<ContainerInterface> */
+    private ObjectProphecy $container;
 
     protected function setUp(): void
     {
@@ -37,7 +37,7 @@ class DoctrineRestServiceResourceFactoryTest extends TestCase
      *     0: array<class-string, bool>
      * }>
      */
-    public function missingDependencies(): array
+    public static function missingDependencies(): array
     {
         return [
             'all'                             => [

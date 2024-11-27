@@ -11,7 +11,7 @@ use function strrev;
 
 class RevType extends Type
 {
-    const NAME = 'rev';
+    public const NAME = 'rev';
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
@@ -41,7 +41,7 @@ class RevType extends Type
         return static::NAME;
     }
 
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }

@@ -4,43 +4,20 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server\Query\Provider;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\MongoDB\Query\Builder;
 use Doctrine\ORM\QueryBuilder;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
+use DoctrineModule\Persistence\ProvidesObjectManager;
 use Laminas\ApiTools\Doctrine\Server\Paginator\Adapter\DoctrineOrmAdapter;
 use Laminas\ApiTools\Rest\ResourceEvent;
 use Laminas\Paginator\Adapter\AdapterInterface;
 
 abstract class AbstractQueryProvider implements ObjectManagerAwareInterface, QueryProviderInterface
 {
-    /** @var ObjectManager */
-    protected $objectManager;
+    use ProvidesObjectManager;
 
     /**
-     * Set the object manager
-     *
-     * @return void
-     */
-    public function setObjectManager(ObjectManager $objectManager)
-    {
-        $this->objectManager = $objectManager;
-    }
-
-    /**
-     * Get the object manager
-     *
-     * @return ObjectManager
-     */
-    public function getObjectManager()
-    {
-        return $this->objectManager;
-    }
-
-    /**
-     * @param string $entityClass
-     * @param array $parameters
-     * @return mixed This will return an ORM or ODM Query\Builder
+     * @inheritDoc
      */
     abstract public function createQuery(ResourceEvent $event, $entityClass, $parameters);
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Admin\Model;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Admin\Model\RestServiceEntity;
 use Laminas\Stdlib\ArraySerializableInterface;
 
@@ -28,7 +28,7 @@ class DoctrineRestServiceEntity extends RestServiceEntity implements ArraySerial
     /** @var bool */
     protected $useGeneratedHydrator = true;
 
-    public function exchangeArray(array $data)
+    public function exchangeArray(array $data): void
     {
         parent::exchangeArray($data);
 

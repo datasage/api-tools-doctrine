@@ -36,3 +36,4 @@ jobs:
           job: ${{ matrix.job }}
         env:
           TESTS_LAMINAS_API_TOOLS_DOCTRINE_EXTMONGODB_CONNECTSTRING: mongodb://mongo/
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}

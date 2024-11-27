@@ -4,29 +4,31 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server\Query\Provider;
 
-use Doctrine\Odm\MongoDB\Query\Builder;
+use Doctrine\ODM\MongoDB\DocumentManager;
+use Doctrine\ODM\MongoDB\Query\Builder;
 use Laminas\ApiTools\Doctrine\Server\Paginator\Adapter\DoctrineOdmAdapter;
 use Laminas\ApiTools\Rest\ResourceEvent;
 
 class DefaultOdm extends AbstractQueryProvider
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
-    public function createQuery(ResourceEvent $event, $entityClass, $parameters)
+    public function createQuery(ResourceEvent $event, $entityClass, $parameters): Builder
     {
-        /** @var Builder $queryBuilder */
-        $queryBuilder = $this->getObjectManager()->createQueryBuilder();
+        /** @var DocumentManager $documentManager */
+        $documentManager = $this->getObjectManager();
+        $queryBuilder    = $documentManager->createQueryBuilder();
         $queryBuilder->find($entityClass);
 
         return $queryBuilder;
     }
 
     /**
+     * @psalm-suppress MoreSpecificImplementedParamType
      * @param Builder $queryBuilder
-     * @return DoctrineOdmAdapter
      */
-    public function getPaginatedQuery($queryBuilder)
+    public function getPaginatedQuery($queryBuilder): DoctrineOdmAdapter
     {
         return new DoctrineOdmAdapter($queryBuilder);
     }

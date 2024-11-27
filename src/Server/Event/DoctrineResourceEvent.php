@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server\Event;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Rest\ResourceEvent;
 use Laminas\EventManager\Event;
 
@@ -44,14 +44,9 @@ class DoctrineResourceEvent extends Event
 
     /** @var string */
     protected $entityId;
+    protected ObjectManager $objectManager;
 
-    /** @var ObjectManager */
-    protected $objectManager;
-
-    /**
-     * @return ObjectManager
-     */
-    public function getObjectManager()
+    public function getObjectManager(): ObjectManager
     {
         return $this->objectManager;
     }
@@ -59,7 +54,7 @@ class DoctrineResourceEvent extends Event
     /**
      * @return $this
      */
-    public function setObjectManager(ObjectManager $objectManager)
+    public function setObjectManager(ObjectManager $objectManager): static
     {
         $this->objectManager = $objectManager;
 
@@ -79,10 +74,9 @@ class DoctrineResourceEvent extends Event
     /**
      * @deprecated Callers have been removed in Commit b1cf74e
      *
-     * @param mixed $collection
      * @return $this
      */
-    public function setCollection($collection)
+    public function setCollection(mixed $collection): static
     {
         $this->collection = $collection;
 
@@ -98,10 +92,9 @@ class DoctrineResourceEvent extends Event
     }
 
     /**
-     * @param mixed $entity
      * @return $this
      */
-    public function setEntity($entity)
+    public function setEntity(mixed $entity): static
     {
         $this->entity = $entity;
 
@@ -120,7 +113,7 @@ class DoctrineResourceEvent extends Event
      * @param mixed $data The Original Data supplied to the Resource Method
      * @return $this
      */
-    public function setData($data)
+    public function setData(mixed $data): static
     {
         $this->data = $data;
 
@@ -139,7 +132,7 @@ class DoctrineResourceEvent extends Event
      * @param ResourceEvent $resourceEvent
      * @return $this
      */
-    public function setResourceEvent($resourceEvent)
+    public function setResourceEvent($resourceEvent): static
     {
         $this->resourceEvent = $resourceEvent;
 
@@ -158,7 +151,7 @@ class DoctrineResourceEvent extends Event
      * @param string $entityClassName
      * @return $this
      */
-    public function setEntityClassName($entityClassName)
+    public function setEntityClassName($entityClassName): static
     {
         $this->entityClassName = $entityClassName;
         return $this;
@@ -176,7 +169,7 @@ class DoctrineResourceEvent extends Event
      * @param string $entityId
      * @return $this
      */
-    public function setEntityId($entityId)
+    public function setEntityId($entityId): static
     {
         $this->entityId = $entityId;
 
