@@ -136,6 +136,10 @@
       {
         "type": "git",
         "url": "https://github.com/datasage/api-tools-mvc-auth"
+      },
+      {
+        "type": "git",
+        "url": "https://github.com/datasage/api-tools-rest"
       }
     ]
 }

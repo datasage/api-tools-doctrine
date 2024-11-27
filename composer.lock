@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb77a2745b9cc0720c6d1379f9124cf2",
+    "content-hash": "4dd4a9657bf56a05499caadb15ad6649",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1400,11 +1400,11 @@
         },
         {
             "name": "laminas-api-tools/api-tools-mvc-auth",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/datasage/api-tools-mvc-auth",
-                "reference": "db8f5bb6d304accd36f1348117b45b38d70f9900"
+                "reference": "95bdfa74da3d3f4fb55465a749f18e0dd5d5be1a"
             },
             "require": {
                 "laminas-api-tools/api-tools-oauth2": "^1.9",
@@ -1416,7 +1416,7 @@
                 "laminas/laminas-permissions-rbac": " ^3.0",
                 "laminas/laminas-servicemanager": "^3.11",
                 "laminas/laminas-stdlib": "^3.0.1",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || 8.4.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "replace": {
                 "zfcampus/zf-mvc-auth": "^1.5.1"
@@ -1484,7 +1484,7 @@
                 "chat": "https://laminas.dev/chat",
                 "forum": "https://discourse.laminas.dev"
             },
-            "time": "2024-11-27T14:29:39+00:00"
+            "time": "2024-11-27T15:47:12+00:00"
         },
         {
             "name": "laminas-api-tools/api-tools-oauth2",
@@ -1582,17 +1582,11 @@
         },
         {
             "name": "laminas-api-tools/api-tools-rest",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laminas-api-tools/api-tools-rest.git",
-                "reference": "3cc78408827040d2fc8961e4ea6c5021aae2eec3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-rest/zipball/3cc78408827040d2fc8961e4ea6c5021aae2eec3",
-                "reference": "3cc78408827040d2fc8961e4ea6c5021aae2eec3",
-                "shasum": ""
+                "url": "https://github.com/datasage/api-tools-rest",
+                "reference": "1c67b10c376745630021ac81df4f8201b9eea393"
             },
             "require": {
                 "laminas-api-tools/api-tools-api-problem": "^1.6.0",
@@ -1600,27 +1594,25 @@
                 "laminas-api-tools/api-tools-hal": "^1.7",
                 "laminas-api-tools/api-tools-mvc-auth": "^1.8",
                 "laminas/laminas-eventmanager": "^3.2",
-                "laminas/laminas-mvc": "^2.7.14 || ^3.0.2",
+                "laminas/laminas-mvc": "^3.0.2",
                 "laminas/laminas-paginator": "^2.7",
-                "laminas/laminas-stdlib": "^2.7.8 || ^3.3",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+                "laminas/laminas-stdlib": "^3.3",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "replace": {
                 "zfcampus/zf-rest": "^1.5.0"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
-                "laminas/laminas-escaper": "^2.5.2",
+                "laminas/laminas-coding-standard": "^3",
                 "laminas/laminas-http": "^2.5.4",
                 "laminas/laminas-inputfilter": "^2.7.2",
                 "laminas/laminas-servicemanager": "^3.11",
                 "laminas/laminas-uri": "^2.5.2",
-                "laminas/laminas-validator": "^2.8.1",
                 "laminas/laminas-view": "^2.11.3",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.10",
-                "psalm/plugin-phpunit": "^0.16.1",
-                "vimeo/psalm": "^4.7"
+                "phpspec/prophecy-phpunit": "^2.3",
+                "phpunit/phpunit": "^10",
+                "psalm/plugin-phpunit": "^0.19",
+                "vimeo/psalm": "^5"
             },
             "type": "library",
             "extra": {
@@ -1633,7 +1625,32 @@
                     "Laminas\\ApiTools\\Rest\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "LaminasTest\\ApiTools\\Rest\\": "test/"
+                }
+            },
+            "scripts": {
+                "check": [
+                    "@cs-check",
+                    "@test"
+                ],
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "static-analysis": [
+                    "psalm --shepherd --stats"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "phpunit --colors=always --coverage-clover clover.xml"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1647,20 +1664,14 @@
                 "rest"
             ],
             "support": {
-                "chat": "https://laminas.dev/chat",
                 "docs": "https://api-tools.getlaminas.org/documentation",
-                "forum": "https://discourse.laminas.dev",
                 "issues": "https://github.com/laminas-api-tools/api-tools-rest/issues",
+                "source": "https://github.com/laminas-api-tools/api-tools-rest",
                 "rss": "https://github.com/laminas-api-tools/api-tools-rest/releases.atom",
-                "source": "https://github.com/laminas-api-tools/api-tools-rest"
+                "chat": "https://laminas.dev/chat",
+                "forum": "https://discourse.laminas.dev"
             },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2023-07-11T16:53:02+00:00"
+            "time": "2024-11-27T18:24:33+00:00"
         },
         {
             "name": "laminas/laminas-authentication",
