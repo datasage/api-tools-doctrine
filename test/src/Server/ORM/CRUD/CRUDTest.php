@@ -11,10 +11,6 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Tools\SchemaTool;
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
-use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRestServiceEntity;
-use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRestServiceResource;
-use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRpcServiceEntity;
-use Laminas\ApiTools\Doctrine\Admin\Model\DoctrineRpcServiceResource;
 use Laminas\ApiTools\Doctrine\DoctrineResource;
 use Laminas\ApiTools\Doctrine\Server\Event\DoctrineResourceEvent;
 use Laminas\ApiTools\Rest\ResourceEvent;
@@ -28,6 +24,7 @@ use LaminasTestApiToolsDb\Entity\Product;
 use LaminasTestApiToolsDbApi\V1\Rest\Artist\ArtistResource;
 use LaminasTestApiToolsGeneral\Listener\EventCatcher;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 use function in_array;
@@ -51,138 +48,19 @@ class CRUDTest extends TestCase
             include __DIR__ . '/../../../../config/ORM/application.config.php'
         );
 
-        $this->buildORMApi();
-    }
-
-    protected function buildORMApi(): void
-    {
-        $serviceManager = $this->getApplication()->getServiceManager();
+        // Services are now defined statically in the test module's committed config,
+        // so only the schema needs building here. Previously this lived in
+        // buildORMApi(), alongside the Admin service generation that has been removed.
         /** @var EntityManager $em */
-        $em = $serviceManager->get('doctrine.entitymanager.orm_default');
-
-        /** @var DoctrineRestServiceResource $restServiceResource */
-        $restServiceResource = $serviceManager->get(DoctrineRestServiceResource::class);
-
-        $artistResourceDefinition = [
-            'objectManager'         => 'doctrine.entitymanager.orm_default',
-            'serviceName'           => 'Artist',
-            'entityClass'           => Artist::class,
-            'routeIdentifierName'   => 'artist_id',
-            'entityIdentifierName'  => 'id',
-            'routeMatch'            => '/test/rest/artist',
-            'collectionHttpMethods' => [
-                0 => 'GET',
-                1 => 'POST',
-                2 => 'PATCH',
-                3 => 'DELETE',
-            ],
-        ];
-
-        $artistResourceDefinitionWithNonKeyIdentifier = [
-            'objectManager'         => 'doctrine.entitymanager.orm_default',
-            'serviceName'           => 'ArtistByName',
-            'entityClass'           => Artist::class,
-            'routeIdentifierName'   => 'artist_name',
-            'entityIdentifierName'  => 'name',
-            'routeMatch'            => '/test/rest/artist-by-name',
-            'collectionHttpMethods' => [
-                0 => 'GET',
-            ],
-        ];
-
-        // This route is what should be an rpc service, but an user could do
-        $albumResourceDefinition = [
-            'objectManager'         => 'doctrine.entitymanager.orm_default',
-            'serviceName'           => 'Album',
-            'entityClass'           => Album::class,
-            'routeIdentifierName'   => 'album_id',
-            'entityIdentifierName'  => 'id',
-            'routeMatch'            => '/test/rest[/artist/:artist_id]/album[/:album_id]',
-            'collectionHttpMethods' => [
-                0 => 'GET',
-                1 => 'POST',
-                2 => 'PATCH',
-                3 => 'DELETE',
-            ],
-        ];
-
-        $productResourceDefinition = [
-            'objectManager'         => 'doctrine.entitymanager.orm_default',
-            'serviceName'           => 'Product',
-            'entityClass'           => Product::class,
-            'routeIdentifierName'   => 'product_id',
-            'entityIdentifierName'  => 'id',
-            'routeMatch'            => '/test/rest/product',
-            'collectionHttpMethods' => [
-                0 => 'GET',
-                1 => 'POST',
-                2 => 'PATCH',
-                3 => 'DELETE',
-            ],
-        ];
-
-        $this->setModuleName($restServiceResource, 'LaminasTestApiToolsDbApi');
-        $artistEntity       = $restServiceResource->create($artistResourceDefinition);
-        $artistByNameEntity = $restServiceResource->create($artistResourceDefinitionWithNonKeyIdentifier);
-        $albumEntity        = $restServiceResource->create($albumResourceDefinition);
-        $productEntity      = $restServiceResource->create($productResourceDefinition);
-
-        $this->assertInstanceOf(DoctrineRestServiceEntity::class, $artistEntity);
-        $this->assertInstanceOf(DoctrineRestServiceEntity::class, $artistByNameEntity);
-        $this->assertInstanceOf(DoctrineRestServiceEntity::class, $albumEntity);
-        $this->assertInstanceOf(DoctrineRestServiceEntity::class, $productEntity);
-
-        // Build relation
-        $filter = new FilterChain();
-        $filter->attachByName('WordCamelCaseToUnderscore')
-            ->attachByName('StringToLower');
-
-        $metadataFactory = $em->getMetadataFactory();
-        $entityMetadata  = $metadataFactory->getMetadataFor(Artist::class);
-
-        /** @var DoctrineRpcServiceResource $rpcServiceResource */
-        $rpcServiceResource = $serviceManager->get(DoctrineRpcServiceResource::class);
-        $this->setModuleName($rpcServiceResource, 'LaminasTestApiToolsDbApi');
-
-        // phpcs:disable Generic.Files.LineLength.TooLong
-        foreach ($entityMetadata->associationMappings as $mapping) {
-            switch ($mapping['type']) {
-                case ClassMetadataInfo::ONE_TO_MANY:
-                    $entity = $rpcServiceResource->create([
-                        'service_name' => 'Artist' . $mapping['fieldName'],
-                        'route_match'  => sprintf(
-                            '/test/artist[/:parent_id]/%s[/:child_id]',
-                            $filter($mapping['fieldName'])
-                        ),
-                        'http_methods' => [
-                            'GET',
-                            'PUT',
-                            'POST',
-                        ],
-                        'options'      => [
-                            'target_entity' => $mapping['targetEntity'],
-                            'source_entity' => $mapping['sourceEntity'],
-                            'field_name'    => $mapping['fieldName'],
-                        ],
-                        'selector'     => 'custom selector',
-                    ]);
-
-                    $this->assertInstanceOf(DoctrineRpcServiceEntity::class, $entity);
-                    break;
-            }
-        }
-        // phpcs:enable
-
-        $this->reset();
-
-        $serviceManager = $this->getApplication()->getServiceManager();
-        /** @var EntityManager $em */
-        $em = $serviceManager->get('doctrine.entitymanager.orm_default');
+        $em = $this->getApplication()->getServiceManager()->get('doctrine.entitymanager.orm_default');
 
         $tool = new SchemaTool($em);
         $tool->createSchema($em->getMetadataFactory()->getAllMetadata());
+
         $this->em = $em;
+
     }
+
 
     public function testCreate(): void
     {
@@ -227,9 +105,7 @@ class CRUDTest extends TestCase
         $this->assertEquals($artist->getId(), $body['_embedded']['artist']['id']);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testCreateWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $this->$method(DoctrineResourceEvent::EVENT_CREATE_PRE);
@@ -416,9 +292,7 @@ class CRUDTest extends TestCase
         $this->assertEquals('NewAlbum', $body['name']);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testFetchWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Fetch ApiProblem');
@@ -474,9 +348,7 @@ class CRUDTest extends TestCase
         ]);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testFetchAllWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $this->createArtist('Artist FetchAll ApiProblem');
@@ -518,9 +390,7 @@ class CRUDTest extends TestCase
         ]);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testPatchWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Patch ApiProblem');
@@ -586,9 +456,7 @@ class CRUDTest extends TestCase
         ]);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testPatchListWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Patch List ApiProblem');
@@ -643,9 +511,7 @@ class CRUDTest extends TestCase
         ]);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testPutWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Put ApiProblem');
@@ -688,9 +554,7 @@ class CRUDTest extends TestCase
         ]);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testDeleteWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $artist = $this->createArtist('Artist Delete ApiProblem');
@@ -774,9 +638,7 @@ class CRUDTest extends TestCase
         ]);
     }
 
-    /**
-     * @dataProvider listener
-     */
+    #[DataProvider('listener')]
     public function testDeleteListWithListenerThatReturnsApiProblem(string $method, string $message): void
     {
         $this->$method(DoctrineResourceEvent::EVENT_DELETE_LIST_PRE);
