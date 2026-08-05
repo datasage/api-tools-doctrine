@@ -1,3 +1,334 @@
 <?php
-return [
-];
+return array(
+    'router' => array(
+        'routes' => array(
+            'laminas-test-api-tools-db-api.rest.doctrine.artist' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/test/rest/artist[/:artist_id]',
+                    'defaults' => array(
+                        'controller' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\Controller',
+                    ),
+                ),
+            ),
+            'laminas-test-api-tools-db-api.rest.doctrine.artist-by-name' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/test/rest/artist-by-name[/:artist_name]',
+                    'defaults' => array(
+                        'controller' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\Controller',
+                    ),
+                ),
+            ),
+            'laminas-test-api-tools-db-api.rest.doctrine.album' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/test/rest[/artist/:artist_id]/album[/:album_id][/:album_id]',
+                    'defaults' => array(
+                        'controller' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\Controller',
+                    ),
+                ),
+            ),
+            'laminas-test-api-tools-db-api.rest.doctrine.product' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/test/rest/product[/:product_id]',
+                    'defaults' => array(
+                        'controller' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\Controller',
+                    ),
+                ),
+            ),
+            'laminas-test-api-tools-db-api.rpc.artistalbum' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/test/artist[/:parent_id]/album[/:child_id]',
+                    'defaults' => array(
+                        'controller' => 'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\Controller',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+        ),
+    ),
+    'api-tools-versioning' => array(
+        'uri' => array(
+            0 => 'laminas-test-api-tools-db-api.rest.doctrine.artist',
+            1 => 'laminas-test-api-tools-db-api.rest.doctrine.artist-by-name',
+            2 => 'laminas-test-api-tools-db-api.rest.doctrine.album',
+            3 => 'laminas-test-api-tools-db-api.rest.doctrine.product',
+            4 => 'laminas-test-api-tools-db-api.rpc.artistalbum',
+        ),
+    ),
+    'api-tools-rest' => array(
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\Controller' => array(
+            'listener' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\ArtistResource',
+            'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.artist',
+            'route_identifier_name' => 'artist_id',
+            'entity_identifier_name' => 'id',
+            'collection_name' => 'artist',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+                1 => 'POST',
+                2 => 'PATCH',
+                3 => 'DELETE',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Artist',
+            'collection_class' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\ArtistCollection',
+            'service_name' => 'Artist',
+        ),
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\Controller' => array(
+            'listener' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameResource',
+            'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.artist-by-name',
+            'route_identifier_name' => 'artist_name',
+            'entity_identifier_name' => 'name',
+            'collection_name' => 'artist_by_name',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Artist',
+            'collection_class' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameCollection',
+            'service_name' => 'ArtistByName',
+        ),
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\Controller' => array(
+            'listener' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumResource',
+            'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.album',
+            'route_identifier_name' => 'album_id',
+            'entity_identifier_name' => 'id',
+            'collection_name' => 'album',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+                1 => 'POST',
+                2 => 'PATCH',
+                3 => 'DELETE',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Album',
+            'collection_class' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumCollection',
+            'service_name' => 'Album',
+        ),
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\Controller' => array(
+            'listener' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductResource',
+            'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.product',
+            'route_identifier_name' => 'product_id',
+            'entity_identifier_name' => 'id',
+            'collection_name' => 'product',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+                1 => 'POST',
+                2 => 'PATCH',
+                3 => 'DELETE',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Product',
+            'collection_class' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductCollection',
+            'service_name' => 'Product',
+        ),
+    ),
+    'api-tools-content-negotiation' => array(
+        'controllers' => array(
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\Controller' => 'HalJson',
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\Controller' => 'HalJson',
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\Controller' => 'HalJson',
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\Controller' => 'HalJson',
+            'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\Controller' => 'custom selector',
+        ),
+        'accept_whitelist' => array(
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\Controller' => array(
+                0 => 'application/json',
+                1 => 'application/*+json',
+            ),
+        ),
+        'content_type_whitelist' => array(
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\Controller' => array(
+                0 => 'application/vnd.laminas-test-api-tools-db-api.v1+json',
+                1 => 'application/json',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\Controller' => array(
+                0 => 'application/json',
+            ),
+        ),
+    ),
+    'api-tools-hal' => array(
+        'metadata_map' => array(
+            'LaminasTestApiToolsDb\\Entity\\Artist' => array(
+                'route_identifier_name' => 'artist_name',
+                'entity_identifier_name' => 'name',
+                'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.artist-by-name',
+                'hydrator' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameHydrator',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\ArtistCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.artist',
+                'is_collection' => true,
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameCollection' => array(
+                'entity_identifier_name' => 'name',
+                'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.artist-by-name',
+                'is_collection' => true,
+            ),
+            'LaminasTestApiToolsDb\\Entity\\Album' => array(
+                'route_identifier_name' => 'album_id',
+                'entity_identifier_name' => 'id',
+                'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.album',
+                'hydrator' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumHydrator',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.album',
+                'is_collection' => true,
+            ),
+            'LaminasTestApiToolsDb\\Entity\\Product' => array(
+                'route_identifier_name' => 'product_id',
+                'entity_identifier_name' => 'id',
+                'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.product',
+                'hydrator' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductHydrator',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'laminas-test-api-tools-db-api.rest.doctrine.product',
+                'is_collection' => true,
+            ),
+        ),
+    ),
+    'api-tools' => array(
+        'doctrine-connected' => array(
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\ArtistResource' => array(
+                'object_manager' => 'doctrine.entitymanager.orm_default',
+                'hydrator' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\ArtistHydrator',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameResource' => array(
+                'object_manager' => 'doctrine.entitymanager.orm_default',
+                'hydrator' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameHydrator',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumResource' => array(
+                'object_manager' => 'doctrine.entitymanager.orm_default',
+                'hydrator' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumHydrator',
+            ),
+            'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductResource' => array(
+                'object_manager' => 'doctrine.entitymanager.orm_default',
+                'hydrator' => 'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductHydrator',
+            ),
+        ),
+    ),
+    'doctrine-hydrator' => array(
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\Artist\\ArtistHydrator' => array(
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Artist',
+            'object_manager' => 'doctrine.entitymanager.orm_default',
+            'by_value' => true,
+            'strategies' => array(),
+            'use_generated_hydrator' => true,
+        ),
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameHydrator' => array(
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Artist',
+            'object_manager' => 'doctrine.entitymanager.orm_default',
+            'by_value' => true,
+            'strategies' => array(),
+            'use_generated_hydrator' => true,
+        ),
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumHydrator' => array(
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Album',
+            'object_manager' => 'doctrine.entitymanager.orm_default',
+            'by_value' => true,
+            'strategies' => array(),
+            'use_generated_hydrator' => true,
+        ),
+        'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductHydrator' => array(
+            'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Product',
+            'object_manager' => 'doctrine.entitymanager.orm_default',
+            'by_value' => true,
+            'strategies' => array(),
+            'use_generated_hydrator' => true,
+        ),
+    ),
+    'controllers' => array(
+        'aliases' => array(
+            'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\Controller' => 'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\ArtistalbumController',
+        ),
+        'factories' => array(
+            'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\ArtistalbumController' => 'Laminas\\ApiTools\\Doctrine\\Admin\\Model\\InvokableFactory',
+        ),
+    ),
+    'api-tools-rpc' => array(
+        'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\Controller' => array(
+            'http_methods' => array(
+                0 => 'GET',
+                1 => 'PUT',
+                2 => 'POST',
+            ),
+            'route_name' => 'laminas-test-api-tools-db-api.rpc.artistalbum',
+        ),
+    ),
+    'api-tools-rpc-doctrine-controller' => array(
+        'LaminasTestApiToolsDbApi\\V1\\Rpc\\Artistalbum\\Controller' => array(
+            'target_entity' => 'LaminasTestApiToolsDb\\Entity\\Album',
+            'source_entity' => 'LaminasTestApiToolsDb\\Entity\\Artist',
+            'field_name' => 'album',
+        ),
+    ),
+);

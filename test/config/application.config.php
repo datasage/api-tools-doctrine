@@ -2,25 +2,19 @@
 
 declare(strict_types=1);
 
-use Laminas\Cache\Storage\Adapter\Memory;
 use Laminas\I18n\Module;
 
 return [
     'modules'                 => [
         'DoctrineModule',
         'DoctrineORMModule',
-        'Laminas\Cache',
-        Memory::class,
         'Laminas\ApiTools',
-        'Laminas\ApiTools\Admin',
         'Laminas\ApiTools\Hal',
         'Laminas\ApiTools\ContentNegotiation',
         'Laminas\ApiTools\Rest',
         'Laminas\ApiTools\Rpc',
-        'Laminas\ApiTools\Configuration',
         'Laminas\ApiTools\Versioning',
         'Laminas\ApiTools\ApiProblem',
-        'Laminas\ApiTools\Doctrine\Admin',
         'Laminas\ApiTools\Doctrine\Server',
         'LaminasTestApiToolsGeneral',
         'LaminasTestApiToolsDb',

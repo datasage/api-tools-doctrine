@@ -10,6 +10,7 @@ use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Doctrine\Server\Event\Listener\CollectionListener;
 use Laminas\Hydrator\HydratorInterface;
 use LaminasTestApiToolsDb\Entity\Artist;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
@@ -17,9 +18,7 @@ use ReflectionProperty;
 
 class CollectionListenerTest extends TestCase
 {
-    /**
-     * @dataProvider trueFalseProvider
-     */
+    #[DataProvider('trueFalseProvider')]
     public function testProcessNewEntity(bool $withEntityFactory): void
     {
         $artist = $this->getMockBuilder(Artist::class)->getMock();
@@ -65,11 +64,9 @@ class CollectionListenerTest extends TestCase
         $listener->setObjectManager($om);
 
         $hydratorMapProperty = new ReflectionProperty($listener, 'entityHydratorMap');
-        $hydratorMapProperty->setAccessible(true);
         $hydratorMapProperty->setValue($listener, [Artist::class => $hydrator]);
 
         $method = new ReflectionMethod($listener, 'processEntity');
-        $method->setAccessible(true);
         $method->invokeArgs($listener, [Artist::class, $data]);
     }
 

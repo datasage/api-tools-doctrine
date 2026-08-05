@@ -20,7 +20,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-          "php": "8.1.99"
+            "php": "8.3.99"
         },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
@@ -29,59 +29,52 @@
     "extra": {
         "laminas": {
             "module": [
-                "Laminas\\ApiTools\\Doctrine\\Admin",
                 "Laminas\\ApiTools\\Doctrine\\Server"
             ]
         }
     },
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-        "doctrine/collections": "^1 || ^2",
+        "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+        "doctrine/collections": "^2",
         "doctrine/doctrine-laminas-hydrator": "^3.2.1",
-        "doctrine/doctrine-module": "^5.0.0 || ^6.0.0",
-        "doctrine/persistence": "^2.0 || ^3.0",
-        "laminas-api-tools/api-tools-api-problem": "^1.6",
-        "laminas-api-tools/api-tools-configuration": "^1.6",
-        "laminas-api-tools/api-tools-content-negotiation": "^1.7",
-        "laminas-api-tools/api-tools-rest": "^1.7.0",
-        "laminas/laminas-eventmanager": "^3",
-        "laminas/laminas-filter": "^2",
-        "laminas/laminas-hydrator": "^3.0 || ^4.0",
-        "laminas/laminas-inputfilter": "^2.31",
-        "laminas/laminas-modulemanager": "^2.17",
-        "laminas/laminas-mvc": "^3.0.2",
-        "laminas/laminas-paginator": "^2.19",
-        "laminas/laminas-servicemanager": "^3.23",
-        "laminas/laminas-stdlib": "^3.3",
-        "laminas/laminas-validator": "^2.64",
-        "laminas/laminas-view": "^2.11.3"
+        "doctrine/doctrine-module": "^6.4",
+        "doctrine/persistence": "^3 || ^4",
+        "laminas-api-tools/api-tools-api-problem": "^1.10",
+        "laminas-api-tools/api-tools-content-negotiation": "^1.11",
+        "laminas-api-tools/api-tools-rest": "^1.10",
+        "laminas/laminas-eventmanager": "^3.15",
+        "laminas/laminas-hydrator": "^4.17",
+        "laminas/laminas-inputfilter": "^2.34",
+        "laminas/laminas-modulemanager": "^2.19",
+        "laminas/laminas-mvc": "^3.8",
+        "laminas/laminas-paginator": "^2.21",
+        "laminas/laminas-servicemanager": "^3.24",
+        "laminas/laminas-stdlib": "^3.21",
+        "laminas/laminas-validator": "^2.65"
     },
     "require-dev": {
-        "doctrine/doctrine-mongo-odm-module": "^5.0.0 || ^5.0.0",
-        "doctrine/doctrine-orm-module": "^5.0.0 || ^6.0.0",
-        "doctrine/mongodb-odm": "^2.0.0",
-        "laminas-api-tools/api-tools-admin": "^2.0.1",
-        "laminas-api-tools/api-tools-admin-ui": "^2.1",
-        "laminas-api-tools/api-tools-hal": "^1.6.1",
+        "doctrine/doctrine-orm-module": "^6.4",
+        "laminas-api-tools/api-tools": "^1.9",
+        "laminas-api-tools/api-tools-hal": "^1.13",
+        "laminas-api-tools/api-tools-provider": "^1.8",
+        "laminas-api-tools/api-tools-rpc": "^1.10",
+        "laminas-api-tools/api-tools-versioning": "^1.9",
         "laminas/laminas-coding-standard": "^3",
-        "laminas/laminas-http": "^2.20",
-        "laminas/laminas-i18n": "^2.29",
-        "laminas/laminas-test": "^4.8",
-        "mongodb/mongodb": "^1.1.0",
+        "laminas/laminas-filter": "^2.42",
+        "laminas/laminas-http": "^2.23",
+        "laminas/laminas-i18n": "^2.31",
+        "laminas/laminas-test": "^4.13",
         "phpspec/prophecy": "^1.15.0",
         "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^10",
+        "phpunit/phpunit": "^11.0 || ^12.0 || ^13.0",
         "psalm/plugin-phpunit": "^0.19",
-        "vimeo/psalm": "^5"
+        "vimeo/psalm": "^6.14"
     },
     "conflict": {
         "doctrine/dbal": "<2.12.0",
         "doctrine/orm": "<2.6.3"
     },
     "suggest": {
-        "laminas-api-tools/api-tools-admin": "Admin interface",
-        "api-skeletons/zf-doctrine-hydrator": "Hydrator strategies for Doctrine in Laminas API Tools",
-        "api-skeletons/zf-oauth2-doctrine": "OAuth2 Doctrine Adapter for Laminas API Tools",
         "doctrine/doctrine-mongo-odm-module": "For Mongo ODM mapping",
         "doctrine/doctrine-orm-module": "For ORM mapping"
     },
@@ -92,7 +85,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "LaminasTest\\ApiTools\\Doctrine\\": "test/src/"
+            "LaminasTest\\ApiTools\\Doctrine\\": "test/src/",
+            "LaminasTestApiToolsDb\\": "test/assets/module/LaminasTestApiToolsDb/src/LaminasTestApiToolsDb",
+            "LaminasTestApiToolsDbApi\\": "test/assets/module/LaminasTestApiToolsDbApi/src/LaminasTestApiToolsDbApi",
+            "LaminasTestApiToolsGeneral\\": "test/assets/module/LaminasTestApiToolsGeneral/src/LaminasTestApiToolsGeneral"
         }
     },
     "scripts": {
@@ -109,37 +105,65 @@
         "zfcampus/zf-apigility-doctrine": "^2.3.0"
     },
     "repositories": [
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-api-problem"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-hal"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-content-negotiation"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-content-validation"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-provider"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-oauth2"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-mvc-auth"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/datasage/api-tools-rest"
-      }
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-api-problem"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-hal"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-content-negotiation"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-content-validation"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-provider"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-oauth2"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-mvc-auth"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-rest"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/laminas-mvc"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/laminas-test"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/DoctrineModule"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/DoctrineORMModule"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-rpc"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/datasage/api-tools-versioning"
+        }
     ]
 }

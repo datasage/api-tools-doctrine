@@ -7,13 +7,10 @@ namespace LaminasTest\ApiTools\Doctrine;
 use Laminas\Mvc\Application;
 use Laminas\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use ReflectionClass;
-use ReflectionException;
-use ReflectionObject;
 
 use function array_diff;
 use function array_unshift;
 use function copy;
-use function glob;
 use function is_dir;
 use function rmdir;
 use function scandir;
@@ -66,21 +63,12 @@ class TestCase extends AbstractHttpControllerTestCase
 
     private function clearAssets(): void
     {
+        // The V* service directories are committed static fixtures now that the Admin
+        // generator is gone, so they must not be deleted between tests. Only the
+        // generated config copy is refreshed from its .dist.
         foreach ($this->enabledModules as $module => $path) {
             $configPath = sprintf('%s/config/', $path);
-            foreach (glob(sprintf('%s/src/%s/V*', $path, $module)) as $dir) {
-                $this->removeDir($dir);
-            }
             copy($configPath . '/module.config.php.dist', $configPath . '/module.config.php');
         }
-    }
-
-    /** @throws ReflectionException */
-    protected function setModuleName(object $resource, string $moduleName): void
-    {
-        $r    = new ReflectionObject($resource);
-        $prop = $r->getProperty('moduleName');
-        $prop->setAccessible(true);
-        $prop->setValue($resource, $moduleName);
     }
 }

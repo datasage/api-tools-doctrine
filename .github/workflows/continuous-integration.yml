@@ -23,9 +23,6 @@ jobs:
     name: QA Checks
     needs: [ matrix ]
     runs-on: ${{ matrix.operatingSystem }}
-    services:
-      mongo:
-        image: mongo:4.4
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
