@@ -64,11 +64,9 @@ class CollectionListenerTest extends TestCase
         $listener->setObjectManager($om);
 
         $hydratorMapProperty = new ReflectionProperty($listener, 'entityHydratorMap');
-        $hydratorMapProperty->setAccessible(true);
         $hydratorMapProperty->setValue($listener, [Artist::class => $hydrator]);
 
         $method = new ReflectionMethod($listener, 'processEntity');
-        $method->setAccessible(true);
         $method->invokeArgs($listener, [Artist::class, $data]);
     }
 

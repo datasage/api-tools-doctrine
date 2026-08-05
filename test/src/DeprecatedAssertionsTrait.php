@@ -16,7 +16,6 @@ trait DeprecatedAssertionsTrait
         string $message = ''
     ): void {
         $r = new ReflectionProperty($instance, $property);
-        $r->setAccessible(true);
         Assert::assertEquals($expected, $r->getValue($instance), $message);
     }
 
@@ -27,7 +26,6 @@ trait DeprecatedAssertionsTrait
         string $message = ''
     ): void {
         $r = new ReflectionProperty($instance, $property);
-        $r->setAccessible(true);
         Assert::assertSame($expected, $r->getValue($instance), $message);
     }
 }

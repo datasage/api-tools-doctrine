@@ -7,14 +7,12 @@ namespace LaminasTest\ApiTools\Doctrine\Server\ORM\CRUD;
 use DateTime;
 use Doctrine\Instantiator\InstantiatorInterface;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Tools\SchemaTool;
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\ApiTools\Doctrine\DoctrineResource;
 use Laminas\ApiTools\Doctrine\Server\Event\DoctrineResourceEvent;
 use Laminas\ApiTools\Rest\ResourceEvent;
-use Laminas\Filter\FilterChain;
 use Laminas\Http\Request;
 use Laminas\ServiceManager\ServiceManager;
 use LaminasTest\ApiTools\Doctrine\TestCase;
@@ -58,9 +56,7 @@ class CRUDTest extends TestCase
         $tool->createSchema($em->getMetadataFactory()->getAllMetadata());
 
         $this->em = $em;
-
     }
-
 
     public function testCreate(): void
     {
@@ -219,7 +215,7 @@ class CRUDTest extends TestCase
         $sm = $this->getApplication()->getServiceManager();
 
         $config                           = $sm->get('config');
-        $resourceName                     = 'LaminasTestApiToolsDbApi\V1\Rest\Artist\ArtistResource';
+        $resourceName                     = ArtistResource::class;
         $resourceConfig                   = $config['api-tools']['doctrine-connected'][$resourceName];
         $resourceConfig['entity_factory'] = 'ResourceInstantiator';
         $config['api-tools']['doctrine-connected'][$resourceName] = $resourceConfig;

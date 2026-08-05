@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
   <file src="src/Server/Event/DoctrineResourceEvent.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DoctrineResourceEvent]]></code>
+    </ClassMustBeFinal>
+    <MissingClassConstType>
+      <code><![CDATA[EVENT_CREATE_POST      = 'create.post']]></code>
+      <code><![CDATA[EVENT_CREATE_PRE       = 'create.pre']]></code>
+      <code><![CDATA[EVENT_DELETE_LIST_POST = 'delete-list.post']]></code>
+      <code><![CDATA[EVENT_DELETE_LIST_PRE  = 'delete-list.pre']]></code>
+      <code><![CDATA[EVENT_DELETE_POST      = 'delete.post']]></code>
+      <code><![CDATA[EVENT_DELETE_PRE       = 'delete.pre']]></code>
+      <code><![CDATA[EVENT_FETCH_ALL_POST   = 'fetch-all.post']]></code>
+      <code><![CDATA[EVENT_FETCH_ALL_PRE    = 'fetch-all.pre']]></code>
+      <code><![CDATA[EVENT_FETCH_POST       = 'fetch.post']]></code>
+      <code><![CDATA[EVENT_FETCH_PRE        = 'fetch.pre']]></code>
+      <code><![CDATA[EVENT_PATCH_LIST_POST  = 'patch-list.post']]></code>
+      <code><![CDATA[EVENT_PATCH_LIST_PRE   = 'patch-list.pre']]></code>
+      <code><![CDATA[EVENT_PATCH_POST       = 'patch.post']]></code>
+      <code><![CDATA[EVENT_PATCH_PRE        = 'patch.pre']]></code>
+      <code><![CDATA[EVENT_UPDATE_POST      = 'update.post']]></code>
+      <code><![CDATA[EVENT_UPDATE_PRE       = 'update.pre']]></code>
+    </MissingClassConstType>
     <MissingTemplateParam>
       <code><![CDATA[DoctrineResourceEvent]]></code>
     </MissingTemplateParam>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getCollection]]></code>
+      <code><![CDATA[getEntityClassName]]></code>
+      <code><![CDATA[getEntityId]]></code>
+      <code><![CDATA[setCollection]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$data]]></code>
       <code><![CDATA[$entityClassName]]></code>
@@ -16,6 +43,9 @@
     <ArgumentTypeCoercion>
       <code><![CDATA[$entity]]></code>
     </ArgumentTypeCoercion>
+    <ClassMustBeFinal>
+      <code><![CDATA[CollectionListener]]></code>
+    </ClassMustBeFinal>
     <InvalidPropertyAssignmentValue>
       <code><![CDATA[$this->entityHydratorMap]]></code>
       <code><![CDATA[$this->entityHydratorMap]]></code>
@@ -28,6 +58,12 @@
     <MismatchingDocblockParamType>
       <code><![CDATA[array|null]]></code>
     </MismatchingDocblockParamType>
+    <MissingClassConstType>
+      <code><![CDATA[CONFIG_NAMESPACE = 'doctrine-hydrator']]></code>
+    </MissingClassConstType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function attach(EventManagerInterface $events, $priority = 1): void]]></code>
+    </MissingOverrideAttribute>
     <MoreSpecificReturnType>
       <code><![CDATA[AbstractHydrator|DoctrineObject]]></code>
     </MoreSpecificReturnType>
@@ -87,79 +123,194 @@
       <code><![CDATA[! $metadata || ! $metadata instanceof ClassMetadata]]></code>
     </TypeDoesNotContainType>
   </file>
+  <file src="src/Server/Exception/InvalidArgumentException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidArgumentException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Server/Module.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Module]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[Module]]></code>
+    </UnusedClass>
+  </file>
   <file src="src/Server/Paginator/Adapter/DoctrineOdmAdapter.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DoctrineOdmAdapter]]></code>
+    </ClassMustBeFinal>
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[array]]></code>
     </ImplementedReturnTypeMismatch>
-    <InvalidClass>
-      <code><![CDATA[Builder]]></code>
-      <code><![CDATA[Builder]]></code>
-      <code><![CDATA[Builder]]></code>
-      <code><![CDATA[Builder]]></code>
-    </InvalidClass>
-    <InvalidReturnStatement>
-      <code><![CDATA[$queryBuilder->getQuery()->execute()]]></code>
-    </InvalidReturnStatement>
-    <InvalidReturnType>
-      <code><![CDATA[int]]></code>
-    </InvalidReturnType>
+    <InvalidClone>
+      <code><![CDATA[clone $this->getQueryBuilder()]]></code>
+    </InvalidClone>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function count(): int]]></code>
+      <code><![CDATA[public function getItems($offset, $itemCountPerPage)]]></code>
+    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[AdapterInterface]]></code>
     </MissingTemplateParam>
-    <NullableReturnStatement>
-      <code><![CDATA[$queryBuilder->getQuery()->execute()]]></code>
-    </NullableReturnStatement>
-    <PossiblyInvalidMethodCall>
-      <code><![CDATA[toArray]]></code>
-    </PossiblyInvalidMethodCall>
-    <PossiblyNullReference>
-      <code><![CDATA[toArray]]></code>
-    </PossiblyNullReference>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$queryBuilder]]></code>
+      <code><![CDATA[$queryBuilder]]></code>
+    </PossiblyUnusedParam>
+    <UndefinedDocblockClass>
+      <code><![CDATA[$queryBuilder]]></code>
+      <code><![CDATA[$queryBuilder]]></code>
+      <code><![CDATA[$queryBuilder]]></code>
+      <code><![CDATA[Builder]]></code>
+      <code><![CDATA[Builder]]></code>
+      <code><![CDATA[Builder]]></code>
+      <code><![CDATA[Builder]]></code>
+    </UndefinedDocblockClass>
   </file>
   <file src="src/Server/Paginator/Adapter/DoctrineOrmAdapter.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DoctrineOrmAdapter]]></code>
+    </ClassMustBeFinal>
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[array]]></code>
     </ImplementedReturnTypeMismatch>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getItems($offset, $itemCountPerPage)]]></code>
+    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[AdapterInterface]]></code>
       <code><![CDATA[DoctrineOrmAdapter]]></code>
     </MissingTemplateParam>
+    <UnusedClass>
+      <code><![CDATA[DoctrineOrmAdapter]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Server/Query/CreateFilter/AbstractCreateFilter.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[abstract public function filter(ResourceEvent $event, $entityClass, $data);]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Server/Query/CreateFilter/DefaultCreateFilter.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DefaultCreateFilter]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function filter(ResourceEvent $event, $entityClass, $data)]]></code>
+    </MissingOverrideAttribute>
   </file>
   <file src="src/Server/Query/CreateFilter/Service/QueryCreateFilterManager.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[QueryCreateFilterManager]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function validate($instance): void]]></code>
+    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[QueryCreateFilterManager]]></code>
     </MissingTemplateParam>
     <NonInvariantDocblockPropertyType>
       <code><![CDATA[$instanceOf]]></code>
     </NonInvariantDocblockPropertyType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[validatePlugin]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Server/Query/CreateFilter/Service/QueryCreateFilterManagerFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[QueryCreateFilterManagerFactory]]></code>
+    </ClassMustBeFinal>
+    <MissingClassConstType>
+      <code><![CDATA[PLUGIN_MANAGER_CLASS = QueryCreateFilterManager::class]]></code>
+    </MissingClassConstType>
   </file>
   <file src="src/Server/Query/Provider/AbstractQueryProvider.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$entityClass]]></code>
     </ArgumentTypeCoercion>
-    <PossiblyInvalidArgument>
-      <code><![CDATA[$queryBuilder->getQuery()]]></code>
-    </PossiblyInvalidArgument>
+    <MissingOverrideAttribute>
+      <code><![CDATA[abstract public function createQuery(ResourceEvent $event, $entityClass, $parameters);]]></code>
+      <code><![CDATA[public function getCollectionTotal($entityClass)]]></code>
+      <code><![CDATA[public function getPaginatedQuery($queryBuilder)]]></code>
+    </MissingOverrideAttribute>
+    <UndefinedDocblockClass>
+      <code><![CDATA[QueryBuilder|Builder]]></code>
+    </UndefinedDocblockClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[createQueryBuilder]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Server/Query/Provider/DefaultOdm.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DefaultOdm]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function createQuery(ResourceEvent $event, $entityClass, $parameters): Builder]]></code>
+      <code><![CDATA[public function getCollectionTotal($entityClass)]]></code>
+      <code><![CDATA[public function getPaginatedQuery($queryBuilder): DoctrineOdmAdapter]]></code>
+    </MissingOverrideAttribute>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$entityClass]]></code>
       <code><![CDATA[$entityClass]]></code>
     </MoreSpecificImplementedParamType>
+    <UndefinedClass>
+      <code><![CDATA[Builder]]></code>
+    </UndefinedClass>
+    <UndefinedDocblockClass>
+      <code><![CDATA[$documentManager]]></code>
+      <code><![CDATA[$documentManager]]></code>
+      <code><![CDATA[Builder]]></code>
+    </UndefinedDocblockClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[createQueryBuilder]]></code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="src/Server/Query/Provider/DefaultOrm.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$entityClass]]></code>
+    </ArgumentTypeCoercion>
+    <ClassMustBeFinal>
+      <code><![CDATA[DefaultOrm]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function createQuery(ResourceEvent $event, $entityClass, $parameters): QueryBuilder]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Server/Query/Provider/QueryProviderInterface.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getCollectionTotal]]></code>
+    </PossiblyUnusedMethod>
+    <UndefinedDocblockClass>
+      <code><![CDATA[QueryBuilder|Builder]]></code>
+      <code><![CDATA[QueryBuilder|Builder|ApiProblem]]></code>
+    </UndefinedDocblockClass>
+  </file>
   <file src="src/Server/Query/Provider/Service/QueryProviderManager.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[QueryProviderManager]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function validate($instance): void]]></code>
+    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[QueryProviderManager]]></code>
     </MissingTemplateParam>
     <NonInvariantDocblockPropertyType>
       <code><![CDATA[$instanceOf]]></code>
     </NonInvariantDocblockPropertyType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[validatePlugin]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Server/Query/Provider/Service/QueryProviderManagerFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[QueryProviderManagerFactory]]></code>
+    </ClassMustBeFinal>
+    <MissingClassConstType>
+      <code><![CDATA[PLUGIN_MANAGER_CLASS = QueryProviderManager::class]]></code>
+    </MissingClassConstType>
   </file>
   <file src="src/Server/Resource/DoctrineResource.php">
     <ArgumentTypeCoercion>
@@ -193,6 +344,21 @@
     <InvalidStringClass>
       <code><![CDATA[new $entityClass()]]></code>
     </InvalidStringClass>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function create($data)]]></code>
+      <code><![CDATA[public function delete($id)]]></code>
+      <code><![CDATA[public function deleteList($data)]]></code>
+      <code><![CDATA[public function fetch($id)]]></code>
+      <code><![CDATA[public function fetchAll($data = [])]]></code>
+      <code><![CDATA[public function getEventManager()]]></code>
+      <code><![CDATA[public function getHydrator(): ?HydratorInterface]]></code>
+      <code><![CDATA[public function patch($id, $data)]]></code>
+      <code><![CDATA[public function patchList($data)]]></code>
+      <code><![CDATA[public function replaceList($data)]]></code>
+      <code><![CDATA[public function setEventManager(EventManagerInterface $eventManager)]]></code>
+      <code><![CDATA[public function setHydrator(HydratorInterface $hydrator): void]]></code>
+      <code><![CDATA[public function update($id, $data)]]></code>
+    </MissingOverrideAttribute>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$data]]></code>
       <code><![CDATA[$data]]></code>
@@ -212,6 +378,10 @@
       <code><![CDATA[hydrate]]></code>
       <code><![CDATA[hydrate]]></code>
     </PossiblyNullReference>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+      <code><![CDATA[setMultiKeyDelimiter]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$entityIdentifierName]]></code>
       <code><![CDATA[$events]]></code>
@@ -244,6 +414,11 @@
       <code><![CDATA[$this->eventIdentifier instanceof Traversable]]></code>
       <code><![CDATA[is_object($this->eventIdentifier)]]></code>
     </TypeDoesNotContainType>
+    <UndefinedClass>
+      <code><![CDATA[$queryBuilder]]></code>
+      <code><![CDATA[$queryBuilder]]></code>
+      <code><![CDATA[MongoDBQueryBuilder]]></code>
+    </UndefinedClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[$queryProviders]]></code>
       <code><![CDATA[$queryProviders]]></code>
@@ -254,52 +429,116 @@
       <code><![CDATA[getConnection]]></code>
       <code><![CDATA[getConnection]]></code>
     </UndefinedInterfaceMethod>
+    <UnusedMethodCall>
+      <code><![CDATA[getEntityClass]]></code>
+    </UnusedMethodCall>
   </file>
   <file src="src/Server/Resource/DoctrineResourceFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DoctrineResourceFactory]]></code>
+    </ClassMustBeFinal>
     <InvalidStringClass>
       <code><![CDATA[new $resourceClass($entityFactory)]]></code>
     </InvalidStringClass>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)]]></code>
+      <code><![CDATA[public function canCreate(ContainerInterface $container, $requestedName): bool]]></code>
+    </MissingOverrideAttribute>
     <PossiblyNullArgument>
       <code><![CDATA[$hydrator]]></code>
     </PossiblyNullArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[canCreateServiceWithName]]></code>
+      <code><![CDATA[createServiceWithName]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$requestedName]]></code>
+    </PossiblyUnusedParam>
+    <UndefinedClass>
+      <code><![CDATA[DocumentManager]]></code>
+    </UndefinedClass>
   </file>
   <file src="src/Server/Service/DoctrineHydrator.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DoctrineHydrator]]></code>
+    </ClassMustBeFinal>
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[object]]></code>
     </ImplementedReturnTypeMismatch>
-    <InvalidArgument>
-      <code><![CDATA[$data]]></code>
-      <code><![CDATA[$object]]></code>
-    </InvalidArgument>
     <InvalidReturnStatement>
       <code><![CDATA[$this->hydrateService]]></code>
-      <code><![CDATA[$this->hydrateService->hydrate($object, $data)]]></code>
     </InvalidReturnStatement>
     <InvalidReturnType>
       <code><![CDATA[HydratorInterface]]></code>
     </InvalidReturnType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function extract(object $object): array]]></code>
+      <code><![CDATA[public function hydrate(array $data, object $object)]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getExtractService]]></code>
+      <code><![CDATA[getHydrateService]]></code>
+    </PossiblyUnusedMethod>
+    <UndefinedDocblockClass>
+      <code><![CDATA[$this->hydrateService]]></code>
+      <code><![CDATA[$this->hydrateService]]></code>
+      <code><![CDATA[HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface]]></code>
+    </UndefinedDocblockClass>
   </file>
   <file src="src/Server/Service/DoctrineHydratorFactory.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$objectManager]]></code>
     </ArgumentTypeCoercion>
+    <ClassMustBeFinal>
+      <code><![CDATA[DoctrineHydratorFactory]]></code>
+    </ClassMustBeFinal>
+    <DeprecatedConstant>
+      <code><![CDATA[FilterComposite::CONDITION_AND]]></code>
+      <code><![CDATA[FilterComposite::CONDITION_OR]]></code>
+      <code><![CDATA[FilterComposite::CONDITION_OR]]></code>
+    </DeprecatedConstant>
     <MismatchingDocblockReturnType>
       <code><![CDATA[HydratorInterface]]></code>
     </MismatchingDocblockReturnType>
+    <MissingClassConstType>
+      <code><![CDATA[FACTORY_NAMESPACE = 'doctrine-hydrator']]></code>
+      <code><![CDATA[OBJECT_MANAGER_TYPE_ODM_MONGODB = 'ODM/MongoDB']]></code>
+      <code><![CDATA[OBJECT_MANAGER_TYPE_ORM         = 'ORM']]></code>
+    </MissingClassConstType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)]]></code>
+      <code><![CDATA[public function canCreate(ContainerInterface $container, $requestedName)]]></code>
+    </MissingOverrideAttribute>
     <MissingReturnType>
       <code><![CDATA[configureHydratorFilters]]></code>
       <code><![CDATA[configureHydratorStrategies]]></code>
     </MissingReturnType>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$container]]></code>
+      <code><![CDATA[$container]]></code>
+      <code><![CDATA[$objectManager]]></code>
+      <code><![CDATA[$objectManager]]></code>
+    </PossiblyUnusedParam>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$extractService]]></code>
       <code><![CDATA[$hydrateService]]></code>
     </RiskyTruthyFalsyComparison>
+    <UndefinedDocblockClass>
+      <code><![CDATA[DocumentManager|EntityManager]]></code>
+    </UndefinedDocblockClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[build]]></code>
       <code><![CDATA[getHydratorFactory]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="test/src/Server/Event/Listener/CollectionListenerTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[CollectionListenerTest]]></code>
+    </ClassMustBeFinal>
     <PossiblyInvalidArgument>
       <code><![CDATA[$entityFactory]]></code>
       <code><![CDATA[$om]]></code>
@@ -310,78 +549,35 @@
       <code><![CDATA[expects]]></code>
     </PossiblyUndefinedMethod>
   </file>
-  <file src="test/src/Server/ODM/CRUD/CRUDTest.php">
+  <file src="test/src/Server/ORM/CRUD/CRUDTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[CRUDTest]]></code>
+    </ClassMustBeFinal>
     <MissingClosureParamType>
       <code><![CDATA[$class]]></code>
     </MissingClosureParamType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
     <PossiblyNullReference>
       <code><![CDATA[attach]]></code>
       <code><![CDATA[attach]]></code>
-      <code><![CDATA[attach]]></code>
-      <code><![CDATA[attach]]></code>
-      <code><![CDATA[attach]]></code>
-      <code><![CDATA[attach]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getId]]></code>
       <code><![CDATA[getId]]></code>
       <code><![CDATA[getName]]></code>
       <code><![CDATA[getName]]></code>
     </PossiblyNullReference>
-    <PossiblyUndefinedMethod>
-      <code><![CDATA[expects]]></code>
-    </PossiblyUndefinedMethod>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[attachAggregatedListener]]></code>
+      <code><![CDATA[attachSharedListener]]></code>
+    </PossiblyUnusedMethod>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$name]]></code>
-    </RiskyTruthyFalsyComparison>
-    <UndefinedClass/>
-    <UndefinedInterfaceMethod>
-      <code><![CDATA[getConfig]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[getHeaders]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-      <code><![CDATA[setMethod]]></code>
-    </UndefinedInterfaceMethod>
-  </file>
-  <file src="test/src/Server/ORM/CRUD/CRUDTest.php">
-    <MissingClosureParamType>
-      <code><![CDATA[$class]]></code>
-    </MissingClosureParamType>
-    <PossiblyNullReference>
-      <code><![CDATA[attach]]></code>
-      <code><![CDATA[attach]]></code>
-      <code><![CDATA[getId]]></code>
-      <code><![CDATA[getId]]></code>
-      <code><![CDATA[getId]]></code>
-      <code><![CDATA[getId]]></code>
-      <code><![CDATA[getName]]></code>
-      <code><![CDATA[getName]]></code>
-    </PossiblyNullReference>
-    <RiskyTruthyFalsyComparison>
       <code><![CDATA[$name]]></code>
     </RiskyTruthyFalsyComparison>
     <UndefinedClass>
-      <code><![CDATA[ArtistResource]]></code>
       <code><![CDATA[DoctrineResource]]></code>
       <code><![CDATA[DoctrineResource]]></code>
     </UndefinedClass>
@@ -439,8 +635,26 @@
       <code><![CDATA[setService]]></code>
       <code><![CDATA[setService]]></code>
     </UndefinedInterfaceMethod>
+    <UnevaluatedCode>
+      <code><![CDATA[$album  = $this->createAlbum('Album RPC', $artist);]]></code>
+      <code><![CDATA[$artist = $this->createArtist('Artist RPC');]]></code>
+      <code><![CDATA[$body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);]]></code>
+      <code><![CDATA[$body = json_decode($this->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);]]></code>
+      <code><![CDATA[$this->dispatch('/test/artist/album');]]></code>
+      <code><![CDATA[$this->dispatch(sprintf('/test/artist/%d/album/%d', $artist->getId(), $album->getId()));]]></code>
+      <code><![CDATA[$this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');]]></code>
+      <code><![CDATA[$this->getRequest()->getHeaders()->addHeaderLine('Accept', 'application/json');]]></code>
+      <code><![CDATA[print_r($body);]]></code>
+      <code><![CDATA[print_r($body);]]></code>
+    </UnevaluatedCode>
   </file>
   <file src="test/src/Server/ORM/CRUD/TestAsset/FailureAggregateListener.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[FailureAggregateListener]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function attach(EventManagerInterface $events, $priority = 1): void]]></code>
+    </MissingOverrideAttribute>
     <PossiblyNullArgument>
       <code><![CDATA[$event->getName()]]></code>
     </PossiblyNullArgument>
@@ -449,6 +663,10 @@
     <LessSpecificReturnStatement>
       <code><![CDATA[parent::setApplicationConfig($config)]]></code>
     </LessSpecificReturnStatement>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function tearDown(): void]]></code>
+      <code><![CDATA[public function setApplicationConfig($config)]]></code>
+    </MissingOverrideAttribute>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$config]]></code>
     </MoreSpecificImplementedParamType>
@@ -458,8 +676,20 @@
     <ParamNameMismatch>
       <code><![CDATA[$config]]></code>
     </ParamNameMismatch>
+    <PossiblyFalseArgument>
+      <code><![CDATA[scandir($dir)]]></code>
+    </PossiblyFalseArgument>
     <PossiblyNullReference>
       <code><![CDATA[getNumberOfRequiredParameters]]></code>
     </PossiblyNullReference>
+    <PossiblyUnusedReturnValue>
+      <code><![CDATA[$this]]></code>
+    </PossiblyUnusedReturnValue>
+    <UnusedMethod>
+      <code><![CDATA[removeDir]]></code>
+    </UnusedMethod>
+    <UnusedVariable>
+      <code><![CDATA[$module]]></code>
+    </UnusedVariable>
   </file>
 </files>

@@ -10,6 +10,15 @@ use Doctrine\DBAL\Types\Type;
 use function is_string;
 use function strrev;
 
+/**
+ * Compatible with both DBAL 3 (paired with ORM 2) and DBAL 4 (paired with ORM 3).
+ *
+ * The signatures below are deliberately the DBAL 4 ones: DBAL 3 declares these
+ * parameters untyped, so adding `mixed` is allowed, and narrowing the return type
+ * is covariant. getName() and requiresSQLCommentHint() are abstract/present in
+ * DBAL 3 and removed in DBAL 4 - keeping them satisfies DBAL 3 and is harmless
+ * under DBAL 4.
+ */
 class RevType extends Type
 {
     public const NAME = 'rev';
@@ -38,5 +47,21 @@ class RevType extends Type
         }
 
         return strrev($value);
+    }
+
+    /**
+     * Required by DBAL 3; removed from Type in DBAL 4, where it is simply unused.
+     */
+    public function getName(): string
+    {
+        return static::NAME;
+    }
+
+    /**
+     * Present in DBAL 3; removed from Type in DBAL 4, where it is simply unused.
+     */
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
+    {
+        return true;
     }
 }
