@@ -21,6 +21,7 @@ use Laminas\InputFilter\InputFilterInterface;
 use Laminas\InputFilter\InputInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\Stdlib\ArrayObject;
+use Override;
 
 use function array_key_exists;
 use function count;
@@ -72,6 +73,7 @@ class CollectionListener implements ListenerAggregateInterface
     /**
      * @param int $priority
      */
+    #[Override]
     public function attach(EventManagerInterface $events, $priority = 1): void
     {
         $this->listeners[] = $events->attach(

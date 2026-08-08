@@ -6,6 +6,7 @@ namespace LaminasTest\ApiTools\Doctrine;
 
 use Laminas\Mvc\Application;
 use Laminas\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
+use Override;
 use ReflectionClass;
 
 use function array_diff;
@@ -28,6 +29,7 @@ class TestCase extends AbstractHttpControllerTestCase
      * @param array<string, mixed> $config
      * @return $this
      */
+    #[Override]
     public function setApplicationConfig($config)
     {
         $r          = (new ReflectionClass(Application::class))->getConstructor();
@@ -43,6 +45,7 @@ class TestCase extends AbstractHttpControllerTestCase
         return parent::setApplicationConfig($config);
     }
 
+    #[Override]
     protected function tearDown(): void
     {
         $this->clearAssets();

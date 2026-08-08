@@ -7,6 +7,7 @@ namespace Laminas\ApiTools\Doctrine\Server\Query\Provider\Service;
 use Laminas\ApiTools\Doctrine\Server\Query\Provider\QueryProviderInterface;
 use Laminas\ServiceManager\AbstractPluginManager;
 use Laminas\ServiceManager\Exception;
+use Override;
 
 use function get_debug_type;
 use function sprintf;
@@ -24,6 +25,7 @@ class QueryProviderManager extends AbstractPluginManager
      * @param mixed $instance
      * @throws Exception\InvalidServiceException
      */
+    #[Override]
     public function validate($instance): void
     {
         if (! $instance instanceof $this->instanceOf) {

@@ -34,7 +34,6 @@
         }
     },
     "require": {
-        "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
         "doctrine/collections": "^2",
         "doctrine/doctrine-laminas-hydrator": "^3.2.1",
         "doctrine/doctrine-module": "^6.4",
@@ -50,7 +49,8 @@
         "laminas/laminas-paginator": "^2.21",
         "laminas/laminas-servicemanager": "^3.24",
         "laminas/laminas-stdlib": "^3.21",
-        "laminas/laminas-validator": "^2.65"
+        "laminas/laminas-validator": "^2.65",
+        "php": "~8.3.0 || ~8.4.0 || ~8.5.0"
     },
     "require-dev": {
         "doctrine/doctrine-orm-module": "^6.4",
@@ -59,7 +59,7 @@
         "laminas-api-tools/api-tools-provider": "^1.8",
         "laminas-api-tools/api-tools-rpc": "^1.10",
         "laminas-api-tools/api-tools-versioning": "^1.9",
-        "laminas/laminas-coding-standard": "^3",
+        "laminas/laminas-coding-standard": "^3.1",
         "laminas/laminas-filter": "^2.42",
         "laminas/laminas-http": "^2.23",
         "laminas/laminas-i18n": "^2.31",

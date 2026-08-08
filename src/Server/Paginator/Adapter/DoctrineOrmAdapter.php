@@ -6,6 +6,7 @@ namespace Laminas\ApiTools\Doctrine\Server\Paginator\Adapter;
 
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Laminas\Paginator\Adapter\AdapterInterface;
+use Override;
 
 use function array_key_exists;
 
@@ -19,6 +20,7 @@ class DoctrineOrmAdapter extends Paginator implements AdapterInterface
      * @param int $itemCountPerPage
      * @return array
      */
+    #[Override]
     public function getItems($offset, $itemCountPerPage)
     {
         if (

@@ -61,9 +61,6 @@
     <MissingClassConstType>
       <code><![CDATA[CONFIG_NAMESPACE = 'doctrine-hydrator']]></code>
     </MissingClassConstType>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function attach(EventManagerInterface $events, $priority = 1): void]]></code>
-    </MissingOverrideAttribute>
     <MoreSpecificReturnType>
       <code><![CDATA[AbstractHydrator|DoctrineObject]]></code>
     </MoreSpecificReturnType>
@@ -146,10 +143,6 @@
     <InvalidClone>
       <code><![CDATA[clone $this->getQueryBuilder()]]></code>
     </InvalidClone>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function count(): int]]></code>
-      <code><![CDATA[public function getItems($offset, $itemCountPerPage)]]></code>
-    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[AdapterInterface]]></code>
     </MissingTemplateParam>
@@ -177,9 +170,6 @@
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[array]]></code>
     </ImplementedReturnTypeMismatch>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function getItems($offset, $itemCountPerPage)]]></code>
-    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[AdapterInterface]]></code>
       <code><![CDATA[DoctrineOrmAdapter]]></code>
@@ -188,26 +178,15 @@
       <code><![CDATA[DoctrineOrmAdapter]]></code>
     </UnusedClass>
   </file>
-  <file src="src/Server/Query/CreateFilter/AbstractCreateFilter.php">
-    <MissingOverrideAttribute>
-      <code><![CDATA[abstract public function filter(ResourceEvent $event, $entityClass, $data);]]></code>
-    </MissingOverrideAttribute>
-  </file>
   <file src="src/Server/Query/CreateFilter/DefaultCreateFilter.php">
     <ClassMustBeFinal>
       <code><![CDATA[DefaultCreateFilter]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function filter(ResourceEvent $event, $entityClass, $data)]]></code>
-    </MissingOverrideAttribute>
   </file>
   <file src="src/Server/Query/CreateFilter/Service/QueryCreateFilterManager.php">
     <ClassMustBeFinal>
       <code><![CDATA[QueryCreateFilterManager]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function validate($instance): void]]></code>
-    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[QueryCreateFilterManager]]></code>
     </MissingTemplateParam>
@@ -230,11 +209,6 @@
     <ArgumentTypeCoercion>
       <code><![CDATA[$entityClass]]></code>
     </ArgumentTypeCoercion>
-    <MissingOverrideAttribute>
-      <code><![CDATA[abstract public function createQuery(ResourceEvent $event, $entityClass, $parameters);]]></code>
-      <code><![CDATA[public function getCollectionTotal($entityClass)]]></code>
-      <code><![CDATA[public function getPaginatedQuery($queryBuilder)]]></code>
-    </MissingOverrideAttribute>
     <UndefinedDocblockClass>
       <code><![CDATA[QueryBuilder|Builder]]></code>
     </UndefinedDocblockClass>
@@ -246,11 +220,6 @@
     <ClassMustBeFinal>
       <code><![CDATA[DefaultOdm]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function createQuery(ResourceEvent $event, $entityClass, $parameters): Builder]]></code>
-      <code><![CDATA[public function getCollectionTotal($entityClass)]]></code>
-      <code><![CDATA[public function getPaginatedQuery($queryBuilder): DoctrineOdmAdapter]]></code>
-    </MissingOverrideAttribute>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$entityClass]]></code>
       <code><![CDATA[$entityClass]]></code>
@@ -274,9 +243,6 @@
     <ClassMustBeFinal>
       <code><![CDATA[DefaultOrm]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function createQuery(ResourceEvent $event, $entityClass, $parameters): QueryBuilder]]></code>
-    </MissingOverrideAttribute>
   </file>
   <file src="src/Server/Query/Provider/QueryProviderInterface.php">
     <PossiblyUnusedMethod>
@@ -291,9 +257,6 @@
     <ClassMustBeFinal>
       <code><![CDATA[QueryProviderManager]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function validate($instance): void]]></code>
-    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[QueryProviderManager]]></code>
     </MissingTemplateParam>
@@ -344,21 +307,6 @@
     <InvalidStringClass>
       <code><![CDATA[new $entityClass()]]></code>
     </InvalidStringClass>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function create($data)]]></code>
-      <code><![CDATA[public function delete($id)]]></code>
-      <code><![CDATA[public function deleteList($data)]]></code>
-      <code><![CDATA[public function fetch($id)]]></code>
-      <code><![CDATA[public function fetchAll($data = [])]]></code>
-      <code><![CDATA[public function getEventManager()]]></code>
-      <code><![CDATA[public function getHydrator(): ?HydratorInterface]]></code>
-      <code><![CDATA[public function patch($id, $data)]]></code>
-      <code><![CDATA[public function patchList($data)]]></code>
-      <code><![CDATA[public function replaceList($data)]]></code>
-      <code><![CDATA[public function setEventManager(EventManagerInterface $eventManager)]]></code>
-      <code><![CDATA[public function setHydrator(HydratorInterface $hydrator): void]]></code>
-      <code><![CDATA[public function update($id, $data)]]></code>
-    </MissingOverrideAttribute>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$data]]></code>
       <code><![CDATA[$data]]></code>
@@ -440,10 +388,6 @@
     <InvalidStringClass>
       <code><![CDATA[new $resourceClass($entityFactory)]]></code>
     </InvalidStringClass>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)]]></code>
-      <code><![CDATA[public function canCreate(ContainerInterface $container, $requestedName): bool]]></code>
-    </MissingOverrideAttribute>
     <PossiblyNullArgument>
       <code><![CDATA[$hydrator]]></code>
     </PossiblyNullArgument>
@@ -474,10 +418,6 @@
     <InvalidReturnType>
       <code><![CDATA[HydratorInterface]]></code>
     </InvalidReturnType>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function extract(object $object): array]]></code>
-      <code><![CDATA[public function hydrate(array $data, object $object)]]></code>
-    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[getExtractService]]></code>
       <code><![CDATA[getHydrateService]]></code>
@@ -508,10 +448,6 @@
       <code><![CDATA[OBJECT_MANAGER_TYPE_ODM_MONGODB = 'ODM/MongoDB']]></code>
       <code><![CDATA[OBJECT_MANAGER_TYPE_ORM         = 'ORM']]></code>
     </MissingClassConstType>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)]]></code>
-      <code><![CDATA[public function canCreate(ContainerInterface $container, $requestedName)]]></code>
-    </MissingOverrideAttribute>
     <MissingReturnType>
       <code><![CDATA[configureHydratorFilters]]></code>
       <code><![CDATA[configureHydratorStrategies]]></code>
@@ -556,9 +492,6 @@
     <MissingClosureParamType>
       <code><![CDATA[$class]]></code>
     </MissingClosureParamType>
-    <MissingOverrideAttribute>
-      <code><![CDATA[protected function setUp(): void]]></code>
-    </MissingOverrideAttribute>
     <PossiblyNullReference>
       <code><![CDATA[attach]]></code>
       <code><![CDATA[attach]]></code>
@@ -652,9 +585,6 @@
     <ClassMustBeFinal>
       <code><![CDATA[FailureAggregateListener]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function attach(EventManagerInterface $events, $priority = 1): void]]></code>
-    </MissingOverrideAttribute>
     <PossiblyNullArgument>
       <code><![CDATA[$event->getName()]]></code>
     </PossiblyNullArgument>
@@ -663,10 +593,6 @@
     <LessSpecificReturnStatement>
       <code><![CDATA[parent::setApplicationConfig($config)]]></code>
     </LessSpecificReturnStatement>
-    <MissingOverrideAttribute>
-      <code><![CDATA[protected function tearDown(): void]]></code>
-      <code><![CDATA[public function setApplicationConfig($config)]]></code>
-    </MissingOverrideAttribute>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$config]]></code>
     </MoreSpecificImplementedParamType>
