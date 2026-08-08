@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\ApiTools\Doctrine\Server\Service;
 
 use Laminas\Hydrator\HydratorInterface;
+use Override;
 
 class DoctrineHydrator implements HydratorInterface
 {
@@ -35,6 +36,7 @@ class DoctrineHydrator implements HydratorInterface
     /**
      * Extract values from an object.
      */
+    #[Override]
     public function extract(object $object): array
     {
         return $this->extractService->extract($object);
@@ -45,6 +47,7 @@ class DoctrineHydrator implements HydratorInterface
      *
      * @return object
      */
+    #[Override]
     public function hydrate(array $data, object $object)
     {
         // Laminas hydrator:

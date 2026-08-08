@@ -9,6 +9,7 @@ use Laminas\ApiTools\Doctrine\Server\Event\DoctrineResourceEvent;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\EventManager\ListenerAggregateTrait;
+use Override;
 
 use function sprintf;
 
@@ -26,6 +27,7 @@ class FailureAggregateListener implements ListenerAggregateInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function attach(EventManagerInterface $events, $priority = 1): void
     {
         $this->listeners[] = $events->attach($this->eventName, [$this, 'failure']);

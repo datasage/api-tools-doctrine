@@ -6,6 +6,7 @@ namespace Laminas\ApiTools\Doctrine\Server\Paginator\Adapter;
 
 use Doctrine\Odm\MongoDB\Query\Builder;
 use Laminas\Paginator\Adapter\AdapterInterface;
+use Override;
 
 class DoctrineOdmAdapter implements AdapterInterface
 {
@@ -41,6 +42,7 @@ class DoctrineOdmAdapter implements AdapterInterface
      * @param int $itemCountPerPage
      * @return array
      */
+    #[Override]
     public function getItems($offset, $itemCountPerPage)
     {
         $queryBuilder = $this->getQueryBuilder();
@@ -53,6 +55,7 @@ class DoctrineOdmAdapter implements AdapterInterface
     /**
      * {@inheritDoc}
      */
+    #[Override]
     public function count(): int
     {
         $queryBuilder = clone $this->getQueryBuilder();

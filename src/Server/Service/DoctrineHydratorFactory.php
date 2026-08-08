@@ -22,6 +22,7 @@ use Laminas\Hydrator\Strategy\StrategyInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Exception\ServiceNotFoundException;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
+use Override;
 use Psr\Container\ContainerInterface;
 
 use function array_key_exists;
@@ -50,6 +51,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @return bool
      * @throws ServiceNotFoundException
      */
+    #[Override]
     public function canCreate(ContainerInterface $container, $requestedName)
     {
         if (array_key_exists($requestedName, $this->lookupCache)) {
@@ -104,6 +106,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param null|array         $options
      * @return DoctrineHydrator
      */
+    #[Override]
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $config = $container->get('config');

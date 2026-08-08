@@ -11,6 +11,7 @@ use DoctrineModule\Persistence\ProvidesObjectManager;
 use Laminas\ApiTools\Doctrine\Server\Paginator\Adapter\DoctrineOrmAdapter;
 use Laminas\ApiTools\Rest\ResourceEvent;
 use Laminas\Paginator\Adapter\AdapterInterface;
+use Override;
 
 abstract class AbstractQueryProvider implements ObjectManagerAwareInterface, QueryProviderInterface
 {
@@ -19,12 +20,14 @@ abstract class AbstractQueryProvider implements ObjectManagerAwareInterface, Que
     /**
      * @inheritDoc
      */
+    #[Override]
     abstract public function createQuery(ResourceEvent $event, $entityClass, $parameters);
 
     /**
      * @param QueryBuilder|Builder $queryBuilder
      * @return AdapterInterface
      */
+    #[Override]
     public function getPaginatedQuery($queryBuilder)
     {
         return new DoctrineOrmAdapter($queryBuilder->getQuery(), false);
@@ -34,6 +37,7 @@ abstract class AbstractQueryProvider implements ObjectManagerAwareInterface, Que
      * @param string $entityClass
      * @return int
      */
+    #[Override]
     public function getCollectionTotal($entityClass)
     {
         $queryBuilder   = $this->getObjectManager()->createQueryBuilder();

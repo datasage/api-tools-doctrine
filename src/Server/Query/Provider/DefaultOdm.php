@@ -8,12 +8,14 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Query\Builder;
 use Laminas\ApiTools\Doctrine\Server\Paginator\Adapter\DoctrineOdmAdapter;
 use Laminas\ApiTools\Rest\ResourceEvent;
+use Override;
 
 class DefaultOdm extends AbstractQueryProvider
 {
     /**
      * @inheritDoc
      */
+    #[Override]
     public function createQuery(ResourceEvent $event, $entityClass, $parameters): Builder
     {
         /** @var DocumentManager $documentManager */
@@ -28,6 +30,7 @@ class DefaultOdm extends AbstractQueryProvider
      * @psalm-suppress MoreSpecificImplementedParamType
      * @param Builder $queryBuilder
      */
+    #[Override]
     public function getPaginatedQuery($queryBuilder): DoctrineOdmAdapter
     {
         return new DoctrineOdmAdapter($queryBuilder);
@@ -37,6 +40,7 @@ class DefaultOdm extends AbstractQueryProvider
      * @param class-string $entityClass
      * @return int
      */
+    #[Override]
     public function getCollectionTotal($entityClass)
     {
         $queryBuilder = $this->getObjectManager()->createQueryBuilder();

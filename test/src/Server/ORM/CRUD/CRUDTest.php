@@ -21,6 +21,7 @@ use LaminasTestApiToolsDb\Entity\Artist;
 use LaminasTestApiToolsDb\Entity\Product;
 use LaminasTestApiToolsDbApi\V1\Rest\Artist\ArtistResource;
 use LaminasTestApiToolsGeneral\Listener\EventCatcher;
+use Override;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -38,6 +39,7 @@ class CRUDTest extends TestCase
 {
     protected EntityManager $em;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

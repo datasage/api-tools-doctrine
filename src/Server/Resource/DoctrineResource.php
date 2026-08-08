@@ -30,6 +30,7 @@ use Laminas\EventManager\SharedEventManager;
 use Laminas\Hydrator\HydratorAwareInterface;
 use Laminas\Hydrator\HydratorInterface;
 use Laminas\Mvc\ModuleRouteListener;
+use Override;
 use ReflectionClass;
 use Traversable;
 
@@ -102,6 +103,7 @@ class DoctrineResource extends AbstractResourceListener implements
      *
      * @return $this
      */
+    #[Override]
     public function setEventManager(EventManagerInterface $eventManager)
     {
         $identifiers = [self::class, static::class];
@@ -133,6 +135,7 @@ class DoctrineResource extends AbstractResourceListener implements
      *
      * @return EventManagerInterface
      */
+    #[Override]
     public function getEventManager()
     {
         if (! $this->events instanceof EventManagerInterface) {
@@ -254,11 +257,13 @@ class DoctrineResource extends AbstractResourceListener implements
         return $this->multiKeyDelimiter;
     }
 
+    #[Override]
     public function setHydrator(HydratorInterface $hydrator): void
     {
         $this->hydrator = $hydrator;
     }
 
+    #[Override]
     public function getHydrator(): ?HydratorInterface
     {
         if (! $this->hydrator) {
@@ -275,6 +280,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $data
      * @return ApiProblem|mixed
      */
+    #[Override]
     public function create($data)
     {
         $entityClass = $this->getEntityClass();
@@ -319,6 +325,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $id
      * @return ApiProblem|bool
      */
+    #[Override]
     public function delete($id)
     {
         $entity = $this->findEntity($id, 'delete');
@@ -351,6 +358,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param array $data
      * @return array
      */
+    #[Override]
     public function patchList($data)
     {
         $return = new ArrayCollection();
@@ -391,6 +399,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $data
      * @return ApiProblem|mixed
      */
+    #[Override]
     public function deleteList($data)
     {
         $results = $this->triggerDoctrineEvent(DoctrineResourceEvent::EVENT_DELETE_LIST_PRE, $data, $data);
@@ -427,6 +436,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $id
      * @return ApiProblem|mixed
      */
+    #[Override]
     public function fetch($id)
     {
         $event = new DoctrineResourceEvent(DoctrineResourceEvent::EVENT_FETCH_PRE, $this);
@@ -459,6 +469,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param array $data
      * @return ApiProblem|mixed
      */
+    #[Override]
     public function fetchAll($data = [])
     {
         // Build query
@@ -521,6 +532,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $data
      * @return ApiProblem|mixed
      */
+    #[Override]
     public function patch($id, $data)
     {
         $entity = $this->findEntity($id, 'patch', $data);
@@ -558,6 +570,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $data
      * @return ApiProblem|mixed
      */
+    #[Override]
     public function replaceList($data)
     {
         return new ApiProblem(405, 'The PUT method has not been defined for collections');
@@ -570,6 +583,7 @@ class DoctrineResource extends AbstractResourceListener implements
      * @param mixed $data
      * @return ApiProblem|mixed
      */
+    #[Override]
     public function update($id, $data)
     {
         $entity = $this->findEntity($id, 'update', $data);

@@ -15,6 +15,7 @@ use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Exception\ServiceNotFoundException;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Override;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 
@@ -32,6 +33,7 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
      * @param string $requestedName
      * @throws ServiceNotFoundException
      */
+    #[Override]
     public function canCreate(ContainerInterface $container, $requestedName): bool
     {
         if (! $container->has('config')) {
@@ -81,6 +83,7 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
      * @param null|array $options
      * @return DoctrineResource
      */
+    #[Override]
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $config                  = $container->get('config');

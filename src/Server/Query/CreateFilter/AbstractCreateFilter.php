@@ -7,6 +7,7 @@ namespace Laminas\ApiTools\Doctrine\Server\Query\CreateFilter;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Persistence\ProvidesObjectManager;
 use Laminas\ApiTools\Rest\ResourceEvent;
+use Override;
 
 abstract class AbstractCreateFilter implements ObjectManagerAwareInterface, QueryCreateFilterInterface
 {
@@ -17,5 +18,6 @@ abstract class AbstractCreateFilter implements ObjectManagerAwareInterface, Quer
      * @param array $data
      * @return array
      */
+    #[Override]
     abstract public function filter(ResourceEvent $event, $entityClass, $data);
 }

@@ -7,12 +7,14 @@ namespace Laminas\ApiTools\Doctrine\Server\Query\Provider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 use Laminas\ApiTools\Rest\ResourceEvent;
+use Override;
 
 class DefaultOrm extends AbstractQueryProvider
 {
     /**
      * @inheritDoc
      */
+    #[Override]
     public function createQuery(ResourceEvent $event, $entityClass, $parameters): QueryBuilder
     {
         /** @var EntityManager $em */
