@@ -21,7 +21,7 @@ class CollectionListenerTest extends TestCase
     #[DataProvider('trueFalseProvider')]
     public function testProcessNewEntity(bool $withEntityFactory): void
     {
-        $artist = $this->getMockBuilder(Artist::class)->getMock();
+        $artist = $this->createStub(Artist::class);
         $data   = [];
 
         /** @var ObjectManager|MockObject $om */
