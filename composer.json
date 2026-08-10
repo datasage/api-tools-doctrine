@@ -75,7 +75,6 @@
         "doctrine/orm": "<2.6.3"
     },
     "suggest": {
-        "doctrine/doctrine-mongo-odm-module": "For Mongo ODM mapping",
         "doctrine/doctrine-orm-module": "For ORM mapping"
     },
     "autoload": {

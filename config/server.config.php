@@ -26,11 +26,9 @@ return [
     ],
     'api-tools-doctrine-query-provider'      => [
         'aliases'   => [
-            'default_odm' => Query\Provider\DefaultOdm::class,
             'default_orm' => Query\Provider\DefaultOrm::class,
         ],
         'factories' => [
-            Query\Provider\DefaultOdm::class => InvokableFactory::class,
             Query\Provider\DefaultOrm::class => InvokableFactory::class,
         ],
     ],

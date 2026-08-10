@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server\Query\Provider;
 
-use Doctrine\ODM\MongoDB\Query\Builder;
 use Doctrine\ORM\QueryBuilder;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Persistence\ProvidesObjectManager;
@@ -24,7 +23,7 @@ abstract class AbstractQueryProvider implements ObjectManagerAwareInterface, Que
     abstract public function createQuery(ResourceEvent $event, $entityClass, $parameters);
 
     /**
-     * @param QueryBuilder|Builder $queryBuilder
+     * @param QueryBuilder $queryBuilder
      * @return AdapterInterface
      */
     #[Override]

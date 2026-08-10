@@ -7,7 +7,6 @@ namespace Laminas\ApiTools\Doctrine\Server\Resource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Instantiator\InstantiatorInterface;
 use Doctrine\Laminas\Hydrator\DoctrineObject;
-use Doctrine\ODM\MongoDB\Query\Builder as MongoDBQueryBuilder;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -703,13 +702,9 @@ class DoctrineResource extends AbstractResourceListener implements
 
         // Add criteria
         foreach ($criteria as $key => $value) {
-            if ($queryBuilder instanceof MongoDBQueryBuilder) {
-                $queryBuilder->field($key)->equals($value);
-            } else {
-                $parameterName = 'a' . md5((string) random_int(0, mt_getrandmax()));
-                $queryBuilder->andwhere($queryBuilder->expr()->eq('row.' . $key, ":$parameterName"));
-                $queryBuilder->setParameter($parameterName, $value, $classMetaData->getTypeOfField($key));
-            }
+            $parameterName = 'a' . md5((string) random_int(0, mt_getrandmax()));
+            $queryBuilder->andwhere($queryBuilder->expr()->eq('row.' . $key, ":$parameterName"));
+            $queryBuilder->setParameter($parameterName, $value, $classMetaData->getTypeOfField($key));
         }
 
         try {
