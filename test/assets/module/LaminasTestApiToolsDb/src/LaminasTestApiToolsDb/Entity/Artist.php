@@ -8,7 +8,9 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 use LaminasTestApiToolsDb\Entity\Album;
+use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity]
 class Artist
 {
     /**
@@ -19,6 +21,9 @@ class Artist
         $this->album = new ArrayCollection();
     }
 
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected $id;
 
     public function getId()
@@ -26,6 +31,7 @@ class Artist
         return $this->id;
     }
 
+    #[ORM\Column(type: 'string', nullable: true)]
     protected $name;
 
     public function getName()
@@ -43,6 +49,7 @@ class Artist
         return $this;
     }
 
+    #[ORM\Column(type: 'datetime', nullable: true)]
     protected $createdAt;
 
     public function getCreatedAt()
@@ -60,6 +67,7 @@ class Artist
         return $this;
     }
 
+    #[ORM\OneToMany(targetEntity: Album::class, mappedBy: 'artist')]
     protected $album;
 
     public function getAlbum()

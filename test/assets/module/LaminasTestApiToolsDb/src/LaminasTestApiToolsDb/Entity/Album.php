@@ -6,9 +6,14 @@ namespace LaminasTestApiToolsDb\Entity;
 
 use DateTime;
 use InvalidArgumentException;
+use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity]
 class Album
 {
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected $id;
 
     public function getId()
@@ -16,6 +21,7 @@ class Album
         return $this->id;
     }
 
+    #[ORM\Column(type: 'string', nullable: true)]
     protected $name;
 
     public function getName()
@@ -33,6 +39,7 @@ class Album
         return $this;
     }
 
+    #[ORM\Column(type: 'datetime', nullable: true)]
     protected $createdAt;
 
     public function getCreatedAt()
@@ -50,6 +57,8 @@ class Album
         return $this;
     }
 
+    #[ORM\ManyToOne(targetEntity: Artist::class, inversedBy: 'album')]
+    #[ORM\JoinColumn(name: 'artist_id', referencedColumnName: 'id')]
     protected $artist;
 
     public function getArtist()
@@ -67,6 +76,8 @@ class Album
         return $this;
     }
 
+    #[ORM\ManyToOne(targetEntity: Album::class)]
+    #[ORM\JoinColumn(name: 'album_id', referencedColumnName: 'id', nullable: true)]
     protected $album;
 
     /**
