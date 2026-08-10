@@ -12,7 +12,7 @@ class UpdateQueryProvider extends AbstractQueryProvider
     /**
      * @param string $entityClass
      * @param array $parameters
-     * @return mixed This will return an ORM or ODM Query\Builder
+     * @return mixed This will return an ORM Query\Builder
      */
     public function createQuery(ResourceEvent $event, $entityClass, $parameters)
     {

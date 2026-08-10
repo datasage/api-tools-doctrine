@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Doctrine\Server\Resource;
 
-use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ObjectManager;
 use Laminas\ApiTools\Doctrine\Server\Query\CreateFilter\QueryCreateFilterInterface;
@@ -241,11 +240,6 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
             && $objectManager instanceof EntityManager
         ) {
             $queryProviders['default'] = $queryManager->get('default_orm');
-        } elseif (
-            class_exists(DocumentManager::class)
-            && $objectManager instanceof DocumentManager
-        ) {
-            $queryProviders['default'] = $queryManager->get('default_odm');
         } else {
             throw new ServiceNotCreatedException('No valid doctrine module is found for objectManager.');
         }

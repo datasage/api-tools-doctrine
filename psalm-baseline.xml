@@ -129,36 +129,6 @@
       <code><![CDATA[Module]]></code>
     </UnusedClass>
   </file>
-  <file src="src/Server/Paginator/Adapter/DoctrineOdmAdapter.php">
-    <ClassMustBeFinal>
-      <code><![CDATA[DoctrineOdmAdapter]]></code>
-    </ClassMustBeFinal>
-    <ImplementedReturnTypeMismatch>
-      <code><![CDATA[array]]></code>
-    </ImplementedReturnTypeMismatch>
-    <InvalidClone>
-      <code><![CDATA[clone $this->getQueryBuilder()]]></code>
-    </InvalidClone>
-    <MissingTemplateParam>
-      <code><![CDATA[AdapterInterface]]></code>
-    </MissingTemplateParam>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-    <PossiblyUnusedParam>
-      <code><![CDATA[$queryBuilder]]></code>
-      <code><![CDATA[$queryBuilder]]></code>
-    </PossiblyUnusedParam>
-    <UndefinedDocblockClass>
-      <code><![CDATA[$queryBuilder]]></code>
-      <code><![CDATA[$queryBuilder]]></code>
-      <code><![CDATA[$queryBuilder]]></code>
-      <code><![CDATA[Builder]]></code>
-      <code><![CDATA[Builder]]></code>
-      <code><![CDATA[Builder]]></code>
-      <code><![CDATA[Builder]]></code>
-    </UndefinedDocblockClass>
-  </file>
   <file src="src/Server/Paginator/Adapter/DoctrineOrmAdapter.php">
     <ClassMustBeFinal>
       <code><![CDATA[DoctrineOrmAdapter]]></code>
@@ -170,9 +140,6 @@
       <code><![CDATA[AdapterInterface]]></code>
       <code><![CDATA[DoctrineOrmAdapter]]></code>
     </MissingTemplateParam>
-    <UnusedClass>
-      <code><![CDATA[DoctrineOrmAdapter]]></code>
-    </UnusedClass>
   </file>
   <file src="src/Server/Query/CreateFilter/DefaultCreateFilter.php">
     <ClassMustBeFinal>
@@ -205,29 +172,6 @@
     <ArgumentTypeCoercion>
       <code><![CDATA[$entityClass]]></code>
     </ArgumentTypeCoercion>
-    <UndefinedDocblockClass>
-      <code><![CDATA[QueryBuilder|Builder]]></code>
-    </UndefinedDocblockClass>
-    <UndefinedInterfaceMethod>
-      <code><![CDATA[createQueryBuilder]]></code>
-    </UndefinedInterfaceMethod>
-  </file>
-  <file src="src/Server/Query/Provider/DefaultOdm.php">
-    <ClassMustBeFinal>
-      <code><![CDATA[DefaultOdm]]></code>
-    </ClassMustBeFinal>
-    <MoreSpecificImplementedParamType>
-      <code><![CDATA[$entityClass]]></code>
-      <code><![CDATA[$entityClass]]></code>
-    </MoreSpecificImplementedParamType>
-    <UndefinedClass>
-      <code><![CDATA[Builder]]></code>
-    </UndefinedClass>
-    <UndefinedDocblockClass>
-      <code><![CDATA[$documentManager]]></code>
-      <code><![CDATA[$documentManager]]></code>
-      <code><![CDATA[Builder]]></code>
-    </UndefinedDocblockClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[createQueryBuilder]]></code>
     </UndefinedInterfaceMethod>
@@ -244,10 +188,6 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[getCollectionTotal]]></code>
     </PossiblyUnusedMethod>
-    <UndefinedDocblockClass>
-      <code><![CDATA[QueryBuilder|Builder]]></code>
-      <code><![CDATA[QueryBuilder|Builder|ApiProblem]]></code>
-    </UndefinedDocblockClass>
   </file>
   <file src="src/Server/Query/Provider/Service/QueryProviderManager.php">
     <ClassMustBeFinal>
@@ -358,11 +298,6 @@
       <code><![CDATA[$this->eventIdentifier instanceof Traversable]]></code>
       <code><![CDATA[is_object($this->eventIdentifier)]]></code>
     </TypeDoesNotContainType>
-    <UndefinedClass>
-      <code><![CDATA[$queryBuilder]]></code>
-      <code><![CDATA[$queryBuilder]]></code>
-      <code><![CDATA[MongoDBQueryBuilder]]></code>
-    </UndefinedClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[$queryProviders]]></code>
       <code><![CDATA[$queryProviders]]></code>
@@ -388,12 +323,8 @@
       <code><![CDATA[$hydrator]]></code>
     </PossiblyNullArgument>
     <PossiblyUnusedParam>
-      <code><![CDATA[$config]]></code>
       <code><![CDATA[$requestedName]]></code>
     </PossiblyUnusedParam>
-    <UndefinedClass>
-      <code><![CDATA[DocumentManager]]></code>
-    </UndefinedClass>
   </file>
   <file src="src/Server/Service/DoctrineHydrator.php">
     <ClassMustBeFinal>
@@ -402,26 +333,12 @@
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[object]]></code>
     </ImplementedReturnTypeMismatch>
-    <InvalidReturnStatement>
-      <code><![CDATA[$this->hydrateService]]></code>
-    </InvalidReturnStatement>
-    <InvalidReturnType>
-      <code><![CDATA[HydratorInterface]]></code>
-    </InvalidReturnType>
     <PossiblyUnusedMethod>
       <code><![CDATA[getExtractService]]></code>
       <code><![CDATA[getHydrateService]]></code>
     </PossiblyUnusedMethod>
-    <UndefinedDocblockClass>
-      <code><![CDATA[$this->hydrateService]]></code>
-      <code><![CDATA[$this->hydrateService]]></code>
-      <code><![CDATA[HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface]]></code>
-    </UndefinedDocblockClass>
   </file>
   <file src="src/Server/Service/DoctrineHydratorFactory.php">
-    <ArgumentTypeCoercion>
-      <code><![CDATA[$objectManager]]></code>
-    </ArgumentTypeCoercion>
     <ClassMustBeFinal>
       <code><![CDATA[DoctrineHydratorFactory]]></code>
     </ClassMustBeFinal>
@@ -432,24 +349,16 @@
     </DeprecatedConstant>
     <MissingClassConstType>
       <code><![CDATA[FACTORY_NAMESPACE = 'doctrine-hydrator']]></code>
-      <code><![CDATA[OBJECT_MANAGER_TYPE_ODM_MONGODB = 'ODM/MongoDB']]></code>
-      <code><![CDATA[OBJECT_MANAGER_TYPE_ORM         = 'ORM']]></code>
     </MissingClassConstType>
     <PossiblyUnusedParam>
       <code><![CDATA[$container]]></code>
-      <code><![CDATA[$container]]></code>
-      <code><![CDATA[$objectManager]]></code>
     </PossiblyUnusedParam>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$extractService]]></code>
       <code><![CDATA[$hydrateService]]></code>
     </RiskyTruthyFalsyComparison>
-    <UndefinedDocblockClass>
-      <code><![CDATA[DocumentManager|EntityManager]]></code>
-    </UndefinedDocblockClass>
     <UndefinedInterfaceMethod>
       <code><![CDATA[build]]></code>
-      <code><![CDATA[getHydratorFactory]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="test/src/Server/Event/Listener/CollectionListenerTest.php">

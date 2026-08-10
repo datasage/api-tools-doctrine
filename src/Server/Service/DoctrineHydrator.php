@@ -11,7 +11,7 @@ class DoctrineHydrator implements HydratorInterface
 {
     /**
      * @param HydratorInterface $extractService
-     * @param HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface $hydrateService
+     * @param HydratorInterface $hydrateService
      */
     public function __construct(protected $extractService, protected $hydrateService)
     {
@@ -50,12 +50,6 @@ class DoctrineHydrator implements HydratorInterface
     #[Override]
     public function hydrate(array $data, object $object)
     {
-        // Laminas hydrator:
-        if ($this->hydrateService instanceof HydratorInterface) {
-            return $this->hydrateService->hydrate($data, $object);
-        }
-
-        // Doctrine hydrator: (parameters switched)
-        return $this->hydrateService->hydrate($object, $data);
+        return $this->hydrateService->hydrate($data, $object);
     }
 }

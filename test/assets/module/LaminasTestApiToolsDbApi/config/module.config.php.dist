@@ -282,28 +282,24 @@ return array(
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'by_value' => true,
             'strategies' => array(),
-            'use_generated_hydrator' => true,
         ),
         'LaminasTestApiToolsDbApi\\V1\\Rest\\ArtistByName\\ArtistByNameHydrator' => array(
             'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Artist',
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'by_value' => true,
             'strategies' => array(),
-            'use_generated_hydrator' => true,
         ),
         'LaminasTestApiToolsDbApi\\V1\\Rest\\Album\\AlbumHydrator' => array(
             'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Album',
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'by_value' => true,
             'strategies' => array(),
-            'use_generated_hydrator' => true,
         ),
         'LaminasTestApiToolsDbApi\\V1\\Rest\\Product\\ProductHydrator' => array(
             'entity_class' => 'LaminasTestApiToolsDb\\Entity\\Product',
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'by_value' => true,
             'strategies' => array(),
-            'use_generated_hydrator' => true,
         ),
     ),
     'controllers' => array(
