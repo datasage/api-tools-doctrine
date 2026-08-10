@@ -193,7 +193,6 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
 
     /**
      * @param ObjectManager      $objectManager
-     * @return HydratorInterface
      */
     protected function loadDoctrineModuleHydrator(
         ContainerInterface $container,
@@ -257,8 +256,12 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @throws ServiceNotCreatedException
      */
-    protected function configureHydratorStrategies($hydrator, ContainerInterface $container, $config, $objectManager)
-    {
+    protected function configureHydratorStrategies(
+        $hydrator,
+        ContainerInterface $container,
+        $config,
+        $objectManager
+    ): void {
         if (
             ! $hydrator instanceof StrategyEnabledInterface
             || ! isset($config['strategies'])
@@ -296,7 +299,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
      * @param ObjectManager      $objectManager
      * @throws ServiceNotCreatedException
      */
-    protected function configureHydratorFilters($hydrator, ContainerInterface $container, $config, $objectManager)
+    protected function configureHydratorFilters($hydrator, ContainerInterface $container, $config, $objectManager): void
     {
         if (
             ! $hydrator instanceof FilterEnabledInterface

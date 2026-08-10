@@ -55,9 +55,6 @@
       <code><![CDATA[$hydratorMap[$entityClass]]]></code>
       <code><![CDATA[$this->entityHydratorMap[$entityClass]]]></code>
     </LessSpecificReturnStatement>
-    <MismatchingDocblockParamType>
-      <code><![CDATA[array|null]]></code>
-    </MismatchingDocblockParamType>
     <MissingClassConstType>
       <code><![CDATA[CONFIG_NAMESPACE = 'doctrine-hydrator']]></code>
     </MissingClassConstType>
@@ -81,7 +78,6 @@
     <PossiblyNullArgument>
       <code><![CDATA[$associationTargetClass]]></code>
       <code><![CDATA[$associationTargetClass]]></code>
-      <code><![CDATA[$data]]></code>
       <code><![CDATA[$event->getResourceEvent()->getInputFilter()]]></code>
       <code><![CDATA[$metadata->getAssociationTargetClass($association)]]></code>
       <code><![CDATA[$this->getEntityHydratorMap()[$entityClass]]]></code>
@@ -434,23 +430,14 @@
       <code><![CDATA[FilterComposite::CONDITION_OR]]></code>
       <code><![CDATA[FilterComposite::CONDITION_OR]]></code>
     </DeprecatedConstant>
-    <MismatchingDocblockReturnType>
-      <code><![CDATA[HydratorInterface]]></code>
-    </MismatchingDocblockReturnType>
     <MissingClassConstType>
       <code><![CDATA[FACTORY_NAMESPACE = 'doctrine-hydrator']]></code>
       <code><![CDATA[OBJECT_MANAGER_TYPE_ODM_MONGODB = 'ODM/MongoDB']]></code>
       <code><![CDATA[OBJECT_MANAGER_TYPE_ORM         = 'ORM']]></code>
     </MissingClassConstType>
-    <MissingReturnType>
-      <code><![CDATA[configureHydratorFilters]]></code>
-      <code><![CDATA[configureHydratorStrategies]]></code>
-    </MissingReturnType>
     <PossiblyUnusedParam>
-      <code><![CDATA[$config]]></code>
       <code><![CDATA[$container]]></code>
       <code><![CDATA[$container]]></code>
-      <code><![CDATA[$objectManager]]></code>
       <code><![CDATA[$objectManager]]></code>
     </PossiblyUnusedParam>
     <RiskyTruthyFalsyComparison>

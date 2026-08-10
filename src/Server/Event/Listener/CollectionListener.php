@@ -148,7 +148,6 @@ class CollectionListener implements ListenerAggregateInterface
 
     /**
      * @param class-string $targetEntityClassName
-     * @param array|null $data
      * @return object|null
      */
     protected function processEntity($targetEntityClassName, array $data)
