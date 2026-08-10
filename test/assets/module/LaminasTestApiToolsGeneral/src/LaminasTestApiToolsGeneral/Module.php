@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace LaminasTestApiToolsGeneral;
 
-use Laminas\ApiTools\Provider\ApiToolsProviderInterface;
 use Laminas\EventManager\EventInterface;
 use Laminas\Loader\StandardAutoloader;
 use Laminas\ModuleManager\Feature\BootstrapListenerInterface;
 use LaminasTestApiToolsGeneral\Listener\EventCatcher;
 
-class Module implements ApiToolsProviderInterface, BootstrapListenerInterface
+class Module implements BootstrapListenerInterface
 {
     public function getConfig()
     {

@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace LaminasTestApiToolsDbApi;
 
-use Laminas\ApiTools\Provider\ApiToolsProviderInterface;
 use Laminas\Loader\StandardAutoloader;
 
-class Module implements ApiToolsProviderInterface
+class Module
 {
     /**
      * @return array

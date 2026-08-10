@@ -56,7 +56,6 @@
         "doctrine/doctrine-orm-module": "^6.4",
         "laminas-api-tools/api-tools": "^1.9",
         "laminas-api-tools/api-tools-hal": "^1.13",
-        "laminas-api-tools/api-tools-provider": "^1.8",
         "laminas-api-tools/api-tools-rpc": "^1.10",
         "laminas-api-tools/api-tools-versioning": "^1.9",
         "laminas/laminas-coding-standard": "^3.1",
@@ -119,10 +118,6 @@
         {
             "type": "git",
             "url": "https://github.com/datasage/api-tools-content-validation"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/datasage/api-tools-provider"
         },
         {
             "type": "git",
