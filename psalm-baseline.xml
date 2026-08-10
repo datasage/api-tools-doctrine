@@ -391,14 +391,8 @@
     <PossiblyNullArgument>
       <code><![CDATA[$hydrator]]></code>
     </PossiblyNullArgument>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[canCreateServiceWithName]]></code>
-      <code><![CDATA[createServiceWithName]]></code>
-    </PossiblyUnusedMethod>
     <PossiblyUnusedParam>
       <code><![CDATA[$config]]></code>
-      <code><![CDATA[$name]]></code>
-      <code><![CDATA[$name]]></code>
       <code><![CDATA[$requestedName]]></code>
     </PossiblyUnusedParam>
     <UndefinedClass>

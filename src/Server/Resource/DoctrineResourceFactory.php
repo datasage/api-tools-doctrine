@@ -14,7 +14,6 @@ use Laminas\Hydrator\HydratorInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Exception\ServiceNotFoundException;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 use Override;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
@@ -60,20 +59,6 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
         }
 
         return true;
-    }
-
-    /**
-     * Can this factory create the requested service? (v2)
-     *
-     * Provided for backwards compatiblity; proxies to canCreate().
-     *
-     * @param string $name
-     * @param string $requestedName
-     * @return bool
-     */
-    public function canCreateServiceWithName(ServiceLocatorInterface $container, $name, $requestedName)
-    {
-        return $this->canCreate($container, $requestedName);
     }
 
     /**
@@ -182,19 +167,6 @@ class DoctrineResourceFactory implements AbstractFactoryInterface
         }
 
         return true;
-    }
-
-    /**
-     * Create and return the doctrine-connected resource (v2).
-     *
-     * Provided for backwards compatibility; proxies to __invoke().
-     *
-     * @param string $name
-     * @param string $requestedName
-     */
-    public function createServiceWithName(ServiceLocatorInterface $container, $name, $requestedName): DoctrineResource
-    {
-        return $this($container, $requestedName);
     }
 
     /**
