@@ -38,7 +38,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
     public const OBJECT_MANAGER_TYPE_ORM         = 'ORM';
 
     /**
-     * Cache of canCreateServiceWithName lookups.
+     * Cache of canCreate lookups.
      *
      * @var array
      */
