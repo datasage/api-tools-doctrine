@@ -50,7 +50,7 @@
         "laminas/laminas-servicemanager": "^3.24",
         "laminas/laminas-stdlib": "^3.21",
         "laminas/laminas-validator": "^2.65",
-        "php": "~8.3.0 || ~8.4.0 || ~8.5.0"
+        "php": "~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0"
     },
     "require-dev": {
         "doctrine/doctrine-orm-module": "^6.4",
