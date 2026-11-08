@@ -34,8 +34,8 @@
         }
     },
     "require": {
-        "doctrine/collections": "^2",
-        "doctrine/doctrine-laminas-hydrator": "^3.2.1",
+        "doctrine/collections": "^2 || ^3",
+        "doctrine/doctrine-laminas-hydrator": "^3.2.1 || ^4",
         "doctrine/doctrine-module": "^6.4",
         "doctrine/persistence": "^3 || ^4",
         "laminas-api-tools/api-tools-api-problem": "^1.10",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99fa7b09fb2f83c0e336af60dd5cba06",
+    "content-hash": "f730c39c989346ed3722205a89968fd5",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -253,33 +253,33 @@
         },
         {
             "name": "doctrine/doctrine-laminas-hydrator",
-            "version": "3.7.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine-laminas-hydrator.git",
-                "reference": "2794757a9382e4c0f6e48fb92ffe41b9d95c8e2b"
+                "reference": "2c1e162d9daf7223d0faf393c777fd311318cb57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine-laminas-hydrator/zipball/2794757a9382e4c0f6e48fb92ffe41b9d95c8e2b",
-                "reference": "2794757a9382e4c0f6e48fb92ffe41b9d95c8e2b",
+                "url": "https://api.github.com/repos/doctrine/doctrine-laminas-hydrator/zipball/2c1e162d9daf7223d0faf393c777fd311318cb57",
+                "reference": "2c1e162d9daf7223d0faf393c777fd311318cb57",
                 "shasum": ""
             },
             "require": {
-                "doctrine/collections": "^2.0.0",
+                "doctrine/collections": "^2.6.0 || ^3.1.0",
                 "doctrine/inflector": "^2.0.4",
-                "doctrine/persistence": "^4.0.0",
+                "doctrine/persistence": "^3.4.0 || ^4.0.0",
                 "ext-ctype": "*",
-                "laminas/laminas-hydrator": "^4.13.0",
+                "laminas/laminas-hydrator": "^4.13.0 || ^5.0.0",
                 "laminas/laminas-stdlib": "^3.14.0",
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0"
+                "php": "~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^14.0.0",
                 "phpdocumentor/guides-cli": "^1.5.0",
                 "phpstan/phpstan": "^2.0.2",
                 "phpstan/phpstan-deprecation-rules": "^2.0.0",
-                "phpunit/phpunit": "^11.5.45"
+                "phpunit/phpunit": "^12.5.0"
             },
             "type": "library",
             "autoload": {
@@ -316,15 +316,15 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-02T22:58:09+00:00"
+            "time": "2026-10-31T16:55:44+00:00"
         },
         {
             "name": "doctrine/doctrine-module",
-            "version": "6.4.1",
+            "version": "6.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/datasage/DoctrineModule",
-                "reference": "a50498f274dbad7e3d84e98e163daae3fc95c05e"
+                "reference": "ec6ca918d0c652245619bca1249a4d500405a2a4"
             },
             "require": {
                 "doctrine/collections": "^2.0.0 || ^3.0.0",
@@ -333,12 +333,11 @@
                 "doctrine/persistence": "^3.0.0 || ^4.0.0",
                 "laminas/laminas-authentication": "^2.12.0",
                 "laminas/laminas-eventmanager": "^3.5.0",
-                "laminas/laminas-form": "^3.4.1",
                 "laminas/laminas-paginator": "^2.13.0 || ^3.0.0",
                 "laminas/laminas-servicemanager": "^3.17.0 || ^4.0.0",
                 "laminas/laminas-stdlib": "^3.13.0",
                 "laminas/laminas-validator": "^2.25.0 || ^3.0.0",
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0",
                 "psr/cache": "^1.0 || ^2.0 || ^3.0",
                 "psr/container": "^1.1.2 || ^2.0.0",
                 "symfony/cache": "^6.4.0 || ^7.0.0 || ^8.0.0",
@@ -353,7 +352,8 @@
                 "doctrine/mongodb-odm": "^2.16.3",
                 "doctrine/orm": "^2.20.1 || ^3.0.0",
                 "jangregor/phpstan-prophecy": "^2.0.0",
-                "laminas/laminas-modulemanager": "^2.12.0",
+                "laminas/laminas-form": "^3.4.1",
+                "laminas/laminas-modulemanager": "^2.12.0 || ^3.0",
                 "laminas/laminas-session": "^2.22.1",
                 "phpdocumentor/guides-cli": "^1.5.0",
                 "phpstan/phpstan": "^2.0.4",
@@ -365,6 +365,7 @@
                 "doctrine/doctrine-laminas-hydrator": "To hydrate Doctrine objects from Laminas forms",
                 "doctrine/doctrine-mongo-odm-module": "For use with Doctrine MongDB ODM",
                 "doctrine/doctrine-orm-module": "For use with Doctrine ORM",
+                "laminas/laminas-form": "Required by the ObjectSelect, ObjectRadio and ObjectMultiCheckbox form elements",
                 "laminas/laminas-mvc": "Required by the doctrine-module CLI binary, which bootstraps a Laminas MVC application"
             },
             "bin": [
@@ -419,7 +420,7 @@
                 "laminas",
                 "module"
             ],
-            "time": "2026-08-04T16:19:11+00:00"
+            "time": "2026-11-08T17:54:14+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -1613,105 +1614,6 @@
                 }
             ],
             "time": "2025-10-13T15:44:52+00:00"
-        },
-        {
-            "name": "laminas/laminas-form",
-            "version": "3.24.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-form.git",
-                "reference": "92d46a8333ca428244cf8b647167477aefbbe891"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-form/zipball/92d46a8333ca428244cf8b647167477aefbbe891",
-                "reference": "92d46a8333ca428244cf8b647167477aefbbe891",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "laminas/laminas-escaper": "^2",
-                "laminas/laminas-filter": "^2",
-                "laminas/laminas-hydrator": "^4.16.0",
-                "laminas/laminas-inputfilter": "^2.32.0",
-                "laminas/laminas-servicemanager": "^3.22.1",
-                "laminas/laminas-stdlib": "^3.20.0",
-                "laminas/laminas-validator": "^2",
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-                "psr/container": "^1.1.2"
-            },
-            "conflict": {
-                "doctrine/annotations": "<1.14.0",
-                "laminas/laminas-captcha": "<2.16.0",
-                "laminas/laminas-eventmanager": "<3.10.0",
-                "laminas/laminas-i18n": "<2.21.0",
-                "laminas/laminas-recaptcha": "<3.6.0",
-                "laminas/laminas-servicemanager": "<3.20.0",
-                "laminas/laminas-view": "<2.27.0"
-            },
-            "require-dev": {
-                "doctrine/annotations": "^1.14.3 || ^2.0.2",
-                "ext-gd": "*",
-                "ext-intl": "*",
-                "laminas/laminas-captcha": "^2.19",
-                "laminas/laminas-coding-standard": "^3.1.0",
-                "laminas/laminas-eventmanager": "^3.15.0",
-                "laminas/laminas-i18n": "^2.31.0",
-                "laminas/laminas-modulemanager": "^2.19.0",
-                "laminas/laminas-recaptcha": "^3.8",
-                "laminas/laminas-session": "^2.25.1",
-                "laminas/laminas-text": "^2.12.1",
-                "laminas/laminas-view": "^2.43",
-                "phpunit/phpunit": "^11.5.43",
-                "psalm/plugin-phpunit": "^0.19.5",
-                "vimeo/psalm": "^6.13.1"
-            },
-            "suggest": {
-                "doctrine/annotations": "^1.14, required to use laminas-form annotations support",
-                "laminas/laminas-captcha": "^2.16, required for using CAPTCHA form elements",
-                "laminas/laminas-eventmanager": "^3.10, required for laminas-form annotations support",
-                "laminas/laminas-i18n": "^2.21, required when using laminas-form view helpers",
-                "laminas/laminas-recaptcha": "^3.6, in order to use the ReCaptcha form element",
-                "laminas/laminas-servicemanager": "^3.20, required to use the form factories or provide services",
-                "laminas/laminas-view": "^2.27, required for using the laminas-form view helpers"
-            },
-            "type": "library",
-            "extra": {
-                "laminas": {
-                    "component": "Laminas\\Form",
-                    "config-provider": "Laminas\\Form\\ConfigProvider"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laminas\\Form\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Validate and display simple and complex forms, casting forms to business objects and vice versa",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "form",
-                "laminas"
-            ],
-            "support": {
-                "chat": "https://laminas.dev/chat",
-                "docs": "https://docs.laminas.dev/laminas-form/",
-                "forum": "https://discourse.laminas.dev",
-                "issues": "https://github.com/laminas/laminas-form/issues",
-                "rss": "https://github.com/laminas/laminas-form/releases.atom",
-                "source": "https://github.com/laminas/laminas-form"
-            },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2026-01-12T14:20:53+00:00"
         },
         {
             "name": "laminas/laminas-http",
@@ -5719,26 +5621,26 @@
         },
         {
             "name": "doctrine/doctrine-orm-module",
-            "version": "6.4.1",
+            "version": "6.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/datasage/DoctrineORMModule",
-                "reference": "5149e3fff25c4210f90dbb9d22ea25840b20ffd1"
+                "reference": "50fa96c5a36f913d3bc9b6ac4bc5cc63cb13de84"
             },
             "require": {
                 "doctrine/dbal": "^3.3.2 || ^4.0.0",
-                "doctrine/doctrine-laminas-hydrator": "^3.2.0",
+                "doctrine/doctrine-laminas-hydrator": "^3.2.0 || ^4.0.0",
                 "doctrine/doctrine-module": "^6.4.1",
                 "doctrine/event-manager": "^2.0.0",
                 "doctrine/orm": "^2.20.0 || ^3.0.0",
                 "doctrine/persistence": "^3.0.0 || ^4.0.0",
                 "ext-json": "*",
                 "laminas/laminas-eventmanager": "^3.5.0",
-                "laminas/laminas-modulemanager": "^2.11.0",
+                "laminas/laminas-modulemanager": "^2.11.0 || ^3.0",
                 "laminas/laminas-paginator": "^2.13.0 || ^3.0.0",
                 "laminas/laminas-servicemanager": "^3.17.0 || ^4.0.0",
                 "laminas/laminas-stdlib": "^3.13.0",
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0",
                 "psr/container": "^1.1.2 || ^2.0.0",
                 "symfony/console": "^6.2.1 || ^7.0.0 || ^8.0.0"
             },
@@ -5752,6 +5654,7 @@
                 "doctrine/coding-standard": "^12.0.0",
                 "doctrine/data-fixtures": "^2.0.1",
                 "doctrine/migrations": "^3.8.0",
+                "laminas/laminas-form": "^3.4.1",
                 "laminas/laminas-i18n": "^2.31.0",
                 "phpstan/phpstan": "^2.0.4",
                 "phpstan/phpstan-phpunit": "^2.0.3",
@@ -5813,7 +5716,7 @@
                 "module",
                 "orm"
             ],
-            "time": "2026-08-04T19:34:45+00:00"
+            "time": "2026-11-08T18:01:01+00:00"
         },
         {
             "name": "doctrine/instantiator",
